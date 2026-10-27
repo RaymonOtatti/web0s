@@ -252,7 +252,6 @@
               <h2 class="play-headline hoverchar" data-text="Play — Retro Arcade">Play — Retro Arcade</h2>
               <div class="play-actions-row">
                 <button type="button" class="sound-toggle-btn" id="game-sound-btn" title="Alternar audio">♫ Audio: On</button>
-                <button type="button" class="boss-btn" id="boss-btn" title="Botón de emergencia para simular código">[!] Boss Key</button>
               </div>
             </div>
           </div>
@@ -313,26 +312,6 @@
               <div class="arcade-how-to-play">
                 <p><strong>CÓMO JUGAR:</strong> Haz click en <strong>[▶ JUGAR]</strong>. Controla con las <strong>flechas o W/A/S/D</strong> del teclado, o haz <strong>click en los botones de dirección</strong> (▲ ◀ ▼ ▶). La serpiente atraviesa las paredes sin morir.</p>
               </div>
-            </div>
-
-            <!-- Boss Key Fake Code Terminal -->
-            <div class="boss-terminal" id="boss-terminal" hidden>
-              <div class="terminal-bar">
-                <span>bash — web0s_kernel.ts (ONLINE)</span>
-                <button type="button" class="terminal-close" id="boss-close">[X] Volver al juego</button>
-              </div>
-              <pre class="terminal-code">
-import { MatrixEngine, ScandinavianGrid, MonospacePipeline } from '@web0s/core';
-
-async function bootstrapKernel(): Promise&lt;SystemStatus&gt; {
-  const grid = new ScandinavianGrid({ cols: 160, rows: 48, ch: 8.5 });
-  const ascii = new MonospacePipeline({ mode: 'subtle-noise', contrast: 1.4 });
-  
-  await grid.initializeHardwareBuffer();
-  console.log('[OK] 100% Kernel healthy. Full width fluid & TV noise active.');
-  return { status: 200, uptime: '99.99%', memory: '14.2MB' };
-}
-              </pre>
             </div>
           </div>
         </section>

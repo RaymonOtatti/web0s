@@ -955,13 +955,6 @@ window.addEventListener('keydown', (e) => {
   // If user is inside an input, ignore
   if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
 
-  // Boss key toggle: ESC
-  if (e.key === 'Escape') {
-    const boss = document.getElementById('boss-terminal');
-    if (boss) boss.hidden = !boss.hidden;
-    return;
-  }
-
   const isPlaying = (activeGame === 'snekst' && SnakeGame.state === 'running') ||
                     (activeGame === 'textris' && TetrisGame.state === 'running');
   const isArcadeVisible = isArcadeInViewport();
@@ -1105,20 +1098,6 @@ document.getElementById('action-drop')?.addEventListener('click', (e) => {
 
 // Initialize with Snake in ready state
 SnakeGame.reset();
-
-// Boss Key Toggle
-const bossBtn = document.getElementById('boss-btn');
-const bossTerminal = document.getElementById('boss-terminal');
-const bossClose = document.getElementById('boss-close');
-
-if (bossBtn && bossTerminal) {
-  bossBtn.addEventListener('click', () => {
-    bossTerminal.hidden = false;
-  });
-  bossClose?.addEventListener('click', () => {
-    bossTerminal.hidden = true;
-  });
-}
 
 // ==========================================================================
 // 8. Project Detail Modal Dialog
