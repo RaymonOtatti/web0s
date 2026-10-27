@@ -145,9 +145,9 @@ header[data-component="header"] {
 #nav {
   pointer-events: auto;
   width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 18px clamp(20px, 3.5vw, 64px);
+  max-width: 1720px;
+  margin: 0 auto;
+  padding: max(16px, env(safe-area-inset-top, 16px)) max(clamp(16px, 3.5vw, 64px), env(safe-area-inset-right, 16px)) 16px max(clamp(16px, 3.5vw, 64px), env(safe-area-inset-left, 16px));
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -166,11 +166,11 @@ header[data-component="header"] {
 
 /* Al bajar el scroll: SE SEPARA Y SE HACE MAS PEQUEÑO */
 header.is-scrolled {
-  padding: 12px clamp(16px, 3vw, 48px) 0;
+  padding: max(10px, env(safe-area-inset-top, 10px)) clamp(14px, 3vw, 48px) 0;
 }
 
 header.is-scrolled #nav {
-  width: min(calc(100% - clamp(24px, 4vw, 72px)), 1360px);
+  width: min(calc(100% - clamp(20px, 4vw, 72px)), 1360px);
   margin: 0 auto;
   padding: 8px 24px;
   border: 1px solid rgba(255, 255, 255, 0.18);
@@ -308,36 +308,111 @@ header.is-scrolled .nav-time-wrap {
 
 .mobile {
   display: none;
+  align-items: center;
+  gap: 10px;
 }
+
+.mobile .lang-switch-btn {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 8px 12px;
+  min-height: 40px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .mobile-menu-btn {
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.02em;
-  padding: 6px 12px;
+  padding: 8px 16px;
+  min-height: 40px;
+  min-width: 64px;
   border: 1px solid var(--border-light);
-  border-radius: 2px;
+  border-radius: 9999px;
   color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.mobile-menu-btn:hover,
+.mobile-menu-btn:active {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .mobile-drawer {
-  display: none;
-  flex-direction: column;
-  padding: 24px clamp(20px, 3.5vw, 64px);
-  border-top: 1px solid var(--border-light);
-  background: var(--bg);
-  gap: 16px;
-}
-.mobile-drawer.is-active {
+  pointer-events: auto;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  background: rgba(9, 9, 9, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 99;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: max(80px, calc(64px + env(safe-area-inset-top, 0px))) max(24px, env(safe-area-inset-right, 24px)) max(40px, calc(32px + env(safe-area-inset-bottom, 0px))) max(24px, env(safe-area-inset-left, 24px));
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
 }
+
+.mobile-drawer.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mobile-drawer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .mob-link {
-  font-size: 15px;
-  font-weight: 400;
+  font-size: clamp(22px, 5.5vw, 30px);
+  font-weight: 350;
+  letter-spacing: -0.02em;
   color: var(--text-secondary);
-  transition: color 0.2s;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: color 0.2s ease, transform 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
 }
-.mob-link:hover {
+.mob-link:hover,
+.mob-link:active {
   color: var(--white);
+  transform: translateX(4px);
+}
+.mob-link.mob-contact {
+  color: var(--white);
+  border-bottom: none;
+  margin-top: 16px;
+  font-size: clamp(16px, 4vw, 20px);
+  opacity: 0.9;
 }
 
 /* ==========================================================================
@@ -351,9 +426,9 @@ header.is-scrolled .nav-time-wrap {
 
 .sections {
   width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 32px clamp(20px, 3.5vw, 64px) 0;
+  max-width: 1720px;
+  margin: 0 auto;
+  padding: 32px max(clamp(16px, 3.5vw, 64px), env(safe-area-inset-right, 16px)) 0 max(clamp(16px, 3.5vw, 64px), env(safe-area-inset-left, 16px));
 }
 
 .section {
@@ -1687,23 +1762,22 @@ p.big {
 .arcade-cabinet.is-fullscreen .arcade-multiplayer-hub {
   display: none;
 }
-}
 
 /* ==========================================================================
    FULL-WIDTH GIANT LOGO FOOTER
    ========================================================================== */
 #footer[data-component="footer"] {
   border-top: 1px solid var(--border);
-  padding: 64px 0 48px;
+  padding: 64px 0 max(48px, calc(32px + env(safe-area-inset-bottom, 0px)));
   background-color: var(--bg);
   width: 100%;
 }
 
 .footer-container {
   width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0 clamp(20px, 3.5vw, 64px);
+  max-width: 1720px;
+  margin: 0 auto;
+  padding: 0 max(clamp(16px, 3.5vw, 64px), env(safe-area-inset-right, 16px)) 0 max(clamp(16px, 3.5vw, 64px), env(safe-area-inset-left, 16px));
 }
 
 #footer .image.logo {
@@ -1913,8 +1987,27 @@ p.big {
 }
 
 /* ==========================================================================
-   RESPONSIVE ADAPTATIONS
+   RESPONSIVE ADAPTATIONS & MULTI-DEVICE OPTIMIZATIONS
+   Breakpoints:
+   - 1080px: Tablet Landscape (Capacidades 2-col layout)
+   - 960px: Tablet Portrait (Mobile header switch, Team 1-col, Footer stacked)
+   - 880px: Small Tablets & Large Phones (Work 1-col, Dialog mobile sheet)
+   - 640px: Smartphones (Hero Sublime Compact, Arcade 16:9, Full-width CTAs)
+   - 380px: Compact Mobile Devices (iPhone SE, Fold screens)
    ========================================================================== */
+
+/* --- Tablet Landscape (<= 1080px) --- */
+@media (max-width: 1080px) and (min-width: 881px) {
+  .capacidades-matrix {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .capability-cta-card {
+    grid-column: 1 / -1;
+  }
+}
+
+/* --- Tablet Portrait & Compact Viewports (<= 960px) --- */
 @media (max-width: 960px) {
   #nav {
     grid-template-columns: 1fr auto;
@@ -1923,22 +2016,12 @@ p.big {
     display: none;
   }
   .mobile {
-    display: block;
-  }
-
-  .work-section {
-    grid-template-columns: 1fr;
-    gap: 32px;
+    display: flex;
   }
 
   .team-grid {
     grid-template-columns: 1fr;
     gap: 32px;
-  }
-
-  .capacidades-matrix {
-    grid-template-columns: 1fr;
-    gap: 28px;
   }
 
   .shortcuts-row {
@@ -1951,26 +2034,146 @@ p.big {
     gap: 20px;
   }
 
-  .dialog-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .arcade-controls {
-    display: flex;
-  }
-
   .sublime-body {
-    height: 420px;
+    height: 400px;
   }
 }
 
+/* --- Small Tablets & Large Smartphones (<= 880px) --- */
+@media (max-width: 880px) {
+  .work-section {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .capacidades-matrix {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Responsive Project Dialog Sheet */
+  .project-dialog {
+    width: min(720px, calc(100vw - 24px));
+    max-height: calc(100dvh - 36px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .dialog-layout {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+  }
+
+  .dialog-visual {
+    padding: 20px;
+    background: #050505;
+  }
+
+  .dialog-visual img {
+    max-height: 36vh;
+    object-fit: contain;
+  }
+
+  .dialog-copy {
+    padding: 24px 20px;
+    flex: 1;
+  }
+
+  .dialog-copy h2 {
+    font-size: clamp(20px, 4vw, 26px);
+    margin: 0 0 12px;
+  }
+
+  .dialog-copy p:not(.dialog-tag) {
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin: 0 0 20px;
+  }
+
+  .dialog-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding-top: 16px;
+  }
+
+  .dialog-actions .button {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .dialog-close {
+    min-height: 38px;
+    min-width: 44px;
+    padding: 6px 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* --- Smartphones (<= 640px) --- */
 @media (max-width: 640px) {
   .sections {
     padding: 24px 16px 0;
   }
 
+  /* Sublime Text Code Animation Window Compact */
+  .sublime-topbar {
+    padding: 0 12px;
+    height: 38px;
+  }
+
+  .sublime-window-controls {
+    display: none; /* Hide macOS dots to leave room for tabs & actions */
+  }
+
+  .sublime-tabs {
+    padding-left: 0;
+  }
+
+  .sublime-tab {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+
+  .sublime-tab.inactive {
+    display: none;
+  }
+
+  .sublime-actions {
+    gap: 6px;
+  }
+
+  .sublime-tag {
+    display: none;
+  }
+
+  .sublime-btn {
+    padding: 4px 8px;
+    font-size: 10px;
+    min-height: 32px;
+    min-width: 32px;
+  }
+
+  .sublime-breadcrumbs {
+    font-size: 9.5px;
+    padding: 5px 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .sublime-breadcrumbs::-webkit-scrollbar {
+    display: none;
+  }
+
   .sublime-body {
-    height: 340px;
+    height: clamp(280px, 46vh, 340px);
   }
 
   .sublime-minimap {
@@ -1978,9 +2181,13 @@ p.big {
   }
 
   .sublime-gutter {
-    width: 36px;
-    padding-right: 6px;
-    font-size: 11px;
+    width: 32px;
+    padding: 12px 6px 12px 0;
+    font-size: 10.5px;
+  }
+
+  .sublime-code-container {
+    padding: 12px 14px;
   }
 
   .sublime-code {
@@ -1988,46 +2195,188 @@ p.big {
     line-height: 1.55;
   }
 
-  .sublime-tab.inactive {
-    display: none;
-  }
-
-  .sublime-tag {
-    display: none;
-  }
-
-  .sublime-breadcrumbs {
-    font-size: 9.5px;
-    padding: 4px 12px;
-  }
-
   .sublime-statusbar {
     font-size: 9px;
-    padding: 4px 12px;
+    padding: 5px 12px;
+    flex-wrap: wrap;
+    gap: 4px;
   }
 
+  /* Typography & CTAs */
   h1.mega {
-    font-size: 32px;
+    font-size: clamp(23px, 6.2vw, 32px);
+    line-height: 1.25;
+    margin-bottom: 24px;
+    text-wrap: balance;
   }
 
   .cta-row {
     flex-direction: column;
     align-items: stretch;
+    gap: 12px;
   }
 
   .button {
     width: 100%;
+    min-height: 44px;
+  }
+
+  /* Arcade Cabinet Mobile Polish */
+  .arcade-tabs {
+    flex-direction: column;
+  }
+
+  .arcade-tab {
+    padding: 10px 14px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+    font-size: 11.5px;
+    justify-content: flex-start;
+  }
+
+  .arcade-tab.active {
+    border-bottom: 2px solid var(--white);
+  }
+
+  .arcade-cabinet {
+    padding: 16px 12px;
   }
 
   .arcade-hud {
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .hud-left {
+    flex-direction: column;
     align-items: flex-start;
+    gap: 4px;
+  }
+
+  .hud-center {
+    display: none;
   }
 
   .hud-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
     width: 100%;
-    justify-content: space-between;
+  }
+
+  .hud-btn {
+    min-height: 38px;
+    justify-content: center;
+    text-align: center;
+    padding: 6px 10px;
+    font-size: 10.5px;
+  }
+
+  .hud-external-link {
+    grid-column: span 2;
+  }
+
+  /* Real 16:9 Aspect Ratio on Mobile without vertical distortion */
+  .arcade-screen {
+    min-height: 200px;
+    aspect-ratio: 16 / 9;
+  }
+
+  .arcade-overlay {
+    padding: 20px 14px;
+    gap: 10px;
+  }
+
+  .arcade-overlay-badge {
+    font-size: 9px;
+    padding: 2px 8px;
+  }
+
+  .arcade-overlay-title {
+    font-size: clamp(17px, 5vw, 22px);
+  }
+
+  .arcade-overlay-desc {
+    font-size: 11.5px;
+    line-height: 1.45;
+  }
+
+  .overlay-buttons-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .arcade-start-big,
+  .arcade-btn-secondary {
+    width: 100%;
+    padding: 12px 18px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arcade-overlay-sub {
+    font-size: 10px;
+  }
+
+  .multiplayer-invite-card {
+    padding: 16px 14px;
+  }
+
+  .invite-input-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .match-invite-input {
+    min-width: 0;
+    width: 100%;
+    min-height: 42px;
+  }
+
+  .invite-input-row .button {
+    width: 100%;
+    min-height: 42px;
+  }
+
+  .arcade-guide-col {
+    padding: 16px 14px;
+  }
+}
+
+/* --- Compact Mobile Devices (<= 380px) --- */
+@media (max-width: 380px) {
+  .sections {
+    padding: 18px 12px 0;
+  }
+
+  h1.mega {
+    font-size: 21px;
+  }
+
+  .sublime-code {
+    font-size: 10px;
+  }
+
+  .sublime-gutter {
+    width: 28px;
+    font-size: 9.5px;
+  }
+
+  .hud-right {
+    grid-template-columns: 1fr;
+  }
+
+  .hud-external-link {
+    grid-column: span 1;
+  }
+
+  .arcade-screen {
+    min-height: 175px;
   }
 }
 
@@ -2035,16 +2384,18 @@ p.big {
    SCROLL TO TOP HIGH-VISIBILITY CONTRAST BUTTON
    Dual-contrast design: solid black core + solid white border + white text/icon.
    Guaranteed 100% visible regardless of background (black, white, color, image).
+   Safe area compliant for notch and gesture bar.
    ========================================================================== */
 .scroll-to-top {
   position: fixed;
-  bottom: clamp(22px, 3.2vw, 36px);
-  right: clamp(20px, 3vw, 38px);
+  bottom: max(20px, calc(16px + env(safe-area-inset-bottom, 0px)));
+  right: max(18px, calc(16px + env(safe-area-inset-right, 0px)));
   z-index: 9995;
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 10px 18px;
+  min-height: 44px;
   background-color: #000000;
   color: #ffffff;
   border: 2px solid #ffffff;
@@ -2074,6 +2425,7 @@ p.big {
   user-select: none;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .scroll-to-top.is-visible {
@@ -2110,4 +2462,61 @@ p.big {
   font-size: 10px;
   letter-spacing: 0.08em;
   font-weight: 600;
+}
+
+/* ==========================================================================
+   TOUCH INTERACTION & ACCESSIBILITY OVERRIDES
+   ========================================================================== */
+@media (hover: none) {
+  /* Prevent sticking hover states on touch screens */
+  .work-link:hover .image img.main-img {
+    filter: none;
+  }
+  .work-link:active .image img.main-img {
+    filter: brightness(1.08);
+  }
+  .work-link:hover .image-subtle-overlay {
+    opacity: 0;
+  }
+  .nav-brand-link:hover .nav-logo {
+    transform: none;
+    filter: none;
+  }
+  .sublime-topbar:hover .sublime-dot {
+    opacity: 0.85;
+  }
+  .button:hover {
+    background-color: var(--white);
+    color: var(--bg);
+  }
+  .button:active {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+  .button.outline:hover {
+    border-color: var(--border);
+    color: var(--text-secondary);
+  }
+  .button.outline:active {
+    border-color: var(--white);
+    color: var(--white);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .sublime-cursor {
+    animation: none;
+    opacity: 1;
+  }
+  .status-pulse-dot {
+    animation: none;
+  }
 }

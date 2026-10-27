@@ -312,6 +312,16 @@ function applyLanguage(lang) {
     mobLangToggleBtn.setAttribute('aria-label', nextLangAria);
   }
 
+  // Update mobile menu button text
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  if (mobileToggle) {
+    const isDrawerOpen = mobileDrawer && mobileDrawer.classList.contains('is-active');
+    const closeText = lang === 'en' ? 'Close' : 'Cerrar';
+    const menuText = lang === 'en' ? 'Menu' : 'Menú';
+    mobileToggle.textContent = isDrawerOpen ? closeText : menuText;
+  }
+
   // Update Arcade dynamic texts
   if (typeof updateArcadeUI === 'function') {
     updateArcadeUI();
@@ -426,6 +436,10 @@ updateStudioClock();
 const shimmerChars = '01·';
 
 function bindHoverchar() {
+  // Only bind on devices that actually support hover (mouse/trackpad), avoiding jank on touch devices
+  const supportsHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!supportsHover) return;
+
   document.querySelectorAll('.hoverchar').forEach((el) => {
     const originalText = el.dataset.text || el.textContent.trim();
     el.dataset.text = originalText;
@@ -930,23 +944,69 @@ document.querySelectorAll('[data-project]').forEach((button) => {
 });
 
 // ==========================================================================
-// 9. Mobile Menu Navigation
+// 9. Mobile Menu Navigation (Full Touch & Accessibility Support)
 // ==========================================================================
-const mobileToggle = document.getElementById('mobile-toggle');
-const mobileDrawer = document.getElementById('mobile-drawer');
+function initMobileNavigation() {
+  const mobileToggle = document.getElementById('mobile-toggle');
+  const mobileDrawer = document.getElementById('mobile-drawer');
 
-if (mobileToggle && mobileDrawer) {
-  mobileToggle.addEventListener('click', () => {
-    const isActive = mobileDrawer.classList.toggle('is-active');
-    mobileToggle.textContent = isActive ? 'Cerrar' : 'Menú';
+  if (!mobileToggle || !mobileDrawer) return;
+
+  function closeDrawer() {
+    mobileDrawer.classList.remove('is-active');
+    mobileDrawer.setAttribute('aria-hidden', 'true');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    const menuText = currentLanguage === 'en' ? 'Menu' : 'Menú';
+    mobileToggle.textContent = menuText;
+    document.body.style.overflow = '';
+  }
+
+  function openDrawer() {
+    mobileDrawer.classList.add('is-active');
+    mobileDrawer.setAttribute('aria-hidden', 'false');
+    mobileToggle.setAttribute('aria-expanded', 'true');
+    const closeText = currentLanguage === 'en' ? 'Close' : 'Cerrar';
+    mobileToggle.textContent = closeText;
+    document.body.style.overflow = 'hidden';
+  }
+
+  mobileToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = mobileDrawer.classList.contains('is-active');
+    if (isOpen) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
   });
 
   mobileDrawer.querySelectorAll('.mob-link').forEach((link) => {
     link.addEventListener('click', () => {
-      mobileDrawer.classList.remove('is-active');
-      mobileToggle.textContent = 'Menú';
+      closeDrawer();
     });
   });
+
+  // Close when tapping outside the inner drawer content
+  mobileDrawer.addEventListener('click', (e) => {
+    if (e.target === mobileDrawer) {
+      closeDrawer();
+    }
+  });
+
+  // Close on Escape key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileDrawer.classList.contains('is-active')) {
+      closeDrawer();
+      mobileToggle.focus();
+    }
+  });
+
+  // Close if window resized to desktop breakpoint
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 960 && mobileDrawer.classList.contains('is-active')) {
+      closeDrawer();
+    }
+  }, { passive: true });
 }
 
 // ==========================================================================
@@ -1552,7 +1612,42 @@ function initHeroLogoCircleTracking() {
   if (!groupB || !groupO) return;
 
   const maxRadius = 7.5; // Restrained so circles move smoothly within the letter boundaries
+  const isTouchDevice = !window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+  if (isTouchDevice) {
+    // Subtle ambient wander on touch devices so the logo comes to life without mouse cursor
+    let startTime = performance.now();
+    let animId = null;
+
+    function ambientWander(now) {
+      const elapsed = (now - startTime) / 1000;
+      const sx = (Math.sin(elapsed * 0.9) * 3.5).toFixed(2);
+      const sy = (Math.cos(elapsed * 1.2) * 2.5).toFixed(2);
+      groupB.style.transform = `translate(${sx}px, ${sy}px)`;
+      groupO.style.transform = `translate(${sx}px, ${sy}px)`;
+      animId = requestAnimationFrame(ambientWander);
+    }
+
+    const heroHeader = document.querySelector('.hero-brand-header');
+    if ('IntersectionObserver' in window && heroHeader) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            startTime = performance.now();
+            animId = requestAnimationFrame(ambientWander);
+          } else if (animId) {
+            cancelAnimationFrame(animId);
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(heroHeader);
+    } else {
+      requestAnimationFrame(ambientWander);
+    }
+    return;
+  }
+
+  // Desktop Mouse Tracking
   window.addEventListener('mousemove', (e) => {
     const mouseX = e.clientX;
     const mouseY = e.clientY;
@@ -1607,7 +1702,22 @@ function initParallaxEffects() {
 
   let ticking = false;
 
+  function clearParallaxTransforms() {
+    if (heroBrand) heroBrand.style.transform = '';
+    if (heroWindow) heroWindow.style.transform = '';
+    if (statementCard) statementCard.style.transform = '';
+    if (copyBig) copyBig.style.transform = '';
+    if (capabilityCta) capabilityCta.style.transform = '';
+    if (arcadeContainer) arcadeContainer.style.transform = '';
+    teamBlocks.forEach((b) => { b.style.transform = ''; });
+    capabilityPillars.forEach((p) => { p.style.transform = ''; });
+    projectImages.forEach((img) => { img.style.transform = ''; });
+  }
+
   function onScroll() {
+    // Only run on desktop/tablets with fine pointer to avoid scroll lag on mobile
+    if (window.innerWidth < 768) return;
+
     if (!ticking) {
       requestAnimationFrame(updateParallax);
       ticking = true;
@@ -1615,6 +1725,11 @@ function initParallaxEffects() {
   }
 
   function updateParallax() {
+    if (window.innerWidth < 768) {
+      ticking = false;
+      return;
+    }
+
     const scrollY = window.scrollY;
     const vh = window.innerHeight;
 
@@ -1704,14 +1819,23 @@ function initParallaxEffects() {
     ticking = false;
   }
 
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 768) {
+      clearParallaxTransforms();
+    }
+  }, { passive: true });
+
   window.addEventListener('scroll', onScroll, { passive: true });
-  updateParallax();
+  if (window.innerWidth >= 768) {
+    updateParallax();
+  }
 }
 
 // Initialize on DOM ready
 function initApp() {
   initLanguageSwitch();
   initNavScroll();
+  initMobileNavigation();
   initHeroLogoCircleTracking();
   initSublimeTextAnimation();
   initArcade();

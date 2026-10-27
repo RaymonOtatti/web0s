@@ -2,11 +2,15 @@
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#090909">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
   <meta name="description" content="Web0S — Design and technology studio in Buenos Aires. Web identities, art direction, digital engineering, and interactive retro arcade experiences.">
   <title>Web0S — Design & Technology Studio</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="logo/favicon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="home">
@@ -52,18 +56,20 @@
       <!-- Mobile Menu Button & Lang Toggle -->
       <div class="mobile">
         <button type="button" class="lang-switch-btn" id="mob-lang-toggle-btn" aria-label="Cambiar idioma a Español">ES</button>
-        <button class="ghost mobile-menu-btn" id="mobile-toggle" aria-label="Toggle menu" data-i18n="mob_menu">Menu</button>
+        <button class="ghost mobile-menu-btn" id="mobile-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-drawer" data-i18n="mob_menu">Menu</button>
       </div>
     </nav>
 
     <!-- Mobile Drawer -->
-    <div class="mobile-drawer" id="mobile-drawer">
-      <a href="#proyectos" class="mob-link" data-i18n="nav_projects">Projects</a>
-      <a href="#nosotros" class="mob-link" data-i18n="nav_about">About</a>
-      <a href="#equipo" class="mob-link" data-i18n="nav_team">Team</a>
-      <a href="#capacidades" class="mob-link" data-i18n="nav_services">Services</a>
-      <a href="#play" class="mob-link" data-i18n="nav_arcade">Arcade</a>
-      <a href="mailto:contact@raymonotatti.com" class="mob-link" data-i18n="nav_contact">Contact</a>
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-inner">
+        <a href="#proyectos" class="mob-link" data-i18n="nav_projects">Projects</a>
+        <a href="#nosotros" class="mob-link" data-i18n="nav_about">About</a>
+        <a href="#equipo" class="mob-link" data-i18n="nav_team">Team</a>
+        <a href="#capacidades" class="mob-link" data-i18n="nav_services">Services</a>
+        <a href="#play" class="mob-link" data-i18n="nav_arcade">Arcade</a>
+        <a href="mailto:contact@raymonotatti.com?subject=Inquiry%20Web0S" class="mob-link mob-contact" data-i18n="nav_contact">Contact</a>
+      </div>
     </div>
   </header>
 
