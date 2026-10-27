@@ -154,7 +154,7 @@ updateStudioClock();
 // ==========================================================================
 // 4. Fast & Whisper-Subtle Text Shimmer (.hoverchar)
 // ==========================================================================
-const shimmerChars = '01_·-/*';
+const shimmerChars = '01·';
 
 function bindHoverchar() {
   document.querySelectorAll('.hoverchar').forEach((el) => {
@@ -162,11 +162,14 @@ function bindHoverchar() {
     el.dataset.text = originalText;
 
     let animId = null;
+    let isAnimating = false;
 
     el.addEventListener('mouseenter', () => {
+      if (isAnimating) return;
+      isAnimating = true;
       cancelAnimationFrame(animId);
       const start = performance.now();
-      const duration = 120;
+      const duration = 85;
 
       function frame(now) {
         const elapsed = now - start;
@@ -177,10 +180,10 @@ function bindHoverchar() {
         for (let i = 0; i < originalText.length; i++) {
           if (originalText[i] === ' ' || originalText[i] === '\n') {
             scrambled += originalText[i];
-          } else if (i < resolvedChars) {
-            scrambled += originalText[i];
-          } else {
+          } else if (i === resolvedChars) {
             scrambled += shimmerChars[Math.floor(Math.random() * shimmerChars.length)];
+          } else {
+            scrambled += originalText[i];
           }
         }
         el.textContent = scrambled;
@@ -189,9 +192,16 @@ function bindHoverchar() {
           animId = requestAnimationFrame(frame);
         } else {
           el.textContent = originalText;
+          isAnimating = false;
         }
       }
       animId = requestAnimationFrame(frame);
+    });
+
+    el.addEventListener('mouseleave', () => {
+      cancelAnimationFrame(animId);
+      el.textContent = originalText;
+      isAnimating = false;
     });
   });
 }
@@ -237,7 +247,7 @@ if (matrixCanvas) {
       for (let c = 0; c < cols; c++) {
         const dist = Math.hypot(c - mouseCol, r - mouseRow);
         if (dist < 4) {
-          ctx.fillStyle = 'rgba(16, 185, 129, 0.18)';
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
           ctx.fillRect(c * charW + 7, r * charH + 11, 2, 2);
           ctx.fillStyle = 'rgba(255, 255, 255, 0.025)';
         } else if ((c + r) % 2 === 0) {
@@ -324,7 +334,7 @@ const soundBtn = document.getElementById('game-sound-btn');
 if (soundBtn) {
   soundBtn.addEventListener('click', () => {
     audioEnabled = !audioEnabled;
-    soundBtn.textContent = audioEnabled ? '♫ Audio: On' : '♫ Audio: Off';
+    soundBtn.textContent = audioEnabled ? 'Audio: On' : 'Audio: Off';
     if (audioEnabled) playSound('move');
   });
 }
@@ -399,8 +409,8 @@ const SnakeGame = {
     clearInterval(this.timer);
     this.timer = null;
     this.updateHUD();
-    updateHUDStatus('LISTO');
-    this.showOverlay('S N E K S T', '▶ INICIAR JUEGO', 'Haz click aquí o en los botones abajo para jugar');
+    updateHUDStatus('Listo');
+    this.showOverlay('Snekst', 'Iniciar juego', 'Click o toca para jugar');
     this.drawTitleScreen();
   },
 
@@ -422,7 +432,7 @@ const SnakeGame = {
     }
     this.spawnFood();
     this.updateHUD();
-    updateHUDStatus('JUGANDO');
+    updateHUDStatus('Jugando');
     this.hideOverlay();
     if (arcadeScreen) {
       arcadeScreen.classList.add('is-active-game');
@@ -467,12 +477,14 @@ const SnakeGame = {
       this.state = 'paused';
       clearInterval(this.timer);
       this.timer = null;
-      updateHUDStatus('PAUSA');
+      updateHUDStatus('Pausa');
+      this.showOverlay('Pausa', 'Continuar', 'Presiona Jugar o P para seguir');
       this.draw();
     } else if (this.state === 'paused') {
       this.state = 'running';
       this.timer = setInterval(() => this.tick(), 140);
-      updateHUDStatus('JUGANDO');
+      updateHUDStatus('Jugando');
+      this.hideOverlay();
       this.draw();
     }
   },
@@ -542,11 +554,11 @@ const SnakeGame = {
     }
 
     if (this.state === 'gameover') {
-      buffer += '*** GAME OVER — PRESIONA [REINICIAR] O [R] ***';
+      buffer += 'Game Over — Presiona Reiniciar o R';
     } else if (this.state === 'paused') {
-      buffer += '*** PAUSA — PRESIONA [P] O [JUGAR] PARA CONTINUAR ***';
+      buffer += 'Pausa — Presiona Jugar para continuar';
     } else {
-      buffer += `SNEKST // Puntos: ${this.score}  [La serpiente traspasa paredes]`;
+      buffer += `Snekst — Puntos: ${this.score}`;
     }
 
     gameDisplay.textContent = buffer;
@@ -555,21 +567,17 @@ const SnakeGame = {
   drawTitleScreen() {
     if (!gameDisplay) return;
     let title = '';
-    title += '==============================\n';
+    title += '+----------------------------+\n';
+    title += '|  Snekst                    |\n';
     title += '|                            |\n';
-    title += '|      S  N  E  K  S  T      |\n';
-    title += '|      ================      |\n';
+    title += '|  Come las estrellas (★)    |\n';
+    title += '|  Flechas o W / A / S / D   |\n';
+    title += '|  Traspaso de paredes       |\n';
     title += '|                            |\n';
-    title += '|    ★  COME LAS ESTRELLAS   |\n';
-    title += '|    ▲  FLECHAS O W/A/S/D    |\n';
-    title += '|    ❚❚ BOTONES EN PANTALLA  |\n';
-    title += '|    ∞  TRASPASO DE PAREDES  |\n';
-    title += '|                            |\n';
-    title += '|     HAZ CLICK EN JUGAR     |\n';
-    title += '|    O TOCA CUALQUIER BOTÓN  |\n';
-    title += '|                            |\n';
-    title += '==============================\n';
-    title += 'ESTADO: LISTO // RECORD: ' + String(highScores.snekst).padStart(4, '0');
+    title += '|  Click en Jugar            |\n';
+    title += '|  o pulsa cualquier flecha  |\n';
+    title += '+----------------------------+\n';
+    title += 'Estado: Listo  ·  Récord: ' + String(highScores.snekst).padStart(4, '0');
     gameDisplay.textContent = title;
   },
 
@@ -594,8 +602,8 @@ const SnakeGame = {
     clearInterval(this.timer);
     this.timer = null;
     playSound('gameover');
-    updateHUDStatus('GAME OVER', true);
-    this.showOverlay('GAME OVER', '↺ REINTENTAR', `Puntaje final: ${this.score} pts. Haz click o pulsa R`);
+    updateHUDStatus('Game over', true);
+    this.showOverlay('Game Over', 'Reintentar', `Puntaje final: ${this.score} pts`);
     this.draw();
   },
 
@@ -637,8 +645,8 @@ const TetrisGame = {
     clearInterval(this.timer);
     this.timer = null;
     this.updateHUD();
-    updateHUDStatus('LISTO');
-    SnakeGame.showOverlay('T E X T R I S', '▶ INICIAR JUEGO', 'Haz click aquí o en los botones abajo para jugar');
+    updateHUDStatus('Listo');
+    SnakeGame.showOverlay('Textris', 'Iniciar juego', 'Click o toca para jugar');
     this.drawTitleScreen();
   },
 
@@ -648,7 +656,7 @@ const TetrisGame = {
     this.board = Array.from({ length: this.rows }, () => Array(this.cols).fill(0));
     this.spawnPiece();
     this.updateHUD();
-    updateHUDStatus('JUGANDO');
+    updateHUDStatus('Jugando');
     SnakeGame.hideOverlay();
     if (arcadeScreen) {
       arcadeScreen.classList.add('is-active-game');
@@ -779,12 +787,14 @@ const TetrisGame = {
       this.state = 'paused';
       clearInterval(this.timer);
       this.timer = null;
-      updateHUDStatus('PAUSA');
+      updateHUDStatus('Pausa');
+      SnakeGame.showOverlay('Pausa', 'Continuar', 'Presiona Jugar o P para seguir');
       this.draw();
     } else if (this.state === 'paused') {
       this.state = 'running';
       this.timer = setInterval(() => this.tick(), 480);
-      updateHUDStatus('JUGANDO');
+      updateHUDStatus('Jugando');
+      SnakeGame.hideOverlay();
       this.draw();
     }
   },
@@ -821,11 +831,11 @@ const TetrisGame = {
     buffer += '+--------------------+';
 
     if (this.state === 'gameover') {
-      buffer += '\n*** GAME OVER — PRESIONA [REINICIAR] O [R] ***';
+      buffer += '\nGame Over — Presiona Reiniciar o R';
     } else if (this.state === 'paused') {
-      buffer += '\n*** PAUSA — PRESIONA [P] O [JUGAR] ***';
+      buffer += '\nPausa — Presiona Jugar para continuar';
     } else {
-      buffer += '\nTEXTRIS // [◄ ►] Mover [▲] Rotar [Espacio] Bajar';
+      buffer += `\nTextris — Puntos: ${this.score}`;
     }
 
     gameDisplay.textContent = buffer;
@@ -835,21 +845,17 @@ const TetrisGame = {
     if (!gameDisplay) return;
     let title = '';
     title += '+--------------------+\n';
-    title += '|    T E X T R I S   |\n';
-    title += '|    =============   |\n';
+    title += '|  Textris           |\n';
     title += '|                    |\n';
-    title += '|  ◄ ►  MOVER BLOQUE |\n';
-    title += '|  ▲    ROTAR PIEZA  |\n';
-    title += '|  ▼    ACELERAR     |\n';
-    title += '|  SPC  CAÍDA RÁPIDA |\n';
-    title += '|  P    PAUSAR JUEGO |\n';
-    title += '|  R    REINICIAR    |\n';
+    title += '|  ← →  Mover bloque |\n';
+    title += '|  ↑    Rotar pieza  |\n';
+    title += '|  ↓    Acelerar     |\n';
+    title += '|  Esp  Caída rápida |\n';
     title += '|                    |\n';
-    title += '|   CLICK EN [JUGAR] |\n';
-    title += '|   O PULSA ESPACIO  |\n';
-    title += '|                    |\n';
+    title += '|  Click en Jugar    |\n';
+    title += '|  o pulsa Espacio   |\n';
     title += '+--------------------+\n';
-    title += 'ESTADO: LISTO // RECORD: ' + String(highScores.textris).padStart(4, '0');
+    title += 'Estado: Listo  ·  Récord: ' + String(highScores.textris).padStart(4, '0');
     gameDisplay.textContent = title;
   },
 
@@ -863,8 +869,8 @@ const TetrisGame = {
     clearInterval(this.timer);
     this.timer = null;
     playSound('gameover');
-    updateHUDStatus('GAME OVER', true);
-    SnakeGame.showOverlay('GAME OVER', '↺ REINTENTAR', `Puntaje final: ${this.score} pts. Haz click o pulsa R`);
+    updateHUDStatus('Game over', true);
+    SnakeGame.showOverlay('Game Over', 'Reintentar', `Puntaje final: ${this.score} pts`);
     this.draw();
   },
 

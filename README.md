@@ -16,7 +16,7 @@ Inspirado en la estética editorial y minimalista escandinava (Aino Agency, Goth
 - **Retro Monospace Arcade (`#play`)**: Juegos retro funcionales reconstruidos en pantalla monospace:
   - **01. Snekst [Snake]**: Con controles por teclado (flechas o WASD), pantalla táctil D-Pad para móviles, pausa y récord guardado.
   - **02. Textris [Tetris]**: Con caída suave, caída rápida (hard drop), rotación y eliminación de líneas.
-- **Dirección & Equipo**: Perfiles de Franco Michetti (Dirección Visual) y Raymon Otatti (Ingeniería & Código).
+- **Dirección & Equipo**: Perfiles de Raymon Otatti (Dirección Visual) y Franco Michetti (Ingeniería & Código).
 - **Casos de Estudio**:
   - `001 La Guardia Barrio Abierto`
   - `002 Raymon Otatti Design & Co.`
