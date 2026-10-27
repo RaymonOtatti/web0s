@@ -131,24 +131,44 @@ const translations = {
     cta_description: 'We work with a select number of clients each year to guarantee undivided focus and handcrafted quality in every line of design and code.',
     cta_button: 'Start a conversation',
     cta_reply: 'Typical reply in < 24h',
-    sound_on: 'Audio: On',
-    sound_off: 'Audio: Off',
+    arcade_kicker: '04 / Online Multiplayer Arcade',
+    arcade_webrtc: 'WebRTC P2P Online',
+    arcade_gamepad: 'Gamepad Ready',
+    tag_multiplayer: 'Multiplayer',
     hud_game: 'Game',
-    hud_status: 'Status',
-    hud_ready: 'Ready',
-    hud_playing: 'Playing',
-    hud_paused: 'Paused',
-    hud_gameover: 'Game Over',
-    hud_score: 'Score',
-    hud_record: 'Record',
-    game_btn_play: 'Play',
-    game_btn_pause: 'Pause',
-    game_btn_reset: 'Reset',
-    overlay_btn: 'Start Game',
-    overlay_sub: 'Click or tap to play',
-    ctrl_rotate: 'Rotate',
-    ctrl_drop: 'Drop',
-    arcade_howto: 'Arrows or W/A/S/D to move. The snake passes through walls safely without dying.',
+    hud_mode: 'Mode',
+    mode_multiplayer: 'Rooms & Matchmaking',
+    hud_platform: 'Platform',
+    btn_lobby_rooms: 'Rooms / Matchmaking',
+    btn_direct_play: 'Direct Play',
+    btn_fullscreen: '⛶ Fullscreen',
+    overlay_launch_game: 'Enter the Game',
+    overlay_launch_rooms: 'Create / Join Room',
+    overlay_click_hint: 'Click to run in browser (WebAssembly)',
+    matchmaking_title: 'Online Multiplayer · Invite a Friend',
+    matchmaking_p2p: 'P2P Lag-Free',
+    matchmaking_desc: 'Copy the match link or share your room code so your opponent can join instantly from any PC or phone.',
+    btn_copy_link: 'Copy Link',
+    btn_open_rooms: 'Open Rooms ↗',
+    link_copied: 'Link copied to clipboard!',
+    guide_steps_title: 'How to play online with friends',
+    guide_controls_title: 'Controls & Compatibility',
+    vt3_title: 'Virtua Tennis 3 Online',
+    vt3_desc: 'Play single matches or create your online multiplayer room without downloads. Compatible with keyboard and USB/Bluetooth controllers.',
+    vt3_step_1: 'Create a room: Click «Rooms / Matchmaking» and choose a room name or code.',
+    vt3_step_2: 'Share the link: Send the link or code to your rival to enter the same court.',
+    vt3_step_3: 'Select player & court: Choose surface, set count, and start the rally!',
+    vt3_ctrl_1: 'Keyboard: Arrow keys to move. Z (topspin/flat), X (slice), A (lob/drop shot), Space (Start).',
+    vt3_ctrl_2: 'Gamepad USB / Bluetooth: Automatically detected (PlayStation, Xbox, or generic). Move stick or press button to calibrate.',
+    vt3_ctrl_3: 'Mobile / Tablet: Virtual on-screen touch controls supported (landscape mode recommended).',
+    pes6_title: 'PES 6 — Pro Evolution Soccer Online',
+    pes6_desc: 'The legendary football classic running natively in your browser. WebRTC P2P multiplayer rooms, authentic Argentine/Spanish commentary, and full gamepad support.',
+    pes6_step_1: 'Go to Wireless: In the in-game main menu, scroll down to the «Inalámbrico / Wireless» section.',
+    pes6_step_2: 'Pick or create a room: In the Online tab, browse available rooms or create your own with a custom name.',
+    pes6_step_3: 'Connect & Kick off: Your friend connects via P2P direct link. Pick your classic club or national team and play!',
+    pes6_ctrl_1: 'Keyboard P1: Arrows to move. X (Short pass), C (Long pass / Cross), S (Shoot), W (Through ball), E (Sprint).',
+    pes6_ctrl_2: 'Dual Gamepads: Full plug-and-play support for Player 1 and Player 2 with PlayStation / Xbox controllers.',
+    pes6_ctrl_3: 'Audio & Commentary: Choose between Mariano Closs Argentine commentary, original Spanish commentary, or lightweight mode.',
     footer_contact: 'Contact',
     dialog_case: 'Case',
     dialog_close: 'Close ×',
@@ -210,24 +230,44 @@ const translations = {
     cta_description: 'Trabajamos con un número selecto de clientes por año para garantizar dedicación total y calidad artesanal en cada línea de diseño y código.',
     cta_button: 'Iniciar conversación',
     cta_reply: 'Respuesta habitual en < 24hs',
-    sound_on: 'Audio: On',
-    sound_off: 'Audio: Silencio',
+    arcade_kicker: '04 / Arcade Multijugador Online',
+    arcade_webrtc: 'WebRTC P2P Online',
+    arcade_gamepad: 'Mandos compatibles',
+    tag_multiplayer: 'Multijugador',
     hud_game: 'Juego',
-    hud_status: 'Estado',
-    hud_ready: 'Listo',
-    hud_playing: 'Jugando',
-    hud_paused: 'Pausa',
-    hud_gameover: 'Fin',
-    hud_score: 'Puntos',
-    hud_record: 'Récord',
-    game_btn_play: 'Jugar',
-    game_btn_pause: 'Pausa',
-    game_btn_reset: 'Reiniciar',
-    overlay_btn: 'Iniciar juego',
-    overlay_sub: 'Click o toca para jugar',
-    ctrl_rotate: 'Rotar',
-    ctrl_drop: 'Caída',
-    arcade_howto: 'Flechas o W/A/S/D para mover. La serpiente atraviesa las paredes sin morir.',
+    hud_mode: 'Modo',
+    mode_multiplayer: 'Salas Online & Solo',
+    hud_platform: 'Plataforma',
+    btn_lobby_rooms: 'Salas / Rooms',
+    btn_direct_play: 'Cancha / Directo',
+    btn_fullscreen: '⛶ Pantalla completa',
+    overlay_launch_game: 'Entrar a la pista',
+    overlay_launch_rooms: 'Crear / Unirse a sala',
+    overlay_click_hint: 'Click para cargar en el navegador (WebAssembly)',
+    matchmaking_title: 'Multijugador Online · Invita a un rival',
+    matchmaking_p2p: 'P2P Sin Lag',
+    matchmaking_desc: 'Copia el enlace de partida o comparte tu código de sala para que tu rival se una al instante desde cualquier PC o celular.',
+    btn_copy_link: 'Copiar enlace',
+    btn_open_rooms: 'Abrir salas ↗',
+    link_copied: '¡Enlace copiado al portapapeles!',
+    guide_steps_title: 'Cómo jugar online con amigos',
+    guide_controls_title: 'Controles & Compatibilidad',
+    vt3_title: 'Virtua Tennis 3 Online',
+    vt3_desc: 'Juega partidos individuales o crea tu sala multijugador online sin descargas. Compatible con teclado y mandos USB/Bluetooth.',
+    vt3_step_1: 'Crea una sala: Haz click en «Salas / Rooms» y selecciona un nombre o código de sala.',
+    vt3_step_2: 'Comparte el enlace: Pasa el link o código a tu rival para que entre en la misma pista.',
+    vt3_step_3: 'Selecciona tenista y pista: Configura set, superficie y ¡que comience el peloteo!',
+    vt3_ctrl_1: 'Teclado: Flechas de dirección para moverte. Teclas Z (tiro plano/liftado), X (cortado), A (globo/dejada), Space (Start).',
+    vt3_ctrl_2: 'Mando USB / Bluetooth: Detectado automáticamente (PlayStation, Xbox o genérico). Mueve el joystick o presiona un botón para calibrar.',
+    vt3_ctrl_3: 'Móvil / Tablet: Compatible con controles virtuales táctiles en pantalla (modo horizontal recomendado).',
+    pes6_title: 'PES 6 — Pro Evolution Soccer Online',
+    pes6_desc: 'El clásico indiscutido del fútbol de Konami corriendo nativo en el navegador. Salas multijugador P2P WebRTC, relatos de Mariano Closs o España, y compatibilidad total con mandos.',
+    pes6_step_1: 'Entra a Inalámbrico: En el menú principal del juego, baja hasta la opción «Inalámbrico» (abajo del todo).',
+    pes6_step_2: 'Elige o crea sala: En la pestaña «Online» selecciona una sala existente o crea una nueva con el nombre que prefieras.',
+    pes6_step_3: 'Conexión P2P directa: Pasa el link a tu rival para conectar por WebRTC. Elige equipo clásico o selección y ¡a la cancha!',
+    pes6_ctrl_1: 'Teclado J1: Flechas para moverte. X (Pase corto), C (Pase largo/Centro), S (Tiro al arco), W (Pase al hueco), E (Pique / Sprint).',
+    pes6_ctrl_2: 'Mandos USB / Bluetooth: Soporte para 2 controles en simultáneo (PlayStation, Xbox o genéricos) con mapeo configurable.',
+    pes6_ctrl_3: 'Relatos a elección: Podés elegir relatos de Mariano Closs (Argentina), relatos españoles o jugar en modo ligero sin comentarios.',
     footer_contact: 'Contacto',
     dialog_case: 'Caso',
     dialog_close: 'Cerrar ×',
@@ -270,6 +310,11 @@ function applyLanguage(lang) {
   if (mobLangToggleBtn) {
     mobLangToggleBtn.textContent = nextLangLabel;
     mobLangToggleBtn.setAttribute('aria-label', nextLangAria);
+  }
+
+  // Update Arcade dynamic texts
+  if (typeof updateArcadeUI === 'function') {
+    updateArcadeUI();
   }
 }
 
@@ -485,852 +530,350 @@ if (matrixCanvas) {
 }
 
 // ==========================================================================
-// 6. Procedural Retro Arcade Audio Synthesizer (Safe Web Audio API)
+// 6. Online Multiplayer Arcade: Virtua Tennis 3 & PES 6 (WebAssembly / WebRTC)
 // ==========================================================================
-let audioEnabled = true;
-let audioCtx = null;
-
-function playSound(type) {
-  if (!audioEnabled) return;
-  try {
-    if (!audioCtx && typeof window.AudioContext !== 'undefined') {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    if (audioCtx && audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
-    if (!audioCtx) return;
-
-    const now = audioCtx.currentTime;
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-
-    if (type === 'move') {
-      osc.type = 'square';
-      osc.frequency.setValueAtTime(150, now);
-      osc.frequency.exponentialRampToValueAtTime(75, now + 0.03);
-      gain.gain.setValueAtTime(0.03, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
-      osc.start(now);
-      osc.stop(now + 0.03);
-    } else if (type === 'eat') {
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(340, now);
-      osc.frequency.exponentialRampToValueAtTime(680, now + 0.08);
-      gain.gain.setValueAtTime(0.08, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
-      osc.start(now);
-      osc.stop(now + 0.08);
-    } else if (type === 'gameover') {
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(200, now);
-      osc.frequency.exponentialRampToValueAtTime(50, now + 0.3);
-      gain.gain.setValueAtTime(0.09, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
-      osc.start(now);
-      osc.stop(now + 0.3);
-    } else if (type === 'rotate') {
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(450, now);
-      osc.frequency.exponentialRampToValueAtTime(550, now + 0.04);
-      gain.gain.setValueAtTime(0.04, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
-      osc.start(now);
-      osc.stop(now + 0.04);
-    } else if (type === 'clear') {
-      osc.type = 'square';
-      osc.frequency.setValueAtTime(523, now);
-      osc.frequency.setValueAtTime(659, now + 0.07);
-      osc.frequency.setValueAtTime(784, now + 0.14);
-      gain.gain.setValueAtTime(0.07, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
-      osc.start(now);
-      osc.stop(now + 0.25);
-    }
-  } catch (e) {
-    // Audio failures silently bypassed without breaking gameplay
-  }
-}
-
-const soundBtn = document.getElementById('game-sound-btn');
-if (soundBtn) {
-  soundBtn.addEventListener('click', () => {
-    audioEnabled = !audioEnabled;
-    soundBtn.textContent = audioEnabled ? 'Audio: On' : 'Audio: Off';
-    if (audioEnabled) playSound('move');
-  });
-}
-
-// ==========================================================================
-// 7. HIGH-PERFORMANCE RETRO ARCADE ENGINE: Snekst & Textris
-// ==========================================================================
-let activeGame = 'snekst'; // 'snekst' | 'textris'
-const gameDisplay = document.getElementById('game-mono-display');
-const arcadeScreen = document.getElementById('arcade-screen');
-const arcadeOverlay = document.getElementById('arcade-overlay');
-const overlayTitle = document.getElementById('overlay-title');
-const overlaySub = document.getElementById('overlay-sub');
-const hudGameName = document.getElementById('hud-game-name');
-const hudStatus = document.getElementById('hud-status');
-const hudScore = document.getElementById('hud-score');
-const hudHighscore = document.getElementById('hud-highscore');
-const gameStartBtn = document.getElementById('game-start-btn');
-const gamePauseBtn = document.getElementById('game-pause-btn');
-const gameRestartBtn = document.getElementById('game-restart-btn');
-const arcadeStartBig = document.getElementById('arcade-start-big');
-
-// High scores
-const highScores = {
-  snekst: parseInt(localStorage.getItem('web0s_hs_snekst') || '0', 10),
-  textris: parseInt(localStorage.getItem('web0s_hs_textris') || '0', 10)
-};
-
-function updateHUDStatus(statusText, isGameOver = false) {
-  if (!hudStatus) return;
-  hudStatus.textContent = statusText;
-  if (isGameOver) {
-    hudStatus.classList.add('game-over');
-  } else {
-    hudStatus.classList.remove('game-over');
-  }
-}
-
-function isArcadeInViewport() {
-  const arcade = document.getElementById('play');
-  if (!arcade) return false;
-  const rect = arcade.getBoundingClientRect();
-  return rect.top < window.innerHeight && rect.bottom > 0;
-}
-
-// --------------------------------------------------------------------------
-// GAME A: SNEKST (Snake Arcade in Monospace with Border-Wrapping)
-// --------------------------------------------------------------------------
-const SnakeGame = {
-  cols: 30,
-  rows: 15,
-  snake: [],
-  dir: { x: 1, y: 0 },
-  nextDir: { x: 1, y: 0 },
-  food: { x: 15, y: 7 },
-  score: 0,
-  timer: null,
-  state: 'idle', // 'idle' | 'running' | 'paused' | 'gameover'
-
-  reset() {
-    this.score = 0;
-    this.dir = { x: 1, y: 0 };
-    this.nextDir = { x: 1, y: 0 };
-    this.state = 'idle';
-    this.snake = [
-      { x: 10, y: 7 },
-      { x: 9, y: 7 },
-      { x: 8, y: 7 },
-      { x: 7, y: 7 }
-    ];
-    this.spawnFood();
-    clearInterval(this.timer);
-    this.timer = null;
-    this.updateHUD();
-    updateHUDStatus('Listo');
-    this.showOverlay('Snekst', 'Iniciar juego', 'Click o toca para jugar');
-    this.drawTitleScreen();
-  },
-
-  start(initialDir = null) {
-    this.score = 0;
-    this.state = 'running';
-    this.snake = [
-      { x: 10, y: 7 },
-      { x: 9, y: 7 },
-      { x: 8, y: 7 },
-      { x: 7, y: 7 }
-    ];
-    if (initialDir) {
-      this.dir = { ...initialDir };
-      this.nextDir = { ...initialDir };
-    } else {
-      this.dir = { x: 1, y: 0 };
-      this.nextDir = { x: 1, y: 0 };
-    }
-    this.spawnFood();
-    this.updateHUD();
-    updateHUDStatus('Jugando');
-    this.hideOverlay();
-    if (arcadeScreen) {
-      arcadeScreen.classList.add('is-active-game');
-      arcadeScreen.focus();
-    }
-
-    clearInterval(this.timer);
-    this.timer = setInterval(() => this.tick(), 140);
-    playSound('eat');
-    this.draw();
-  },
-
-  spawnFood() {
-    let valid = false;
-    let attempts = 0;
-    while (!valid && attempts < 100) {
-      attempts++;
-      this.food = {
-        x: Math.floor(Math.random() * (this.cols - 2)) + 1,
-        y: Math.floor(Math.random() * (this.rows - 2)) + 1
-      };
-      valid = !this.snake.some(seg => seg.x === this.food.x && seg.y === this.food.y);
+const arcadeGames = {
+  vt3: {
+    id: 'vt3',
+    name: 'Virtua Tennis 3',
+    title: {
+      en: 'Virtua Tennis 3 Online',
+      es: 'Virtua Tennis 3 Online'
+    },
+    badge: 'SEGA WebAssembly Port',
+    desc: {
+      en: 'Play single matches or create your online multiplayer room without downloads. Compatible with keyboard and USB/Bluetooth controllers.',
+      es: 'Juega partidos individuales o crea tu sala multijugador online sin descargas. Compatible con teclado y mandos USB/Bluetooth.'
+    },
+    directUrl: 'https://vt3.online/player.html?mode=solo&project=echorec0de&game=vt3',
+    lobbyUrl: 'https://vt3.online/#salas',
+    embedUrl: 'https://vt3.online/',
+    shareUrl: 'https://vt3.online/#salas',
+    launchBtnText: {
+      en: 'Enter the Court',
+      es: 'Entrar a la pista'
+    },
+    roomsBtnText: {
+      en: 'Create / Join Room',
+      es: 'Crear / Unirse a sala'
+    },
+    stepsTitle: {
+      en: 'How to play online with friends',
+      es: 'Cómo jugar online con amigos'
+    },
+    steps: {
+      en: [
+        '<strong>1. Create a room:</strong> Click «Rooms / Matchmaking» and choose a room name or code.',
+        '<strong>2. Share the link:</strong> Send the link or code to your rival to enter the same court.',
+        '<strong>3. Select player & court:</strong> Choose surface, set count, and start the rally!'
+      ],
+      es: [
+        '<strong>1. Crea una sala:</strong> Haz click en «Salas / Rooms» y selecciona un nombre o código de sala.',
+        '<strong>2. Comparte el enlace:</strong> Pasa el link o código a tu rival para que entre en la misma pista.',
+        '<strong>3. Selecciona tenista y pista:</strong> Configura set, superficie y ¡que comience el peloteo!'
+      ]
+    },
+    controlsTitle: {
+      en: 'Controls & Compatibility',
+      es: 'Controles & Compatibilidad'
+    },
+    controls: {
+      en: [
+        '<strong>Keyboard:</strong> Arrow keys to move. Z (topspin/flat), X (slice), A (lob/drop shot), Space (Start).',
+        '<strong>Gamepad USB / Bluetooth:</strong> Automatically detected (PlayStation, Xbox, or generic). Move stick or press button to calibrate.',
+        '<strong>Mobile / Tablet:</strong> Virtual on-screen touch controls supported (landscape mode recommended).'
+      ],
+      es: [
+        '<strong>Teclado:</strong> Flechas de dirección para moverte. Teclas Z (tiro plano/liftado), X (cortado), A (globo/dejada), Space (Start).',
+        '<strong>Mando USB / Bluetooth:</strong> Detectado automáticamente (PlayStation, Xbox o genérico). Mueve el joystick o presiona un botón para calibrar.',
+        '<strong>Móvil / Tablet:</strong> Compatible con controles virtuales táctiles en pantalla (modo horizontal recomendado).'
+      ]
     }
   },
-
-  setDir(x, y) {
-    if (this.state === 'idle' || this.state === 'gameover') {
-      this.start({ x, y });
-      return;
+  pes6: {
+    id: 'pes6',
+    name: 'PES 6 — Pro Evolution Soccer',
+    title: {
+      en: 'PES 6 — Pro Evolution Soccer Online',
+      es: 'PES 6 — Pro Evolution Soccer Online'
+    },
+    badge: 'Konami / OptiJuegos WebAssembly Port',
+    desc: {
+      en: 'The legendary football classic running natively in your browser. WebRTC P2P multiplayer rooms, authentic Argentine/Spanish commentary, and full gamepad support.',
+      es: 'El clásico indiscutido del fútbol de Konami corriendo nativo en el navegador. Salas multijugador P2P WebRTC, relatos de Mariano Closs o España, y compatibilidad total con mandos.'
+    },
+    directUrl: 'https://pes6.optijuegos.net/',
+    lobbyUrl: 'https://pes6.optijuegos.net/',
+    embedUrl: 'https://pes6.optijuegos.net/',
+    shareUrl: 'https://pes6.optijuegos.net/',
+    launchBtnText: {
+      en: 'Start PES 6',
+      es: 'Iniciar PES 6'
+    },
+    roomsBtnText: {
+      en: 'Online Multiplayer Rooms',
+      es: 'Salas Online Multijugador'
+    },
+    stepsTitle: {
+      en: 'How to play online 1v1',
+      es: 'Cómo jugar online 1v1'
+    },
+    steps: {
+      en: [
+        '<strong>1. Go to Wireless:</strong> In the in-game main menu, scroll down to the «Inalámbrico / Wireless» section.',
+        '<strong>2. Pick or create a room:</strong> In the Online tab, browse available rooms or create your own with a custom name.',
+        '<strong>3. Connect & Kick off:</strong> Your friend connects via P2P direct link. Pick your classic club or national team and play!'
+      ],
+      es: [
+        '<strong>1. Entra a Inalámbrico:</strong> En el menú principal del juego, baja hasta la opción «Inalámbrico» (abajo del todo).',
+        '<strong>2. Elige o crea sala:</strong> En la pestaña «Online» selecciona una sala existente o crea una nueva con el nombre que prefieras.',
+        '<strong>3. Conexión P2P directa:</strong> Pasa el link a tu rival para conectar por WebRTC. Elige equipo clásico o selección y ¡a la cancha!'
+      ]
+    },
+    controlsTitle: {
+      en: 'Controls & Gamepad Setup',
+      es: 'Controles & Mandos'
+    },
+    controls: {
+      en: [
+        '<strong>Keyboard P1:</strong> Arrows to move. X (Short pass), C (Long pass / Cross), S (Shoot), W (Through ball), E (Sprint).',
+        '<strong>Dual Gamepads:</strong> Full plug-and-play support for Player 1 and Player 2 with PlayStation / Xbox controllers.',
+        '<strong>Audio & Commentary:</strong> Choose between Mariano Closs Argentine commentary, original Spanish commentary, or lightweight mode.'
+      ],
+      es: [
+        '<strong>Teclado J1:</strong> Flechas para moverte. X (Pase corto), C (Pase largo/Centro), S (Tiro al arco), W (Pase al hueco), E (Pique / Sprint).',
+        '<strong>Mandos USB / Bluetooth:</strong> Soporte para 2 controles en simultáneo (PlayStation, Xbox o genéricos) con mapeo configurable.',
+        '<strong>Relatos a elección:</strong> Podés elegir relatos de Mariano Closs (Argentina), relatos españoles o jugar en modo ligero sin comentarios.'
+      ]
     }
-    if (this.state !== 'running') return;
-
-    // Prevent direct 180-degree reverse
-    if (this.dir.x + x !== 0 || this.dir.y + y !== 0) {
-      this.nextDir = { x, y };
-      playSound('move');
-    }
-  },
-
-  togglePause() {
-    if (this.state === 'running') {
-      this.state = 'paused';
-      clearInterval(this.timer);
-      this.timer = null;
-      updateHUDStatus('Pausa');
-      this.showOverlay('Pausa', 'Continuar', 'Presiona Jugar o P para seguir');
-      this.draw();
-    } else if (this.state === 'paused') {
-      this.state = 'running';
-      this.timer = setInterval(() => this.tick(), 140);
-      updateHUDStatus('Jugando');
-      this.hideOverlay();
-      this.draw();
-    }
-  },
-
-  tick() {
-    if (this.state !== 'running' || activeGame !== 'snekst') return;
-
-    this.dir = { ...this.nextDir };
-    let newX = this.snake[0].x + this.dir.x;
-    let newY = this.snake[0].y + this.dir.y;
-
-    // Wrap around borders smoothly so player never dies against walls!
-    if (newX <= 0) newX = this.cols - 2;
-    else if (newX >= this.cols - 1) newX = 1;
-
-    if (newY <= 0) newY = this.rows - 2;
-    else if (newY >= this.rows - 1) newY = 1;
-
-    const head = { x: newX, y: newY };
-
-    // Body collision check
-    if (this.snake.slice(1).some(seg => seg.x === head.x && seg.y === head.y)) {
-      this.gameOver();
-      return;
-    }
-
-    this.snake.unshift(head);
-
-    // Food collision
-    if (head.x === this.food.x && head.y === this.food.y) {
-      this.score += 10;
-      playSound('eat');
-      if (this.score > highScores.snekst) {
-        highScores.snekst = this.score;
-        try { localStorage.setItem('web0s_hs_snekst', this.score); } catch (e) {}
-      }
-      this.spawnFood();
-      this.updateHUD();
-    } else {
-      this.snake.pop();
-    }
-
-    this.draw();
-  },
-
-  draw() {
-    if (!gameDisplay || activeGame !== 'snekst') return;
-
-    let buffer = '';
-    for (let y = 0; y < this.rows; y++) {
-      for (let x = 0; x < this.cols; x++) {
-        if (y === 0 || y === this.rows - 1) {
-          buffer += '=';
-        } else if (x === 0 || x === this.cols - 1) {
-          buffer += '|';
-        } else if (x === this.snake[0].x && y === this.snake[0].y) {
-          buffer += 'O'; // Head
-        } else if (this.snake.some(seg => seg.x === x && seg.y === y)) {
-          buffer += '#'; // Body
-        } else if (x === this.food.x && y === this.food.y) {
-          buffer += '★'; // Food Star
-        } else {
-          buffer += ' ';
-        }
-      }
-      buffer += '\n';
-    }
-
-    if (this.state === 'gameover') {
-      buffer += 'Game Over — Presiona Reiniciar o R';
-    } else if (this.state === 'paused') {
-      buffer += 'Pausa — Presiona Jugar para continuar';
-    } else {
-      buffer += `Snekst — Puntos: ${this.score}`;
-    }
-
-    gameDisplay.textContent = buffer;
-  },
-
-  drawTitleScreen() {
-    if (!gameDisplay) return;
-    let title = '';
-    title += '+----------------------------+\n';
-    title += '|  Snekst                    |\n';
-    title += '|                            |\n';
-    title += '|  Come las estrellas (★)    |\n';
-    title += '|  Flechas o W / A / S / D   |\n';
-    title += '|  Traspaso de paredes       |\n';
-    title += '|                            |\n';
-    title += '|  Click en Jugar            |\n';
-    title += '|  o pulsa cualquier flecha  |\n';
-    title += '+----------------------------+\n';
-    title += 'Estado: Listo  ·  Récord: ' + String(highScores.snekst).padStart(4, '0');
-    gameDisplay.textContent = title;
-  },
-
-  showOverlay(title, btnText, subText) {
-    if (overlayTitle) overlayTitle.textContent = title;
-    if (arcadeStartBig) arcadeStartBig.textContent = btnText;
-    if (overlaySub) overlaySub.textContent = subText;
-    if (arcadeOverlay) arcadeOverlay.classList.remove('is-hidden');
-  },
-
-  hideOverlay() {
-    if (arcadeOverlay) arcadeOverlay.classList.add('is-hidden');
-  },
-
-  updateHUD() {
-    if (hudScore) hudScore.textContent = String(this.score).padStart(4, '0');
-    if (hudHighscore) hudHighscore.textContent = String(highScores.snekst).padStart(4, '0');
-  },
-
-  gameOver() {
-    this.state = 'gameover';
-    clearInterval(this.timer);
-    this.timer = null;
-    playSound('gameover');
-    updateHUDStatus('Game over', true);
-    this.showOverlay('Game Over', 'Reintentar', `Puntaje final: ${this.score} pts`);
-    this.draw();
-  },
-
-  destroy() {
-    clearInterval(this.timer);
-    this.timer = null;
-    this.state = 'idle';
   }
 };
 
-// --------------------------------------------------------------------------
-// GAME B: TEXTRIS (Monospace Block Falling Game / Tetris)
-// --------------------------------------------------------------------------
-const TetrisGame = {
-  cols: 10,
-  rows: 16,
-  board: [],
-  currentPiece: null,
-  currentX: 0,
-  currentY: 0,
-  score: 0,
-  timer: null,
-  state: 'idle', // 'idle' | 'running' | 'paused' | 'gameover'
+let activeArcadeGameKey = 'vt3';
+let arcadeCurrentMode = 'lobby';
+let isArcadeRunning = false;
 
-  tetrominos: {
-    I: [[1, 1, 1, 1]],
-    O: [[1, 1], [1, 1]],
-    T: [[0, 1, 0], [1, 1, 1]],
-    S: [[0, 1, 1], [1, 1, 0]],
-    Z: [[1, 1, 0], [0, 1, 1]],
-    J: [[1, 0, 0], [1, 1, 1]],
-    L: [[0, 0, 1], [1, 1, 1]]
-  },
+function updateArcadeUI() {
+  const game = arcadeGames[activeArcadeGameKey] || arcadeGames.vt3;
+  const lang = currentLanguage || 'en';
 
-  reset() {
-    this.score = 0;
-    this.state = 'idle';
-    this.board = Array.from({ length: this.rows }, () => Array(this.cols).fill(0));
-    clearInterval(this.timer);
-    this.timer = null;
-    this.updateHUD();
-    updateHUDStatus('Listo');
-    SnakeGame.showOverlay('Textris', 'Iniciar juego', 'Click o toca para jugar');
-    this.drawTitleScreen();
-  },
-
-  start() {
-    this.score = 0;
-    this.state = 'running';
-    this.board = Array.from({ length: this.rows }, () => Array(this.cols).fill(0));
-    this.spawnPiece();
-    this.updateHUD();
-    updateHUDStatus('Jugando');
-    SnakeGame.hideOverlay();
-    if (arcadeScreen) {
-      arcadeScreen.classList.add('is-active-game');
-      arcadeScreen.focus();
-    }
-
-    clearInterval(this.timer);
-    this.timer = setInterval(() => this.tick(), 480);
-    playSound('eat');
-    this.draw();
-  },
-
-  spawnPiece() {
-    const keys = Object.keys(this.tetrominos);
-    const key = keys[Math.floor(Math.random() * keys.length)];
-    this.currentPiece = this.tetrominos[key];
-    this.currentX = Math.floor((this.cols - this.currentPiece[0].length) / 2);
-    this.currentY = 0;
-
-    if (this.collides(this.currentPiece, this.currentX, this.currentY)) {
-      this.gameOver();
-    }
-  },
-
-  collides(piece, offsetX, offsetY) {
-    for (let y = 0; y < piece.length; y++) {
-      for (let x = 0; x < piece[y].length; x++) {
-        if (piece[y][x]) {
-          const bx = offsetX + x;
-          const by = offsetY + y;
-          if (bx < 0 || bx >= this.cols || by >= this.rows) return true;
-          if (by >= 0 && this.board[by][bx]) return true;
-        }
-      }
-    }
-    return false;
-  },
-
-  rotate(piece) {
-    return piece[0].map((_, index) => piece.map(row => row[index]).reverse());
-  },
-
-  move(dirX) {
-    if (this.state === 'idle' || this.state === 'gameover') { this.start(); return; }
-    if (this.state !== 'running' || activeGame !== 'textris') return;
-
-    if (!this.collides(this.currentPiece, this.currentX + dirX, this.currentY)) {
-      this.currentX += dirX;
-      playSound('move');
-      this.draw();
-    }
-  },
-
-  drop() {
-    if (this.state !== 'running' || activeGame !== 'textris') return;
-    if (!this.collides(this.currentPiece, this.currentX, this.currentY + 1)) {
-      this.currentY += 1;
-      this.draw();
-    } else {
-      this.lockPiece();
-    }
-  },
-
-  hardDrop() {
-    if (this.state === 'idle' || this.state === 'gameover') { this.start(); return; }
-    if (this.state !== 'running' || activeGame !== 'textris') return;
-
-    while (!this.collides(this.currentPiece, this.currentX, this.currentY + 1)) {
-      this.currentY += 1;
-    }
-    playSound('move');
-    this.lockPiece();
-  },
-
-  rotatePiece() {
-    if (this.state === 'idle' || this.state === 'gameover') { this.start(); return; }
-    if (this.state !== 'running' || activeGame !== 'textris') return;
-
-    const rotated = this.rotate(this.currentPiece);
-    if (!this.collides(rotated, this.currentX, this.currentY)) {
-      this.currentPiece = rotated;
-      playSound('rotate');
-      this.draw();
-    }
-  },
-
-  lockPiece() {
-    for (let y = 0; y < this.currentPiece.length; y++) {
-      for (let x = 0; x < this.currentPiece[y].length; x++) {
-        if (this.currentPiece[y][x]) {
-          const by = this.currentY + y;
-          const bx = this.currentX + x;
-          if (by >= 0 && by < this.rows) {
-            this.board[by][bx] = 1;
-          }
-        }
-      }
-    }
-    this.clearLines();
-    this.spawnPiece();
-    this.draw();
-  },
-
-  clearLines() {
-    let cleared = 0;
-    for (let y = this.rows - 1; y >= 0; y--) {
-      if (this.board[y].every(val => val === 1)) {
-        this.board.splice(y, 1);
-        this.board.unshift(Array(this.cols).fill(0));
-        cleared++;
-        y++;
-      }
-    }
-    if (cleared > 0) {
-      playSound('clear');
-      const points = [0, 100, 300, 500, 800][cleared] || 1000;
-      this.score += points;
-      if (this.score > highScores.textris) {
-        highScores.textris = this.score;
-        try { localStorage.setItem('web0s_hs_textris', this.score); } catch (e) {}
-      }
-      this.updateHUD();
-    }
-  },
-
-  togglePause() {
-    if (this.state === 'running') {
-      this.state = 'paused';
-      clearInterval(this.timer);
-      this.timer = null;
-      updateHUDStatus('Pausa');
-      SnakeGame.showOverlay('Pausa', 'Continuar', 'Presiona Jugar o P para seguir');
-      this.draw();
-    } else if (this.state === 'paused') {
-      this.state = 'running';
-      this.timer = setInterval(() => this.tick(), 480);
-      updateHUDStatus('Jugando');
-      SnakeGame.hideOverlay();
-      this.draw();
-    }
-  },
-
-  tick() {
-    if (this.state !== 'running' || activeGame !== 'textris') return;
-    this.drop();
-  },
-
-  draw() {
-    if (!gameDisplay || activeGame !== 'textris') return;
-
-    let buffer = '+--------------------+\n';
-    for (let y = 0; y < this.rows; y++) {
-      buffer += '|';
-      for (let x = 0; x < this.cols; x++) {
-        let isPiece = false;
-        if (this.currentPiece) {
-          const py = y - this.currentY;
-          const px = x - this.currentX;
-          if (py >= 0 && py < this.currentPiece.length && px >= 0 && px < this.currentPiece[py].length) {
-            if (this.currentPiece[py][px]) isPiece = true;
-          }
-        }
-
-        if (isPiece || this.board[y][x]) {
-          buffer += '[]';
-        } else {
-          buffer += ' .';
-        }
-      }
-      buffer += '|\n';
-    }
-    buffer += '+--------------------+';
-
-    if (this.state === 'gameover') {
-      buffer += '\nGame Over — Presiona Reiniciar o R';
-    } else if (this.state === 'paused') {
-      buffer += '\nPausa — Presiona Jugar para continuar';
-    } else {
-      buffer += `\nTextris — Puntos: ${this.score}`;
-    }
-
-    gameDisplay.textContent = buffer;
-  },
-
-  drawTitleScreen() {
-    if (!gameDisplay) return;
-    let title = '';
-    title += '+--------------------+\n';
-    title += '|  Textris           |\n';
-    title += '|                    |\n';
-    title += '|  ← →  Mover bloque |\n';
-    title += '|  ↑    Rotar pieza  |\n';
-    title += '|  ↓    Acelerar     |\n';
-    title += '|  Esp  Caída rápida |\n';
-    title += '|                    |\n';
-    title += '|  Click en Jugar    |\n';
-    title += '|  o pulsa Espacio   |\n';
-    title += '+--------------------+\n';
-    title += 'Estado: Listo  ·  Récord: ' + String(highScores.textris).padStart(4, '0');
-    gameDisplay.textContent = title;
-  },
-
-  updateHUD() {
-    if (hudScore) hudScore.textContent = String(this.score).padStart(4, '0');
-    if (hudHighscore) hudHighscore.textContent = String(highScores.textris).padStart(4, '0');
-  },
-
-  gameOver() {
-    this.state = 'gameover';
-    clearInterval(this.timer);
-    this.timer = null;
-    playSound('gameover');
-    updateHUDStatus('Game over', true);
-    SnakeGame.showOverlay('Game Over', 'Reintentar', `Puntaje final: ${this.score} pts`);
-    this.draw();
-  },
-
-  destroy() {
-    clearInterval(this.timer);
-    this.timer = null;
-    this.state = 'idle';
+  // HUD
+  const hudGameName = document.getElementById('hud-game-name');
+  const hudModeName = document.getElementById('hud-mode-name');
+  const externalLink = document.getElementById('arcade-external-link');
+  if (hudGameName) hudGameName.textContent = game.name;
+  if (hudModeName) {
+    hudModeName.textContent = arcadeCurrentMode === 'lobby' 
+      ? (lang === 'en' ? 'Rooms & Matchmaking' : 'Salas Online & Solo') 
+      : (lang === 'en' ? 'Direct Match' : 'Cancha Directa');
   }
-};
+  if (externalLink) externalLink.href = game.embedUrl;
 
-// Start & Trigger Handlers
-function startActiveGame(initialDir = null) {
-  if (activeGame === 'snekst') {
-    if (SnakeGame.state === 'paused') SnakeGame.togglePause();
-    else SnakeGame.start(initialDir);
-  } else {
-    if (TetrisGame.state === 'paused') TetrisGame.togglePause();
-    else TetrisGame.start();
+  // Mode Buttons
+  const btnLobby = document.getElementById('game-mode-lobby');
+  const btnDirect = document.getElementById('game-mode-direct');
+  if (btnLobby) btnLobby.classList.toggle('active', arcadeCurrentMode === 'lobby');
+  if (btnDirect) btnDirect.classList.toggle('active', arcadeCurrentMode === 'direct');
+
+  // Overlay
+  const overlayBadge = document.getElementById('overlay-badge');
+  const overlayTitle = document.getElementById('overlay-title');
+  const overlayDesc = document.getElementById('overlay-desc');
+  const startBigBtn = document.getElementById('arcade-start-big');
+  const startRoomsBtn = document.getElementById('arcade-start-rooms');
+
+  if (overlayBadge) overlayBadge.textContent = game.badge;
+  if (overlayTitle) overlayTitle.textContent = game.title[lang] || game.title.en;
+  if (overlayDesc) overlayDesc.textContent = game.desc[lang] || game.desc.en;
+  if (startBigBtn) startBigBtn.textContent = game.launchBtnText[lang] || game.launchBtnText.en;
+  if (startRoomsBtn) startRoomsBtn.textContent = game.roomsBtnText[lang] || game.roomsBtnText.en;
+
+  // Invite input link
+  const inviteInput = document.getElementById('match-invite-link');
+  if (inviteInput) {
+    inviteInput.value = game.shareUrl;
+  }
+
+  // Guides & Controls
+  const stepsTitle = document.getElementById('guide-steps-title');
+  const stepsList = document.getElementById('guide-steps-list');
+  const controlsTitle = document.getElementById('guide-controls-title');
+  const controlsList = document.getElementById('guide-controls-list');
+
+  if (stepsTitle) stepsTitle.textContent = game.stepsTitle[lang] || game.stepsTitle.en;
+  if (stepsList) {
+    const stepsArray = game.steps[lang] || game.steps.en;
+    stepsList.innerHTML = stepsArray.map((s) => `<li>${s}</li>`).join('');
+  }
+
+  if (controlsTitle) controlsTitle.textContent = game.controlsTitle[lang] || game.controlsTitle.en;
+  if (controlsList) {
+    const controlsArray = game.controls[lang] || game.controls.en;
+    controlsList.innerHTML = controlsArray.map((c) => `<li>${c}</li>`).join('');
   }
 }
 
-function pauseActiveGame() {
-  if (activeGame === 'snekst') SnakeGame.togglePause();
-  else TetrisGame.togglePause();
-}
+function launchArcade(mode = 'lobby') {
+  arcadeCurrentMode = mode;
+  isArcadeRunning = true;
+  const game = arcadeGames[activeArcadeGameKey] || arcadeGames.vt3;
+  const targetUrl = mode === 'direct' ? game.directUrl : game.lobbyUrl;
 
-function restartActiveGame() {
-  if (activeGame === 'snekst') SnakeGame.start();
-  else TetrisGame.start();
-}
+  const iframe = document.getElementById('arcade-game-iframe');
+  const overlay = document.getElementById('arcade-overlay');
 
-gameStartBtn?.addEventListener('click', (e) => {
-  e.stopPropagation();
-  startActiveGame();
-});
-
-arcadeStartBig?.addEventListener('click', (e) => {
-  e.stopPropagation();
-  startActiveGame();
-});
-
-arcadeScreen?.addEventListener('click', () => {
-  if (activeGame === 'snekst') {
-    if (SnakeGame.state === 'idle' || SnakeGame.state === 'gameover') {
-      startActiveGame();
-    }
-  } else if (activeGame === 'textris') {
-    if (TetrisGame.state === 'idle' || TetrisGame.state === 'gameover') {
-      startActiveGame();
+  if (iframe) {
+    if (iframe.src !== targetUrl) {
+      iframe.src = targetUrl;
     }
   }
-});
 
-gamePauseBtn?.addEventListener('click', (e) => {
-  e.stopPropagation();
-  pauseActiveGame();
-});
+  if (overlay) {
+    overlay.classList.add('is-hidden');
+  }
 
-gameRestartBtn?.addEventListener('click', (e) => {
-  e.stopPropagation();
-  restartActiveGame();
-});
+  updateArcadeUI();
+}
 
-// Switch Tabs between Snekst and Textris
-function switchGame(gameName) {
-  activeGame = gameName;
-  document.querySelectorAll('.arcade-tab').forEach((tab) => {
-    tab.classList.toggle('active', tab.dataset.game === gameName);
+function selectArcadeGame(gameKey) {
+  if (!arcadeGames[gameKey]) return;
+  activeArcadeGameKey = gameKey;
+
+  // Update tabs
+  document.querySelectorAll('.arcade-tab[data-game]').forEach((tab) => {
+    const isActive = tab.dataset.game === gameKey;
+    tab.classList.toggle('active', isActive);
+    tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
 
-  if (hudGameName) hudGameName.textContent = gameName === 'snekst' ? 'Snekst' : 'Textris';
+  const overlay = document.getElementById('arcade-overlay');
+  if (overlay) {
+    overlay.classList.remove('is-hidden');
+  }
 
-  if (gameName === 'snekst') {
-    TetrisGame.destroy();
-    SnakeGame.reset();
+  const iframe = document.getElementById('arcade-game-iframe');
+  if (iframe) {
+    iframe.src = 'about:blank';
+  }
+  isArcadeRunning = false;
+
+  updateArcadeUI();
+}
+
+function toggleArcadeFullscreen() {
+  const cabinet = document.getElementById('arcade-cabinet');
+  if (!cabinet) return;
+
+  if (!document.fullscreenElement) {
+    if (cabinet.requestFullscreen) {
+      cabinet.requestFullscreen().catch(() => {
+        cabinet.classList.toggle('is-fullscreen');
+      });
+    } else {
+      cabinet.classList.toggle('is-fullscreen');
+    }
   } else {
-    SnakeGame.destroy();
-    TetrisGame.reset();
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+    cabinet.classList.remove('is-fullscreen');
   }
 }
 
-document.querySelectorAll('.arcade-tab').forEach((tab) => {
-  tab.addEventListener('click', () => switchGame(tab.dataset.game));
-});
+function copyMatchInviteLink() {
+  const game = arcadeGames[activeArcadeGameKey] || arcadeGames.vt3;
+  const shareUrl = game.shareUrl;
+  const lang = currentLanguage || 'en';
+  const feedback = document.getElementById('copy-feedback-msg');
 
-// Keyboard Controls (Active when arcade is running or visible in viewport)
-window.addEventListener('keydown', (e) => {
-  // If user is inside an input, ignore
-  if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
-
-  const isPlaying = (activeGame === 'snekst' && SnakeGame.state === 'running') ||
-                    (activeGame === 'textris' && TetrisGame.state === 'running');
-  const isArcadeVisible = isArcadeInViewport();
-  const isArcadeFocused = document.activeElement === arcadeScreen || arcadeScreen?.contains(document.activeElement);
-
-  // If user is far from the arcade and not playing: allow normal browser scrolling!
-  if (!isPlaying && !isArcadeVisible && !isArcadeFocused) {
-    return;
-  }
-
-  // Restart key: R
-  if (e.key === 'r' || e.key === 'R') {
-    restartActiveGame();
-    return;
-  }
-
-  // Pause key: P
-  if (e.key === 'p' || e.key === 'P') {
-    pauseActiveGame();
-    return;
-  }
-
-  // Snekst Playing Controls
-  if (activeGame === 'snekst') {
-    if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') {
-      e.preventDefault();
-      if (SnakeGame.state !== 'running') SnakeGame.start({ x: 0, y: -1 });
-      else SnakeGame.setDir(0, -1);
-    } else if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') {
-      e.preventDefault();
-      if (SnakeGame.state !== 'running') SnakeGame.start({ x: 0, y: 1 });
-      else SnakeGame.setDir(0, 1);
-    } else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
-      e.preventDefault();
-      if (SnakeGame.state !== 'running') SnakeGame.start({ x: -1, y: 0 });
-      else SnakeGame.setDir(-1, 0);
-    } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
-      e.preventDefault();
-      if (SnakeGame.state !== 'running') SnakeGame.start({ x: 1, y: 0 });
-      else SnakeGame.setDir(1, 0);
-    } else if (e.key === ' ' || e.key === 'Enter') {
-      if (SnakeGame.state !== 'running') {
-        e.preventDefault();
-        startActiveGame();
-      }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      showCopyFeedback(lang === 'en' ? 'Link copied to clipboard!' : '¡Enlace copiado al portapapeles!');
+    }).catch(() => {
+      showCopyFeedback(shareUrl);
+    });
+  } else {
+    const input = document.getElementById('match-invite-link');
+    if (input) {
+      input.select();
+      document.execCommand('copy');
+      showCopyFeedback(lang === 'en' ? 'Link copied to clipboard!' : '¡Enlace copiado al portapapeles!');
     }
   }
 
-  // Textris Playing Controls
-  else if (activeGame === 'textris') {
-    if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
-      e.preventDefault();
-      TetrisGame.move(-1);
-    } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
-      e.preventDefault();
-      TetrisGame.move(1);
-    } else if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') {
-      e.preventDefault();
-      TetrisGame.rotatePiece();
-    } else if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') {
-      e.preventDefault();
-      TetrisGame.drop();
-    } else if (e.key === ' ') {
-      e.preventDefault();
-      TetrisGame.hardDrop();
-    } else if (e.key === 'Enter') {
-      if (TetrisGame.state !== 'running') {
-        e.preventDefault();
-        startActiveGame();
-      }
+  function showCopyFeedback(msg) {
+    if (feedback) {
+      feedback.textContent = msg;
+      feedback.style.opacity = '1';
+      setTimeout(() => {
+        feedback.style.opacity = '0';
+      }, 3500);
     }
   }
-});
+}
 
-// Always-Visible On-Screen Controller (Mouse clicks & touch events)
-document.querySelectorAll('.dpad-btn').forEach((btn) => {
-  const handleDir = (e) => {
-    e.preventDefault();
-    const dir = btn.dataset.dir;
-    if (activeGame === 'snekst') {
-      if (SnakeGame.state !== 'running') {
-        const initialMap = { up: { x: 0, y: -1 }, down: { x: 0, y: 1 }, left: { x: -1, y: 0 }, right: { x: 1, y: 0 } };
-        SnakeGame.start(initialMap[dir] || null);
-      } else {
-        if (dir === 'up') SnakeGame.setDir(0, -1);
-        if (dir === 'down') SnakeGame.setDir(0, 1);
-        if (dir === 'left') SnakeGame.setDir(-1, 0);
-        if (dir === 'right') SnakeGame.setDir(1, 0);
-      }
-    } else if (activeGame === 'textris') {
-      if (TetrisGame.state !== 'running') {
-        TetrisGame.start();
-      }
-      if (dir === 'up') TetrisGame.rotatePiece();
-      if (dir === 'down') TetrisGame.drop();
-      if (dir === 'left') TetrisGame.move(-1);
-      if (dir === 'right') TetrisGame.move(1);
-    }
-  };
-
-  btn.addEventListener('pointerdown', handleDir);
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    handleDir(e);
+function initArcade() {
+  // Tabs
+  document.querySelectorAll('.arcade-tab[data-game]').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      selectArcadeGame(tab.dataset.game);
+    });
   });
-});
 
-document.getElementById('action-rotate')?.addEventListener('pointerdown', (e) => {
-  e.preventDefault();
-  if (activeGame === 'textris') {
-    if (TetrisGame.state !== 'running') TetrisGame.start();
-    TetrisGame.rotatePiece();
-  } else if (activeGame === 'snekst') {
-    SnakeGame.setDir(-SnakeGame.dir.y, SnakeGame.dir.x);
+  // Mode Buttons
+  const btnLobby = document.getElementById('game-mode-lobby');
+  const btnDirect = document.getElementById('game-mode-direct');
+  if (btnLobby) {
+    btnLobby.addEventListener('click', () => {
+      launchArcade('lobby');
+    });
   }
-});
-
-document.getElementById('action-rotate')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (activeGame === 'textris') {
-    if (TetrisGame.state !== 'running') TetrisGame.start();
-    TetrisGame.rotatePiece();
+  if (btnDirect) {
+    btnDirect.addEventListener('click', () => {
+      launchArcade('direct');
+    });
   }
-});
 
-document.getElementById('action-drop')?.addEventListener('pointerdown', (e) => {
-  e.preventDefault();
-  if (activeGame === 'textris') {
-    if (TetrisGame.state !== 'running') TetrisGame.start();
-    TetrisGame.hardDrop();
+  // Start Buttons on Overlay
+  const startBig = document.getElementById('arcade-start-big');
+  const startRooms = document.getElementById('arcade-start-rooms');
+  if (startBig) {
+    startBig.addEventListener('click', () => {
+      launchArcade('direct');
+    });
   }
-});
-
-document.getElementById('action-drop')?.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (activeGame === 'textris') {
-    if (TetrisGame.state !== 'running') TetrisGame.start();
-    TetrisGame.hardDrop();
+  if (startRooms) {
+    startRooms.addEventListener('click', () => {
+      launchArcade('lobby');
+    });
   }
-});
 
-// Initialize with Snake in ready state
-SnakeGame.reset();
+  // Fullscreen Button
+  const fsBtn = document.getElementById('arcade-fullscreen-btn');
+  if (fsBtn) {
+    fsBtn.addEventListener('click', toggleArcadeFullscreen);
+  }
+
+  // Copy Match Link Button
+  const copyBtn = document.getElementById('copy-match-link-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', copyMatchInviteLink);
+  }
+
+  // Open Rooms Direct Button
+  const openRoomsBtn = document.getElementById('open-rooms-direct-btn');
+  if (openRoomsBtn) {
+    openRoomsBtn.addEventListener('click', () => {
+      const game = arcadeGames[activeArcadeGameKey] || arcadeGames.vt3;
+      window.open(game.lobbyUrl, '_blank', 'noopener,noreferrer');
+    });
+  }
+
+  updateArcadeUI();
+}
 
 // ==========================================================================
-// 8. Project Detail Modal Dialog
+// 7. Project Detail Modal Dialog
 // ==========================================================================
 const dialog = document.querySelector('.project-dialog');
 const dialogCloseBtn = dialog ? dialog.querySelector('.dialog-close') : null;
@@ -2171,6 +1714,7 @@ function initApp() {
   initNavScroll();
   initHeroLogoCircleTracking();
   initSublimeTextAnimation();
+  initArcade();
   initScrollToTop();
   initParallaxEffects();
 }

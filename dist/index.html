@@ -449,73 +449,117 @@
           </div>
         </section>
 
-        <!-- SECTION 7: PLAY / ARCADE -->
+        <!-- SECTION 7: PLAY / ARCADE (Virtua Tennis 3 & PES 6 Online Multiplayer) -->
         <section class="section play-section" id="play" data-section-name="Arcade">
           <div class="play-header">
             <div class="play-title-row">
-              <h2 class="play-headline hoverchar" data-i18n="nav_arcade" data-text="Arcade">Arcade</h2>
-              <div class="play-actions-row">
-                <button type="button" class="sound-toggle-btn" id="game-sound-btn" title="Toggle audio" data-i18n="sound_on">Audio: On</button>
+              <div class="play-title-meta">
+                <span class="section-kicker" data-i18n="arcade_kicker">04 / Online Multiplayer Arcade</span>
+                <h2 class="play-headline hoverchar" data-i18n="nav_arcade" data-text="Arcade">Arcade</h2>
+              </div>
+              <div class="play-badges-row">
+                <span class="arcade-status-badge"><span class="status-pulse-dot" aria-hidden="true"></span><span data-i18n="arcade_webrtc">WebRTC P2P Online</span></span>
+                <span class="arcade-status-badge" data-i18n="arcade_gamepad">Gamepad Ready</span>
               </div>
             </div>
           </div>
 
           <div class="arcade-container">
             <!-- Game Switcher Tabs -->
-            <div class="arcade-tabs">
-              <button type="button" class="arcade-tab active" data-game="snekst">01. Snekst</button>
-              <button type="button" class="arcade-tab" data-game="textris">02. Textris</button>
+            <div class="arcade-tabs" role="tablist" aria-label="Arcade Games">
+              <button type="button" class="arcade-tab active" id="tab-vt3" data-game="vt3" role="tab" aria-selected="true">
+                <span class="tab-index">01.</span> Virtua Tennis 3 <span class="tab-pill" data-i18n="tag_multiplayer">Multiplayer</span>
+              </button>
+              <button type="button" class="arcade-tab" id="tab-pes6" data-game="pes6" role="tab" aria-selected="false">
+                <span class="tab-index">02.</span> PES 6 — Pro Evolution Soccer <span class="tab-pill" data-i18n="tag_multiplayer">Multiplayer</span>
+              </button>
             </div>
 
             <!-- Arcade Cabinet Box -->
-            <div class="arcade-cabinet">
+            <div class="arcade-cabinet" id="arcade-cabinet">
               <div class="arcade-hud">
                 <div class="hud-left">
-                  <span class="hud-item"><span data-i18n="hud_game">Game</span>: <strong id="hud-game-name">Snekst</strong></span>
-                  <span class="hud-item"><span data-i18n="hud_status">Status</span>: <strong id="hud-status" class="status-ready" data-i18n="hud_ready">Ready</strong></span>
+                  <span class="hud-item"><span data-i18n="hud_game">Game</span>: <strong id="hud-game-name">Virtua Tennis 3</strong></span>
+                  <span class="hud-item"><span data-i18n="hud_mode">Mode</span>: <strong id="hud-mode-name" class="status-ready" data-i18n="mode_multiplayer">Rooms & Matchmaking</strong></span>
                 </div>
                 <div class="hud-center">
-                  <span class="hud-item"><span data-i18n="hud_score">Score</span>: <strong id="hud-score">0000</strong></span>
-                  <span class="hud-item"><span data-i18n="hud_record">Record</span>: <strong id="hud-highscore">0000</strong></span>
+                  <span class="hud-item"><span data-i18n="hud_platform">Platform</span>: <strong>Browser WebAssembly</strong></span>
                 </div>
                 <div class="hud-right">
-                  <button type="button" class="hud-btn hud-start-btn" id="game-start-btn" data-i18n="game_btn_play">Play</button>
-                  <button type="button" class="hud-btn hud-pause-btn" id="game-pause-btn" data-i18n="game_btn_pause">Pause</button>
-                  <button type="button" class="hud-btn hud-reset-btn" id="game-restart-btn" data-i18n="game_btn_reset">Reset</button>
+                  <button type="button" class="hud-btn hud-mode-btn active" id="game-mode-lobby" data-i18n="btn_lobby_rooms">Rooms / Matchmaking</button>
+                  <button type="button" class="hud-btn hud-mode-btn" id="game-mode-direct" data-i18n="btn_direct_play">Direct Play</button>
+                  <button type="button" class="hud-btn" id="arcade-fullscreen-btn" title="Fullscreen" data-i18n="btn_fullscreen">⛶ Fullscreen</button>
+                  <a href="https://vt3.online/" target="_blank" rel="noopener noreferrer" class="hud-btn hud-external-link" id="arcade-external-link" title="Open in new tab">↗</a>
                 </div>
               </div>
 
-              <!-- Monospace Display Screen with Click & Keyboard Focus -->
-              <div class="arcade-screen" id="arcade-screen" tabindex="0" role="region" aria-label="Retro arcade game screen">
-                <pre class="game-mono-display" id="game-mono-display"></pre>
-                
-                <!-- Overlay Start / GameOver Box -->
+              <!-- Monospace & WebAssembly Screen Frame with Click-to-Play -->
+              <div class="arcade-screen" id="arcade-screen" role="region" aria-label="Web Arcade Screen">
+                <!-- Cover Overlay: Loads heavy WebAssembly/Assets only on demand -->
                 <div class="arcade-overlay" id="arcade-overlay">
-                  <h3 class="arcade-overlay-title" id="overlay-title">Snekst</h3>
-                  <button type="button" class="arcade-start-big" id="arcade-start-big" data-i18n="overlay_btn">Start Game</button>
-                  <p class="arcade-overlay-sub" id="overlay-sub" data-i18n="overlay_sub">Click or tap to play</p>
+                  <span class="arcade-overlay-badge" id="overlay-badge">SEGA WebAssembly Port</span>
+                  <h3 class="arcade-overlay-title" id="overlay-title" data-i18n="vt3_title">Virtua Tennis 3 Online</h3>
+                  <p class="arcade-overlay-desc" id="overlay-desc" data-i18n="vt3_desc">Play single matches or create your online multiplayer room without downloads. Compatible with keyboard and USB/Bluetooth controllers.</p>
+                  <div class="overlay-buttons-row">
+                    <button type="button" class="arcade-start-big" id="arcade-start-big" data-i18n="overlay_launch_game">Enter the Court</button>
+                    <button type="button" class="arcade-btn-secondary" id="arcade-start-rooms" data-i18n="overlay_launch_rooms">Create / Join Room</button>
+                  </div>
+                  <p class="arcade-overlay-sub" id="overlay-sub" data-i18n="overlay_click_hint">Click to run in browser (WebAssembly)</p>
+                </div>
+
+                <!-- Live Game iframe Mount -->
+                <div class="arcade-embed-wrapper" id="arcade-embed-wrapper">
+                  <iframe
+                    id="arcade-game-iframe"
+                    class="arcade-game-iframe"
+                    title="Arcade Game Frame"
+                    src="about:blank"
+                    allow="autoplay; fullscreen; gamepad; clipboard-write; microphone; web-share"
+                    loading="lazy"
+                    tabindex="0">
+                  </iframe>
                 </div>
               </div>
 
-              <!-- Controller Buttons (Always visible for mouse clicks and touch) -->
-              <div class="arcade-controls" id="arcade-controls">
-                <div class="dpad">
-                  <button type="button" class="dpad-btn up" data-dir="up" aria-label="Up">↑</button>
-                  <div class="dpad-middle">
-                    <button type="button" class="dpad-btn left" data-dir="left" aria-label="Left">←</button>
-                    <button type="button" class="dpad-btn down" data-dir="down" aria-label="Down">↓</button>
-                    <button type="button" class="dpad-btn right" data-dir="right" aria-label="Right">→</button>
+              <!-- Multiplayer Room Code Sharer & Quick Guides -->
+              <div class="arcade-multiplayer-hub">
+                <div class="multiplayer-invite-card">
+                  <div class="invite-head">
+                    <span class="invite-label" data-i18n="matchmaking_title">Online Multiplayer · Invite a Friend</span>
+                    <span class="invite-status-tag" data-i18n="matchmaking_p2p">P2P Lag-Free</span>
+                  </div>
+                  <div class="invite-body">
+                    <p data-i18n="matchmaking_desc">Copy the match link or share your room code so your opponent can join instantly from any PC or phone.</p>
+                    <div class="invite-input-row">
+                      <input type="text" readonly id="match-invite-link" class="match-invite-input" value="https://vt3.online/#salas" aria-label="Link de sala multijugador">
+                      <button type="button" class="button hoverchar" id="copy-match-link-btn" data-i18n="btn_copy_link" data-text="Copy Link">Copy Link</button>
+                      <button type="button" class="button outline hoverchar" id="open-rooms-direct-btn" data-i18n="btn_open_rooms" data-text="Open Rooms ↗">Open Rooms ↗</button>
+                    </div>
+                    <span class="copy-feedback-msg" id="copy-feedback-msg" aria-live="polite"></span>
                   </div>
                 </div>
-                <div class="arcade-action-keys">
-                  <button type="button" class="action-btn" id="action-rotate" data-i18n="ctrl_rotate">Rotate</button>
-                  <button type="button" class="action-btn" id="action-drop" data-i18n="ctrl_drop">Drop</button>
+
+                <!-- Two-Column Step-by-Step Instructions & Keybindings -->
+                <div class="arcade-guides-grid">
+                  <div class="arcade-guide-col">
+                    <h4 class="guide-title" id="guide-steps-title" data-i18n="guide_steps_title">How to play online with friends</h4>
+                    <ol class="guide-list" id="guide-steps-list">
+                      <li data-i18n="vt3_step_1"><strong>Create a room:</strong> Click «Rooms / Matchmaking» and choose a room name or code.</li>
+                      <li data-i18n="vt3_step_2"><strong>Share the link:</strong> Send the link or code to your rival to enter the same court.</li>
+                      <li data-i18n="vt3_step_3"><strong>Select player & court:</strong> Choose surface, set count, and start the rally!</li>
+                    </ol>
+                  </div>
+                  <div class="arcade-guide-col">
+                    <h4 class="guide-title" id="guide-controls-title" data-i18n="guide_controls_title">Controls & Compatibility</h4>
+                    <ul class="guide-list" id="guide-controls-list">
+                      <li data-i18n="vt3_ctrl_1"><strong>Keyboard:</strong> Arrow keys to move. Z (topspin/flat), X (slice), A (lob/drop shot), Space (Start).</li>
+                      <li data-i18n="vt3_ctrl_2"><strong>Gamepad USB / Bluetooth:</strong> Automatically detected (PlayStation, Xbox, or generic). Move stick or press button to calibrate.</li>
+                      <li data-i18n="vt3_ctrl_3"><strong>Mobile / Tablet:</strong> Virtual on-screen touch controls supported (landscape mode recommended).</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
 
-              <div class="arcade-how-to-play">
-                <p data-i18n="arcade_howto">Arrows or W/A/S/D to move. The snake passes through walls safely without dying.</p>
-              </div>
             </div>
           </div>
         </section>
