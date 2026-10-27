@@ -380,8 +380,9 @@ header[data-component="header"] {
 
 .statement-card {
   width: 100%;
-  border-top: 1px solid var(--border);
-  padding-top: 48px;
+  border-top: none;
+  padding-top: 0;
+  padding-bottom: 24px;
 }
 
 h1.mega {
@@ -432,6 +433,316 @@ h1.mega {
   border-color: var(--border-hover);
   color: var(--white);
   background-color: transparent;
+}
+
+/* ==========================================================================
+   SUBLIME TEXT 4 CODE ANIMATION (Full-Width Window)
+   ========================================================================== */
+.code-editor-section {
+  width: 100%;
+  margin-bottom: clamp(64px, 8vw, 110px);
+}
+
+.sublime-window {
+  width: 100%;
+  background-color: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 1px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sublime Top Bar with macOS Window Dots & Tabs */
+.sublime-topbar {
+  background-color: #1a1a1a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 42px;
+  user-select: none;
+}
+
+.sublime-window-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: 60px;
+}
+
+.sublime-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.sublime-dot.dot-close { background-color: #ff5f56; }
+.sublime-dot.dot-minimize { background-color: #ffbd2e; }
+.sublime-dot.dot-expand { background-color: #27c93f; }
+.sublime-topbar:hover .sublime-dot { opacity: 1; }
+
+.sublime-tabs {
+  display: flex;
+  align-items: flex-end;
+  height: 100%;
+  flex: 1;
+  padding-left: 12px;
+  overflow-x: auto;
+}
+
+.sublime-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-family: var(--font-family);
+  font-size: 11px;
+  color: var(--text-muted);
+  background: transparent;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  height: 100%;
+}
+
+.sublime-tab.active {
+  background-color: #141414;
+  color: #ededed;
+  border-top: 2px solid #fd971f; /* Sublime signature orange tab */
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  font-weight: 500;
+}
+
+.sublime-tab.inactive:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: #ededed;
+}
+
+.tab-lang-icon {
+  font-size: 10px;
+  color: #fd971f;
+  font-family: var(--font-mono);
+}
+
+.tab-dot {
+  font-size: 13px;
+  color: #fd971f;
+  line-height: 1;
+}
+
+.sublime-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sublime-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.3);
+  margin-right: 8px;
+}
+
+.sublime-btn {
+  font-family: var(--font-family);
+  font-size: 11px;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sublime-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Sublime Breadcrumbs Bar */
+.sublime-breadcrumbs {
+  background-color: #171717;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 6px 18px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+.crumb.file { color: #fd971f; }
+.crumb.scope { color: rgba(255, 255, 255, 0.5); }
+.crumb-sep { color: rgba(255, 255, 255, 0.2); }
+
+/* Sublime Main Editor Body */
+.sublime-body {
+  display: flex;
+  background-color: #141414;
+  height: clamp(380px, 48vh, 520px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Left Gutter: Line Numbers */
+.sublime-gutter {
+  width: 48px;
+  flex-shrink: 0;
+  background-color: #141414;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 16px 12px 16px 0;
+  text-align: right;
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.22);
+  user-select: none;
+  overflow: hidden;
+}
+
+.sublime-gutter-num {
+  display: block;
+}
+
+/* Center Code Container */
+.sublime-code-container {
+  flex: 1;
+  padding: 16px 20px;
+  overflow-y: auto;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+.sublime-code {
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+  font-size: 12.5px;
+  line-height: 1.65;
+  white-space: pre;
+  tab-size: 2;
+  color: #f8f8f2;
+}
+
+.code-line {
+  min-height: 1.65em;
+  display: block;
+}
+
+/* Sublime Monokai Syntax Coloring */
+.syn-tag { color: #f92672; font-weight: 500; }        /* Tags: <html>, <body>, <header>, <h1> */
+.syn-attr { color: #66d9ef; font-style: italic; }    /* Attributes: class, id, href */
+.syn-str { color: #e6db74; }                          /* Strings: "home", "mega" */
+.syn-comment { color: #75715e; font-style: italic; }  /* Comments: <!-- ... --> */
+.syn-bracket { color: #f8f8f2; }                      /* < > </ */
+.syn-punct { color: #f92672; }                        /* = : */
+.syn-text { color: #f8f8f2; }                         /* Content inside tags */
+.syn-entity { color: #ae81ff; }                       /* Entities & numbers */
+
+/* Blinking Sublime Cursor */
+.sublime-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.15em;
+  background-color: #fd971f;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: sublime-blink 0.9s infinite;
+}
+
+@keyframes sublime-blink {
+  0%, 45% { opacity: 1; }
+  50%, 95% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Sublime Iconic Minimap on the Right */
+.sublime-minimap {
+  width: 72px;
+  flex-shrink: 0;
+  background-color: #111111;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 8px 4px;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  opacity: 0.85;
+}
+
+.minimap-viewport {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  transition: top 0.15s ease;
+}
+
+.minimap-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.minimap-line {
+  height: 2px;
+  border-radius: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+.minimap-line.tag { background: rgba(249, 38, 114, 0.6); }
+.minimap-line.attr { background: rgba(102, 217, 239, 0.55); }
+.minimap-line.str { background: rgba(230, 219, 116, 0.55); }
+.minimap-line.comment { background: rgba(117, 113, 94, 0.45); }
+
+/* Sublime Status Bar */
+.sublime-statusbar {
+  background-color: #181818;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 5px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  user-select: none;
+}
+
+.status-left, .status-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-sep {
+  opacity: 0.3;
+}
+
+/* ==========================================================================
+   FEATURED PROJECTS GROUPED TOGETHER
+   ========================================================================== */
+.projects-group-section {
+  width: 100%;
+  border-top: 1px solid var(--border);
+  padding-top: 64px;
+}
+
+.projects-group-section .section-header {
+  margin-bottom: 36px;
+}
+
+.all-projects-grid {
+  width: 100%;
 }
 
 /* ==========================================================================
@@ -1263,11 +1574,52 @@ p.big {
   .arcade-controls {
     display: flex;
   }
+
+  .sublime-body {
+    height: 420px;
+  }
 }
 
 @media (max-width: 640px) {
   .sections {
     padding: 24px 16px 0;
+  }
+
+  .sublime-body {
+    height: 340px;
+  }
+
+  .sublime-minimap {
+    display: none;
+  }
+
+  .sublime-gutter {
+    width: 36px;
+    padding-right: 6px;
+    font-size: 11px;
+  }
+
+  .sublime-code {
+    font-size: 11px;
+    line-height: 1.55;
+  }
+
+  .sublime-tab.inactive {
+    display: none;
+  }
+
+  .sublime-tag {
+    display: none;
+  }
+
+  .sublime-breadcrumbs {
+    font-size: 9.5px;
+    padding: 4px 12px;
+  }
+
+  .sublime-statusbar {
+    font-size: 9px;
+    padding: 4px 12px;
   }
 
   h1.mega {

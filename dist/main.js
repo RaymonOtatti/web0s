@@ -84,12 +84,13 @@ function updateActiveSection(sectionId, sectionName) {
 
   navLinks.forEach((link) => {
     const isTarget = link.dataset.section === sectionId ||
-      (sectionId === 'top' && link.dataset.section === 'proyectos');
+      (sectionId === 'top' && link.dataset.section === 'nosotros') ||
+      (sectionId === 'codigo' && link.dataset.section === 'nosotros');
     link.classList.toggle('active', isTarget);
   });
 
   if (window.history && window.history.replaceState && sectionId) {
-    const newHash = sectionId === 'top' ? '#proyectos' : '#' + sectionId;
+    const newHash = sectionId === 'top' || sectionId === 'codigo' ? '#nosotros' : '#' + sectionId;
     if (window.location.hash !== newHash) {
       window.history.replaceState(null, '', newHash);
     }
@@ -1176,4 +1177,560 @@ if (mobileToggle && mobileDrawer) {
       mobileToggle.textContent = 'Menú';
     });
   });
+}
+
+// ==========================================================================
+// 10. Sublime Text 4 Code Animation (Interactive Full-Width Code Engine)
+// ==========================================================================
+function initSublimeTextAnimation() {
+  const codeTarget = document.getElementById('sublime-code-target');
+  const gutter = document.getElementById('sublime-gutter');
+  const cursor = document.getElementById('sublime-cursor');
+  const codeContainer = document.getElementById('sublime-code-container');
+  const minimapLines = document.getElementById('minimap-lines');
+  const minimapViewport = document.getElementById('minimap-viewport');
+  const cursorPos = document.getElementById('sublime-cursor-pos');
+  const pauseBtn = document.getElementById('code-pause-btn');
+  const restartBtn = document.getElementById('code-restart-btn');
+  const copyBtn = document.getElementById('code-copy-btn');
+  const editorWindow = document.querySelector('.sublime-window');
+
+  if (!codeTarget || !gutter || !cursor) return;
+
+  const snippet = [
+    [
+      { t: '<!', c: 'syn-bracket' },
+      { t: 'doctype', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'html', c: 'syn-attr' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '<', c: 'syn-bracket' },
+      { t: 'html', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'lang', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"es-AR"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '  <', c: 'syn-bracket' },
+      { t: 'head', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '    <', c: 'syn-bracket' },
+      { t: 'meta', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'charset', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"UTF-8"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '    <', c: 'syn-bracket' },
+      { t: 'title', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' },
+      { t: 'Web0S — Design & Technology', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'title', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '  </', c: 'syn-bracket' },
+      { t: 'head', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '  <', c: 'syn-bracket' },
+      { t: 'body', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'class', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"home"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '    ', c: '' },
+      { t: '<!-- Web0S: Estudio de diseño y tecnología en Buenos Aires -->', c: 'syn-comment' }
+    ],
+    [
+      { t: '    <', c: 'syn-bracket' },
+      { t: 'header', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'class', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"header"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '      <', c: 'syn-bracket' },
+      { t: 'div', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'class', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"logo"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' },
+      { t: 'Web0S', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'div', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '      <', c: 'syn-bracket' },
+      { t: 'nav', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'class', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"nav"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '        <', c: 'syn-bracket' },
+      { t: 'a', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'href', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"#proyectos"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' },
+      { t: 'Proyectos', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'a', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '        <', c: 'syn-bracket' },
+      { t: 'a', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'href', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"#nosotros"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' },
+      { t: 'Nosotros', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'a', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '        <', c: 'syn-bracket' },
+      { t: 'a', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'href', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"#equipo"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' },
+      { t: 'Equipo', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'a', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '        <', c: 'syn-bracket' },
+      { t: 'a', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'href', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"#capacidades"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' },
+      { t: 'Servicios', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'a', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '        <', c: 'syn-bracket' },
+      { t: 'a', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'href', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"#play"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' },
+      { t: 'Arcade', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'a', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '      </', c: 'syn-bracket' },
+      { t: 'nav', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '      <', c: 'syn-bracket' },
+      { t: 'div', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'class', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"clock"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' },
+      { t: 'BUE 17:35:00', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'div', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '    </', c: 'syn-bracket' },
+      { t: 'header', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '    <', c: 'syn-bracket' },
+      { t: 'main', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'class', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"main"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '      <', c: 'syn-bracket' },
+      { t: 'section', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'class', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"statement"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '        <', c: 'syn-bracket' },
+      { t: 'h1', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'class', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"mega"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '          Estudio de diseño y tecnología en Buenos Aires. Diseñamos y construimos plataformas web con identidad propia.', c: 'syn-text' }
+    ],
+    [
+      { t: '        </', c: 'syn-bracket' },
+      { t: 'h1', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '      </', c: 'syn-bracket' },
+      { t: 'section', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '      <', c: 'syn-bracket' },
+      { t: 'section', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'class', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"projects"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '        <', c: 'syn-bracket' },
+      { t: 'article', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'data-id', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"001"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' },
+      { t: '001 La Guardia Barrio Abierto — Real Estate / 2026', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'article', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '        <', c: 'syn-bracket' },
+      { t: 'article', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'data-id', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"002"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' },
+      { t: '002 Raymon Otatti Design & Co. — Dirección de Arte / 2026', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'article', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '        <', c: 'syn-bracket' },
+      { t: 'article', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'data-id', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"003"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' },
+      { t: '003 Franie Smith — Música & Cultura / 2026', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'article', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '        <', c: 'syn-bracket' },
+      { t: 'article', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'data-id', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"004"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' },
+      { t: '004 Sáenz Valiente & Asociados — Estudio Jurídico / 2026', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'article', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '      </', c: 'syn-bracket' },
+      { t: 'section', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '      <', c: 'syn-bracket' },
+      { t: 'section', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'class', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"team"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '        <', c: 'syn-bracket' },
+      { t: 'div', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'class', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"bio"', c: 'syn-str' },
+      { t: ' ', c: '' },
+      { t: 'data-role', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"visual"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' },
+      { t: '01 Raymon Otatti — Dirección Visual (contact@raymonotatti.com)', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'div', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '        <', c: 'syn-bracket' },
+      { t: 'div', c: 'syn-tag' },
+      { t: ' ', c: '' },
+      { t: 'class', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"bio"', c: 'syn-str' },
+      { t: ' ', c: '' },
+      { t: 'data-role', c: 'syn-attr' },
+      { t: '=', c: 'syn-punct' },
+      { t: '"code"', c: 'syn-str' },
+      { t: '>', c: 'syn-bracket' },
+      { t: '02 Franco Michetti — Ingeniería & Código (franco@web0s.com)', c: 'syn-text' },
+      { t: '</', c: 'syn-bracket' },
+      { t: 'div', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '      </', c: 'syn-bracket' },
+      { t: 'section', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '    </', c: 'syn-bracket' },
+      { t: 'main', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '  </', c: 'syn-bracket' },
+      { t: 'body', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ],
+    [
+      { t: '</', c: 'syn-bracket' },
+      { t: 'html', c: 'syn-tag' },
+      { t: '>', c: 'syn-bracket' }
+    ]
+  ];
+
+  let currentLineIdx = 0;
+  let currentTokenIdx = 0;
+  let currentCharIdx = 0;
+  let currentLineEl = null;
+  let currentTokenSpan = null;
+  let isPaused = false;
+  let isVisible = true;
+  let timeoutId = null;
+
+  function getRawCodeText() {
+    return snippet.map(line => line.map(tok => tok.t).join('')).join('\n');
+  }
+
+  function resetEditor() {
+    clearTimeout(timeoutId);
+    codeTarget.innerHTML = '';
+    gutter.innerHTML = '';
+    if (minimapLines) minimapLines.innerHTML = '';
+    currentLineIdx = 0;
+    currentTokenIdx = 0;
+    currentCharIdx = 0;
+    currentLineEl = null;
+    currentTokenSpan = null;
+    if (cursorPos) cursorPos.textContent = 'Line 1, Column 1';
+    if (codeContainer) codeContainer.scrollTop = 0;
+    if (minimapViewport) minimapViewport.style.top = '8px';
+  }
+
+  function startNextLine() {
+    if (currentLineIdx >= snippet.length) {
+      // Completed full file! Hold for 9s then re-loop
+      timeoutId = setTimeout(() => {
+        resetEditor();
+        step();
+      }, 9000);
+      return;
+    }
+
+    currentLineEl = document.createElement('div');
+    currentLineEl.className = 'code-line';
+    codeTarget.appendChild(currentLineEl);
+
+    // Gutter line number
+    const lineNum = document.createElement('span');
+    lineNum.className = 'sublime-gutter-num';
+    lineNum.textContent = String(currentLineIdx + 1);
+    gutter.appendChild(lineNum);
+
+    // Minimap micro representation
+    if (minimapLines) {
+      const mmLine = document.createElement('div');
+      const lineStr = snippet[currentLineIdx].map(t => t.t).join('');
+      let mmClass = 'minimap-line';
+      if (lineStr.includes('<!--')) mmClass += ' comment';
+      else if (lineStr.includes('class=') || lineStr.includes('lang=')) mmClass += ' attr';
+      else if (lineStr.includes('<') && lineStr.includes('>')) mmClass += ' tag';
+      else mmClass += ' str';
+      mmLine.className = mmClass;
+      const widthPct = Math.min(95, Math.max(15, lineStr.trim().length * 1.8));
+      mmLine.style.width = widthPct + '%';
+      minimapLines.appendChild(mmLine);
+    }
+
+    // Place cursor in line
+    currentLineEl.appendChild(cursor);
+
+    currentTokenIdx = 0;
+    currentCharIdx = 0;
+    currentTokenSpan = null;
+
+    step();
+  }
+
+  function step() {
+    if (isPaused || !isVisible) return;
+
+    if (!currentLineEl || currentLineIdx >= snippet.length) {
+      if (currentLineIdx < snippet.length) {
+        startNextLine();
+      }
+      return;
+    }
+
+    const currentLineTokens = snippet[currentLineIdx];
+
+    if (currentTokenIdx >= currentLineTokens.length) {
+      // Line is finished!
+      currentLineIdx++;
+      if (codeContainer) {
+        codeContainer.scrollTop = codeContainer.scrollHeight;
+        if (minimapViewport) {
+          const maxScroll = codeContainer.scrollHeight - codeContainer.clientHeight;
+          if (maxScroll > 0) {
+            const ratio = codeContainer.scrollTop / maxScroll;
+            minimapViewport.style.top = (8 + ratio * 60) + 'px';
+          }
+        }
+      }
+      timeoutId = setTimeout(startNextLine, 85);
+      return;
+    }
+
+    const token = currentLineTokens[currentTokenIdx];
+
+    if (!currentTokenSpan) {
+      currentTokenSpan = document.createElement('span');
+      if (token.c) currentTokenSpan.className = token.c;
+      currentLineEl.insertBefore(currentTokenSpan, cursor);
+    }
+
+    // Fast-type spaces/indentation or single characters
+    let charsToTake = 1;
+    if (token.t.startsWith('  ') && currentCharIdx === 0) {
+      charsToTake = token.t.length; // type leading tabs/spaces immediately
+    }
+
+    const nextChars = token.t.slice(currentCharIdx, currentCharIdx + charsToTake);
+    currentTokenSpan.textContent += nextChars;
+    currentCharIdx += charsToTake;
+
+    // Update cursor pos
+    if (cursorPos) {
+      cursorPos.textContent = `Line ${currentLineIdx + 1}, Column ${currentLineEl.textContent.length}`;
+    }
+
+    let delay = 18;
+    if (token.c === 'syn-comment') delay = 12;
+    else if (token.t === '>' || token.t === '<') delay = 35;
+    else if (charsToTake > 1) delay = 8;
+    else delay = Math.floor(Math.random() * 16) + 16;
+
+    if (currentCharIdx >= token.t.length) {
+      currentTokenIdx++;
+      currentCharIdx = 0;
+      currentTokenSpan = null;
+    }
+
+    timeoutId = setTimeout(step, delay);
+  }
+
+  // IntersectionObserver to pause typing when user scrolls away
+  if ('IntersectionObserver' in window && editorWindow) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible && !isPaused) {
+          step();
+        }
+      });
+    }, { threshold: 0.1 });
+    observer.observe(editorWindow);
+  }
+
+  // Controls
+  pauseBtn?.addEventListener('click', () => {
+    isPaused = !isPaused;
+    pauseBtn.textContent = isPaused ? 'Play' : 'Pausa';
+    if (!isPaused) step();
+  });
+
+  restartBtn?.addEventListener('click', () => {
+    isPaused = false;
+    if (pauseBtn) pauseBtn.textContent = 'Pausa';
+    resetEditor();
+    step();
+  });
+
+  copyBtn?.addEventListener('click', async () => {
+    const fullCode = getRawCodeText();
+    try {
+      await navigator.clipboard.writeText(fullCode);
+      const prevText = copyBtn.textContent;
+      copyBtn.textContent = '✓ Copiado';
+      setTimeout(() => { copyBtn.textContent = prevText; }, 2000);
+    } catch (e) {
+      // Fallback
+    }
+  });
+
+  // Start initial typing
+  startNextLine();
+}
+
+// Initialize on DOM ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSublimeTextAnimation);
+} else {
+  initSublimeTextAnimation();
 }

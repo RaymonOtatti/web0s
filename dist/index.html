@@ -65,41 +65,10 @@
   </header>
 
   <main id="main">
-    <div class="home-content">
+    <div class="home-content" id="top">
       <div class="sections">
 
-        <!-- SECTION 1: Featured Work Top Pair (Full width fluid grid) -->
-        <section class="section work-section" id="top" data-section-name="Proyectos">
-          <!-- Project 001: La Guardia -->
-          <article class="work-item">
-            <button type="button" class="work-link" data-project="laguardia" aria-label="Ver La Guardia Barrio Abierto">
-              <div class="image" data-src="images/laguardia.webp">
-                <img src="images/laguardia.webp" alt="La Guardia Barrio Abierto" class="main-img" loading="eager">
-                <div class="image-subtle-overlay" aria-hidden="true"></div>
-              </div>
-              <div class="work-meta">
-                <h3 class="hoverchar" data-text="001 La Guardia">001 La Guardia</h3>
-                <span class="work-tag">Real Estate / 2026</span>
-              </div>
-            </button>
-          </article>
-
-          <!-- Project 002: Raymon Otatti -->
-          <article class="work-item">
-            <button type="button" class="work-link" data-project="raymon" aria-label="Ver Raymon Otatti Design & Co.">
-              <div class="image" data-src="images/raymon.webp">
-                <img src="images/raymon.webp" alt="Raymon Otatti Design & Co." class="main-img" loading="eager">
-                <div class="image-subtle-overlay" aria-hidden="true"></div>
-              </div>
-              <div class="work-meta">
-                <h3 class="hoverchar" data-text="002 Raymon Otatti">002 Raymon Otatti</h3>
-                <span class="work-tag">Dirección de Arte & Co. / 2026</span>
-              </div>
-            </button>
-          </article>
-        </section>
-
-        <!-- SECTION 2: Studio Statement (Raw typography, no subtitles) -->
+        <!-- SECTION 1: Studio Statement (Hero) -->
         <section class="section statement-section" id="nosotros" data-section-name="Nosotros">
           <div class="statement-card">
             <h1 class="mega">
@@ -112,35 +81,149 @@
           </div>
         </section>
 
-        <!-- SECTION 3: Featured Work Second Pair -->
-        <section class="section work-section" id="proyectos" data-section-name="Proyectos">
-          <!-- Project 003: Franie Smith -->
-          <article class="work-item">
-            <button type="button" class="work-link" data-project="franie" aria-label="Ver Franie Smith">
-              <div class="image" data-src="images/franie.webp">
-                <img src="images/franie.webp" alt="Franie Smith" class="main-img" loading="lazy">
-                <div class="image-subtle-overlay" aria-hidden="true"></div>
+        <!-- SECTION 2: Sublime Text Code Animation Window (Full-Width) -->
+        <section class="section code-editor-section" id="codigo" data-section-name="Código" aria-label="Ventana de código en vivo">
+          <div class="sublime-window">
+            <!-- Window Top Bar (Tabs + macOS Dots) -->
+            <div class="sublime-topbar">
+              <div class="sublime-window-controls" aria-hidden="true">
+                <span class="sublime-dot dot-close" title="Cerrar"></span>
+                <span class="sublime-dot dot-minimize" title="Minimizar"></span>
+                <span class="sublime-dot dot-expand" title="Expandir"></span>
               </div>
-              <div class="work-meta">
-                <h3 class="hoverchar" data-text="003 Franie Smith">003 Franie Smith</h3>
-                <span class="work-tag">Música & Cultura / 2026</span>
-              </div>
-            </button>
-          </article>
 
-          <!-- Project 004: Sáenz Valiente & Asociados -->
-          <article class="work-item">
-            <button type="button" class="work-link" data-project="svya" aria-label="Ver Sáenz Valiente & Asociados">
-              <div class="image" data-src="images/svya.webp">
-                <img src="images/svya.webp" alt="Sáenz Valiente & Asociados" class="main-img" loading="lazy">
-                <div class="image-subtle-overlay" aria-hidden="true"></div>
+              <div class="sublime-tabs">
+                <div class="sublime-tab active">
+                  <span class="tab-lang-icon" aria-hidden="true">&lt;&gt;</span>
+                  <span class="tab-title">index.html</span>
+                  <span class="tab-dot" title="Archivo activo">•</span>
+                </div>
+                <div class="sublime-tab inactive">
+                  <span class="tab-lang-icon" aria-hidden="true">#</span>
+                  <span class="tab-title">styles.css</span>
+                </div>
+                <div class="sublime-tab inactive">
+                  <span class="tab-lang-icon" aria-hidden="true">js</span>
+                  <span class="tab-title">main.js</span>
+                </div>
               </div>
-              <div class="work-meta">
-                <h3 class="hoverchar" data-text="004 Sáenz Valiente & Asociados">004 Sáenz Valiente & Asociados</h3>
-                <span class="work-tag">Estudio Jurídico / 2026</span>
+
+              <div class="sublime-actions">
+                <span class="sublime-tag">Sublime Text 4</span>
+                <button type="button" class="sublime-btn" id="code-pause-btn" aria-label="Pausar o reanudar animación" title="Pausar / Reanudar">Pausa</button>
+                <button type="button" class="sublime-btn" id="code-restart-btn" aria-label="Reiniciar animación" title="Reiniciar animación">↺</button>
+                <button type="button" class="sublime-btn" id="code-copy-btn" aria-label="Copiar código" title="Copiar código">Copiar</button>
               </div>
-            </button>
-          </article>
+            </div>
+
+            <!-- Breadcrumbs Bar -->
+            <div class="sublime-breadcrumbs">
+              <span class="crumb folder">web0s</span>
+              <span class="crumb-sep">›</span>
+              <span class="crumb folder">dist</span>
+              <span class="crumb-sep">›</span>
+              <span class="crumb file">index.html</span>
+              <span class="crumb-sep">›</span>
+              <span class="crumb scope">html &gt; body &gt; main</span>
+            </div>
+
+            <!-- Editor Main Body (Gutter + Code Area + Minimap) -->
+            <div class="sublime-body">
+              <!-- Left Gutter: Line Numbers -->
+              <div class="sublime-gutter" id="sublime-gutter" aria-hidden="true"></div>
+
+              <!-- Center: Live Typing Code Area -->
+              <div class="sublime-code-container" id="sublime-code-container">
+                <div class="sublime-code" id="sublime-code-target"></div>
+                <span class="sublime-cursor" id="sublime-cursor" aria-hidden="true"></span>
+              </div>
+
+              <!-- Right: Iconic Sublime Text Minimap -->
+              <div class="sublime-minimap" aria-hidden="true">
+                <div class="minimap-viewport" id="minimap-viewport"></div>
+                <div class="minimap-lines" id="minimap-lines"></div>
+              </div>
+            </div>
+
+            <!-- Sublime Status Bar -->
+            <div class="sublime-statusbar">
+              <div class="status-left">
+                <span id="sublime-cursor-pos">Line 1, Column 1</span>
+                <span class="status-sep">|</span>
+                <span id="sublime-encoding">UTF-8</span>
+              </div>
+              <div class="status-right">
+                <span id="sublime-tabs-info">Tab Size: 2</span>
+                <span class="status-sep">|</span>
+                <span id="sublime-syntax">HTML</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: All Featured Projects Grouped Together -->
+        <section class="section projects-group-section" id="proyectos" data-section-name="Proyectos">
+          <div class="section-header">
+            <h2 class="sub-headline hoverchar" data-text="Proyectos">Proyectos</h2>
+          </div>
+
+          <div class="work-section all-projects-grid">
+            <!-- Project 001: La Guardia -->
+            <article class="work-item">
+              <button type="button" class="work-link" data-project="laguardia" aria-label="Ver La Guardia Barrio Abierto">
+                <div class="image" data-src="images/laguardia.webp">
+                  <img src="images/laguardia.webp" alt="La Guardia Barrio Abierto" class="main-img" loading="eager">
+                  <div class="image-subtle-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="work-meta">
+                  <h3 class="hoverchar" data-text="001 La Guardia">001 La Guardia</h3>
+                  <span class="work-tag">Real Estate / 2026</span>
+                </div>
+              </button>
+            </article>
+
+            <!-- Project 002: Raymon Otatti -->
+            <article class="work-item">
+              <button type="button" class="work-link" data-project="raymon" aria-label="Ver Raymon Otatti Design & Co.">
+                <div class="image" data-src="images/raymon.webp">
+                  <img src="images/raymon.webp" alt="Raymon Otatti Design & Co." class="main-img" loading="eager">
+                  <div class="image-subtle-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="work-meta">
+                  <h3 class="hoverchar" data-text="002 Raymon Otatti">002 Raymon Otatti</h3>
+                  <span class="work-tag">Dirección de Arte & Co. / 2026</span>
+                </div>
+              </button>
+            </article>
+
+            <!-- Project 003: Franie Smith -->
+            <article class="work-item">
+              <button type="button" class="work-link" data-project="franie" aria-label="Ver Franie Smith">
+                <div class="image" data-src="images/franie.webp">
+                  <img src="images/franie.webp" alt="Franie Smith" class="main-img" loading="lazy">
+                  <div class="image-subtle-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="work-meta">
+                  <h3 class="hoverchar" data-text="003 Franie Smith">003 Franie Smith</h3>
+                  <span class="work-tag">Música & Cultura / 2026</span>
+                </div>
+              </button>
+            </article>
+
+            <!-- Project 004: Sáenz Valiente & Asociados -->
+            <article class="work-item">
+              <button type="button" class="work-link" data-project="svya" aria-label="Ver Sáenz Valiente & Asociados">
+                <div class="image" data-src="images/svya.webp">
+                  <img src="images/svya.webp" alt="Sáenz Valiente & Asociados" class="main-img" loading="lazy">
+                  <div class="image-subtle-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="work-meta">
+                  <h3 class="hoverchar" data-text="004 Sáenz Valiente & Asociados">004 Sáenz Valiente & Asociados</h3>
+                  <span class="work-tag">Estudio Jurídico / 2026</span>
+                </div>
+              </button>
+            </article>
+          </div>
         </section>
 
         <!-- SECTION 4: Editorial Philosophy Block -->
