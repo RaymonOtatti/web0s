@@ -1,119 +1,404 @@
 <!doctype html>
-<html lang="es-AR">
+<html lang="es-AR" class="dark">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f8f6">
-  <meta name="description" content="Web0S: una selección de experiencias web con identidades propias. Explorá los proyectos La Guardia, Raymon Otatti, Franie Smith y Sáenz Valiente & Asociados.">
-  <title>Web0S — Webs con identidad</title>
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Web0S — Estudio de diseño y tecnología en Buenos Aires. Identidades web, dirección de arte, ingeniería digital y juegos arcade monospace.">
+  <title>Web0S — Design & Technology</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <a class="skip-link" href="#proyectos">Ir a proyectos</a>
+<body class="home">
+  <!-- Ultra-fine Analog TV / Film Noise Texture -->
+  <div class="film-grain" aria-hidden="true"></div>
 
-  <header class="site-header" id="inicio">
-    <a class="brand" href="#inicio" aria-label="Web0S, inicio">Web<span class="brand-zero">0</span>S</a>
-    <span class="brand-tag">Estudio digital</span>
-    <nav class="main-nav" aria-label="Principal">
-      <a href="#proyectos">Proyectos</a>
-      <a href="#nosotros">Nosotros</a>
-      <a href="#contacto">Contacto</a>
+  <!-- Interactive Monospace Background Grid Matrix -->
+  <div class="gridcontainer" aria-hidden="true">
+    <canvas id="matrix-canvas"></canvas>
+    <div class="grid-coords" id="grid-coords">COLS: 160 ROWS: 48 [X: 0 Y: 0]</div>
+  </div>
+
+  <!-- Full-Width Fluid Navigation Bar with Live Section Indicator -->
+  <header data-component="header">
+    <nav id="nav">
+      <!-- 1. Left: Brand Logo -->
+      <div class="nav-brand">
+        <a href="#top" class="home hoverchar" data-text="Web0S" aria-label="Web0S inicio">
+          <img src="logo/logo-white.svg" alt="Web0S" class="nav-logo">
+        </a>
+      </div>
+
+      <!-- 2. Center: Navigation Links with ScrollSpy Active Highlighting -->
+      <div class="nav-links">
+        <a href="#proyectos" class="nav-link hoverchar" data-section="proyectos" data-text="Proyectos">Proyectos</a>
+        <a href="#nosotros" class="nav-link hoverchar" data-section="nosotros" data-text="Nosotros">Nosotros</a>
+        <a href="#equipo" class="nav-link hoverchar" data-section="equipo" data-text="Equipo">Equipo</a>
+        <a href="#capacidades" class="nav-link hoverchar" data-section="capacidades" data-text="Servicios">Servicios</a>
+        <a href="#play" class="nav-link nav-play-link hoverchar" data-section="play" data-text="Play">Play [Arcade]</a>
+      </div>
+
+      <!-- 3. Right: Live Current Section Tracker & Buenos Aires Studio Time & Contact -->
+      <div class="nav-controls">
+        <div class="nav-section-badge" title="Sección actual">
+          <span class="badge-dot"></span>
+          <span id="current-section-label">PROYECTOS</span>
+        </div>
+
+        <div class="nav-time-wrap">
+          <span class="nav-loctime">BUE <span id="nav-time">00:00:00</span></span>
+        </div>
+
+        <a href="mailto:contact@raymonotatti.com?subject=Consulta%20Web0S" class="nav-contact hoverchar" data-text="Contacto">Contacto</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="mobile">
+        <button class="ghost mobile-menu-btn" id="mobile-toggle" aria-label="Abrir menú">Menú</button>
+      </div>
     </nav>
-    <a class="header-contact" href="mailto:contact@raymonotatti.com?subject=Consulta%20Web0S">Hablemos <span aria-hidden="true">↗</span></a>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <div class="mobile-section-badge">
+        <span class="badge-dot"></span>
+        <span id="mob-section-label">PROYECTOS</span>
+      </div>
+      <a href="#proyectos" class="mob-link">Proyectos</a>
+      <a href="#nosotros" class="mob-link">Nosotros</a>
+      <a href="#equipo" class="mob-link">Equipo</a>
+      <a href="#capacidades" class="mob-link">Servicios</a>
+      <a href="#play" class="mob-link">Play [Arcade]</a>
+      <a href="mailto:contact@raymonotatti.com" class="mob-link">Contacto</a>
+    </div>
   </header>
 
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-art" aria-hidden="true">
-        <div class="art-halo"></div>
-        <div class="art-card art-card--guardia"><img src="images/laguardia.webp" alt=""></div>
-        <div class="art-card art-card--raymon"><img src="images/raymon.webp" alt=""></div>
-        <div class="art-card art-card--franie"><img src="images/franie.webp" alt=""></div>
-        <div class="art-card art-card--svya"><img src="images/svya.webp" alt=""></div>
-        <span class="art-center">W<span>0</span></span>
+  <main id="main">
+    <div class="home-content">
+      <div class="sections">
+
+        <!-- SECTION 1: Featured Work Top Pair (Full width fluid grid) -->
+        <section class="section work-section" id="top" data-section-name="PROYECTOS">
+          <!-- Project 001: La Guardia -->
+          <article class="work-item">
+            <button type="button" class="work-link" data-project="laguardia" aria-label="Ver La Guardia Barrio Abierto">
+              <div class="image" data-src="images/laguardia.webp">
+                <img src="images/laguardia.webp" alt="La Guardia Barrio Abierto" class="main-img" loading="eager">
+                <div class="image-subtle-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="work-meta">
+                <h3 class="hoverchar" data-text="001 La Guardia">001 La Guardia</h3>
+                <span class="work-tag">Real Estate / 2026</span>
+              </div>
+            </button>
+          </article>
+
+          <!-- Project 002: Raymon Otatti -->
+          <article class="work-item">
+            <button type="button" class="work-link" data-project="raymon" aria-label="Ver Raymon Otatti Design & Co.">
+              <div class="image" data-src="images/raymon.webp">
+                <img src="images/raymon.webp" alt="Raymon Otatti Design & Co." class="main-img" loading="eager">
+                <div class="image-subtle-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="work-meta">
+                <h3 class="hoverchar" data-text="002 Raymon Otatti">002 Raymon Otatti</h3>
+                <span class="work-tag">Dirección de Arte & Co. / 2026</span>
+              </div>
+            </button>
+          </article>
+        </section>
+
+        <!-- SECTION 2: Studio Statement (Raw typography, no subtitles) -->
+        <section class="section statement-section" id="nosotros" data-section-name="NOSOTROS">
+          <div class="statement-card">
+            <h1 class="mega">
+              Estudio de diseño y tecnología en Buenos Aires. Diseñamos y construimos plataformas web con identidad propia para marcas, personas y proyectos singulares.
+            </h1>
+            <div class="cta-row">
+              <a href="#proyectos" class="button hoverchar" data-text="Explorar proyectos">Explorar proyectos</a>
+              <a href="#play" class="button outline hoverchar" data-text="Ir al Arcade">Ir al Arcade [Play]</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3: Featured Work Second Pair -->
+        <section class="section work-section" id="proyectos" data-section-name="PROYECTOS">
+          <!-- Project 003: Franie Smith -->
+          <article class="work-item">
+            <button type="button" class="work-link" data-project="franie" aria-label="Ver Franie Smith">
+              <div class="image" data-src="images/franie.webp">
+                <img src="images/franie.webp" alt="Franie Smith" class="main-img" loading="lazy">
+                <div class="image-subtle-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="work-meta">
+                <h3 class="hoverchar" data-text="003 Franie Smith">003 Franie Smith</h3>
+                <span class="work-tag">Música & Cultura / 2026</span>
+              </div>
+            </button>
+          </article>
+
+          <!-- Project 004: Sáenz Valiente & Asociados -->
+          <article class="work-item">
+            <button type="button" class="work-link" data-project="svya" aria-label="Ver Sáenz Valiente & Asociados">
+              <div class="image" data-src="images/svya.webp">
+                <img src="images/svya.webp" alt="Sáenz Valiente & Asociados" class="main-img" loading="lazy">
+                <div class="image-subtle-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="work-meta">
+                <h3 class="hoverchar" data-text="004 Sáenz Valiente & Asociados">004 Sáenz Valiente & Asociados</h3>
+                <span class="work-tag">Estudio Jurídico / 2026</span>
+              </div>
+            </button>
+          </article>
+        </section>
+
+        <!-- SECTION 4: Editorial Philosophy Block -->
+        <section class="section home-copy" data-section-name="NOSOTROS">
+          <div class="copy-box">
+            <p class="big">
+              Diseño contemporáneo con ingeniería digital por debajo, hecho en Buenos Aires. Construimos sitios web con carácter propio, arquitectura tipográfica y performance para clientes en Argentina, Latinoamérica y el mundo.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 5: Team / Nosotros (Franco Michetti & Raymon Otatti without photos, clean) -->
+        <section class="section team-section" id="equipo" data-section-name="EQUIPO">
+          <div class="section-header">
+            <h2 class="sub-headline hoverchar" data-text="Equipo & Dirección">Equipo & Dirección</h2>
+          </div>
+
+          <div class="team-grid">
+            <!-- Bio 1: Franco Michetti -->
+            <article class="bio-block">
+              <div class="bio-meta">
+                <span class="bio-num">01</span>
+                <span class="bio-role-badge">Dirección Visual</span>
+              </div>
+              <h3 class="bio-name hoverchar" data-text="Franco Michetti">Franco Michetti</h3>
+              <div class="bio-copy">
+                <p>
+                  Especializado en identidad visual, sistemas tipográficos y dirección de arte para medios interactivos. Su trabajo explora la relación entre la tradición editorial impresa y la soltura del diseño digital contemporáneo, creando universos estéticos coherentes, depurados y con fuerte identidad de autor.
+                </p>
+                <p>
+                  En Web0S lidera la conceptualización visual, la curaduría estética y la estructura gráfica de cada proyecto, garantizando que cada sitio web transmita con precisión el carácter de quien lo habita.
+                </p>
+              </div>
+              <div class="bio-disciplines">
+                <span>Dirección de Arte</span>
+                <span>Sistemas de Diseño</span>
+                <span>Criterio Tipográfico</span>
+                <span>Identidad de Marca</span>
+              </div>
+              <a href="mailto:franco@web0s.com" class="bio-mail hoverchar" data-text="franco@web0s.com ↗">franco@web0s.com ↗</a>
+            </article>
+
+            <!-- Bio 2: Raymon Otatti -->
+            <article class="bio-block">
+              <div class="bio-meta">
+                <span class="bio-num">02</span>
+                <span class="bio-role-badge">Ingeniería & Código</span>
+              </div>
+              <h3 class="bio-name hoverchar" data-text="Raymon Otatti">Raymon Otatti</h3>
+              <div class="bio-copy">
+                <p>
+                  Especializado en arquitectura frontend, interfaces de alto rendimiento y experiencias interactivas a medida. Concibe el desarrollo de software como una disciplina artesanal donde la fluidez, la accesibilidad y los tiempos de carga son tan importantes como el impacto visual.
+                </p>
+                <p>
+                  En Web0S coordina la arquitectura técnica, la optimización para buscadores y el diseño de interacción, asegurando que cada plataforma sea rápida, robusta y disfrutable en cualquier resolución o dispositivo.
+                </p>
+              </div>
+              <div class="bio-disciplines">
+                <span>Frontend Architecture</span>
+                <span>Diseño de Interacción</span>
+                <span>Creative Development</span>
+                <span>Performance & SEO</span>
+              </div>
+              <a href="mailto:contact@raymonotatti.com" class="bio-mail hoverchar" data-text="contact@raymonotatti.com ↗">contact@raymonotatti.com ↗</a>
+            </article>
+          </div>
+        </section>
+
+        <!-- SECTION 6: Capabilities & Services -->
+        <section class="section services-section" id="capacidades" data-section-name="SERVICIOS">
+          <div class="services-grid">
+            <div class="services-intro">
+              <h2 class="caps-heading hoverchar" data-text="Capacidades">Capacidades</h2>
+            </div>
+            <div class="services-list-wrap">
+              <ul class="capability-list">
+                <li><span>Dirección de Arte Digital</span></li>
+                <li><span>Identidad Visual & Branding</span></li>
+                <li><span>Desarrollo Web a Medida</span></li>
+                <li><span>Arquitectura Frontend</span></li>
+                <li><span>Diseño de Interacción & Motion</span></li>
+                <li><span>Optimización & Performance</span></li>
+                <li><span>Experiencias Editoriales</span></li>
+                <li><span>Creative Coding</span></li>
+              </ul>
+            </div>
+            <div class="services-cta-col">
+              <div class="cta-inner">
+                <h2 class="cta-message">Iniciemos un proyecto juntos.</h2>
+                <a href="mailto:contact@raymonotatti.com?subject=Consulta%20Web0S" class="button hoverchar" data-text="Iniciar proyecto">Iniciar proyecto</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 7: PLAY / RETRO ARCADE -->
+        <section class="section play-section" id="play" data-section-name="PLAY [ARCADE]">
+          <div class="play-header">
+            <div class="play-title-row">
+              <h2 class="play-headline hoverchar" data-text="Play — Retro Arcade">Play — Retro Arcade</h2>
+              <div class="play-actions-row">
+                <button type="button" class="sound-toggle-btn" id="game-sound-btn" title="Alternar audio">♫ Audio: On</button>
+                <button type="button" class="boss-btn" id="boss-btn" title="Botón de emergencia para simular código">[!] Boss Key</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="arcade-container">
+            <!-- Game Switcher Tabs -->
+            <div class="arcade-tabs">
+              <button type="button" class="arcade-tab active" data-game="snekst">01. Snekst [Snake]</button>
+              <button type="button" class="arcade-tab" data-game="textris">02. Textris [Tetris]</button>
+            </div>
+
+            <!-- Arcade Cabinet Box -->
+            <div class="arcade-cabinet">
+              <div class="arcade-hud">
+                <div class="hud-left">
+                  <span class="hud-item">JUEGO: <strong id="hud-game-name">Snekst</strong></span>
+                  <span class="hud-item">ESTADO: <strong id="hud-status" class="status-ready">LISTO</strong></span>
+                </div>
+                <div class="hud-center">
+                  <span class="hud-item">PUNTOS: <strong id="hud-score">0000</strong></span>
+                  <span class="hud-item">RÉCORD: <strong id="hud-highscore">0000</strong></span>
+                </div>
+                <div class="hud-right">
+                  <button type="button" class="hud-btn hud-start-btn" id="game-start-btn">▶ JUGAR</button>
+                  <button type="button" class="hud-btn hud-pause-btn" id="game-pause-btn">❚❚ PAUSA</button>
+                  <button type="button" class="hud-btn hud-reset-btn" id="game-restart-btn">↺ REINICIAR</button>
+                </div>
+              </div>
+
+              <!-- Monospace Display Screen with Click & Keyboard Focus -->
+              <div class="arcade-screen" id="arcade-screen" tabindex="0" role="region" aria-label="Pantalla de juego retro arcade">
+                <pre class="game-mono-display" id="game-mono-display"></pre>
+                
+                <!-- Overlay Start / GameOver Box -->
+                <div class="arcade-overlay" id="arcade-overlay">
+                  <h3 class="arcade-overlay-title" id="overlay-title">S N E K S T</h3>
+                  <button type="button" class="arcade-start-big" id="arcade-start-big">▶ INICIAR JUEGO</button>
+                  <p class="arcade-overlay-sub" id="overlay-sub">Haz click aquí o presiona [ESPACIO] para jugar</p>
+                </div>
+              </div>
+
+              <!-- Mobile On-screen Controls -->
+              <div class="arcade-controls">
+                <div class="dpad">
+                  <button type="button" class="dpad-btn up" data-dir="up" aria-label="Arriba">▲</button>
+                  <div class="dpad-middle">
+                    <button type="button" class="dpad-btn left" data-dir="left" aria-label="Izquierda">◀</button>
+                    <button type="button" class="dpad-btn down" data-dir="down" aria-label="Abajo">▼</button>
+                    <button type="button" class="dpad-btn right" data-dir="right" aria-label="Derecha">▶</button>
+                  </div>
+                </div>
+                <div class="arcade-action-keys">
+                  <button type="button" class="action-btn" id="action-rotate">ROTAR [▲]</button>
+                  <button type="button" class="action-btn" id="action-drop">BAJAR [Espacio]</button>
+                </div>
+              </div>
+
+              <div class="arcade-hint">
+                <span id="arcade-controls-hint">Controles: Flechas o WASD · Pausa: P · Reiniciar: R</span>
+              </div>
+            </div>
+
+            <!-- Boss Key Fake Code Terminal -->
+            <div class="boss-terminal" id="boss-terminal" hidden>
+              <div class="terminal-bar">
+                <span>bash — web0s_kernel.ts (ONLINE)</span>
+                <button type="button" class="terminal-close" id="boss-close">[X] Volver al juego</button>
+              </div>
+              <pre class="terminal-code">
+import { MatrixEngine, ScandinavianGrid, MonospacePipeline } from '@web0s/core';
+
+async function bootstrapKernel(): Promise&lt;SystemStatus&gt; {
+  const grid = new ScandinavianGrid({ cols: 160, rows: 48, ch: 8.5 });
+  const ascii = new MonospacePipeline({ mode: 'subtle-noise', contrast: 1.4 });
+  
+  await grid.initializeHardwareBuffer();
+  console.log('[OK] 100% Kernel healthy. Full width fluid & TV noise active.');
+  return { status: 200, uptime: '99.99%', memory: '14.2MB' };
+}
+              </pre>
+            </div>
+          </div>
+        </section>
+
       </div>
-      <div class="hero-bottom">
-        <div>
-          <p class="eyebrow">Diseño y desarrollo web / Buenos Aires</p>
-          <h1 id="hero-title">Web<span>0</span>S</h1>
-          <p class="hero-intro">Cada proyecto, un mundo propio.<br>Diseñamos la forma de explorarlo.</p>
-        </div>
-        <a class="scroll-cue" href="#proyectos">Explorar proyectos <span aria-hidden="true">↓</span></a>
-      </div>
-    </section>
-
-    <section class="work-section" id="proyectos" aria-labelledby="work-title">
-      <div class="section-heading">
-        <p class="eyebrow">/* Trabajo seleccionado */</p>
-        <div class="section-heading__row">
-          <h2 id="work-title">Cuatro mundos.<br><span>Cuatro experiencias.</span></h2>
-          <p>Una selección de sitios que construimos para marcas, personas y proyectos con una voz propia.</p>
-        </div>
-      </div>
-
-      <div class="projects">
-        <article class="project" id="la-guardia">
-          <button class="project-image project-image--guardia" type="button" data-project="laguardia" aria-label="Ver vista ampliada de La Guardia Barrio Abierto">
-            <span class="browser-frame"><span class="browser-bar"><i></i><i></i><i></i><em>barriolaguardia.com</em></span><img src="images/laguardia.webp" alt="Página de inicio de La Guardia Barrio Abierto" loading="lazy"></span>
-            <span class="project-open" aria-hidden="true">↗</span>
-          </button>
-          <div class="project-meta"><span>01 / Real estate</span><span>Web · 2026</span></div>
-          <div class="project-title"><h3>La Guardia <span>Barrio Abierto</span></h3><button type="button" data-project="laguardia" aria-label="Explorar La Guardia Barrio Abierto">↗</button></div>
-          <p>Un barrio abierto contado desde su paisaje, su escala y la experiencia de vivir cerca de todo.</p>
-        </article>
-
-        <article class="project" id="raymon-otatti">
-          <button class="project-image project-image--raymon" type="button" data-project="raymon" aria-label="Ver vista ampliada de Raymon Otatti Design & Co.">
-            <span class="browser-frame"><span class="browser-bar"><i></i><i></i><i></i><em>raymonotatti.com</em></span><img src="images/raymon.webp" alt="Página de inicio de Raymon Otatti Design & Co." loading="lazy"></span>
-            <span class="project-open" aria-hidden="true">↗</span>
-          </button>
-          <div class="project-meta"><span>02 / Portfolio creativo</span><span>Web · 2026</span></div>
-          <div class="project-title"><h3>Raymon Otatti <span>Design & Co.</span></h3><button type="button" data-project="raymon" aria-label="Explorar Raymon Otatti Design & Co.">↗</button></div>
-          <p>Una experiencia inmersiva donde cada pieza de diseño toma el protagonismo.</p>
-        </article>
-
-        <article class="project" id="franie-smith">
-          <button class="project-image project-image--franie" type="button" data-project="franie" aria-label="Ver vista ampliada de Franie Smith">
-            <span class="browser-frame"><span class="browser-bar"><i></i><i></i><i></i><em>franiesmith.com</em></span><img src="images/franie.webp" alt="Página de inicio de Franie Smith" loading="lazy"></span>
-            <span class="project-open" aria-hidden="true">↗</span>
-          </button>
-          <div class="project-meta"><span>03 / Música</span><span>Web · 2026</span></div>
-          <div class="project-title"><h3>Franie <span>Smith</span></h3><button type="button" data-project="franie" aria-label="Explorar Franie Smith">↗</button></div>
-          <p>Un espacio digital que reúne música, fechas y el universo visual de una artista.</p>
-        </article>
-
-        <article class="project" id="svya">
-          <button class="project-image project-image--svya" type="button" data-project="svya" aria-label="Ver vista ampliada de Sáenz Valiente & Asociados">
-            <span class="browser-frame"><span class="browser-bar"><i></i><i></i><i></i><em>Sáenz Valiente & Asociados</em></span><img src="images/svya.webp" alt="Página de inicio de Sáenz Valiente & Asociados" loading="lazy"></span>
-            <span class="project-open" aria-hidden="true">↗</span>
-          </button>
-          <div class="project-meta"><span>04 / Estudio jurídico</span><span>Web · 2026</span></div>
-          <div class="project-title"><h3>Sáenz Valiente <span>& Asociados</span></h3><button type="button" data-project="svya" aria-label="Explorar Sáenz Valiente & Asociados">↗</button></div>
-          <p>Una presencia sobria y editorial para un estudio jurídico con historia.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="about-section" id="nosotros" aria-labelledby="about-title">
-      <p class="eyebrow">/* Sobre Web0S */</p>
-      <div class="about-grid">
-        <h2 id="about-title">Una web debe sentirse <em>propia.</em></h2>
-        <div><p>Web0S es un espacio para reunir experiencias web distintas entre sí. Cada sitio parte de la identidad del proyecto y encuentra su propio ritmo, lenguaje y forma de navegar.</p><a href="#proyectos">Volver a los proyectos <span aria-hidden="true">↗</span></a></div>
-      </div>
-    </section>
-
-    <footer class="footer" id="contacto">
-      <p class="eyebrow">¿Hacemos la próxima?</p>
-      <a class="footer-cta" href="mailto:contact@raymonotatti.com?subject=Consulta%20Web0S">Hablemos <span aria-hidden="true">↗</span></a>
-      <div class="footer-bottom"><strong>Web<span>0</span>S</strong><span>Diseño y desarrollo web</span><a href="#inicio">Volver arriba ↑</a><span>© 2026 Web0S</span></div>
-    </footer>
+    </div>
   </main>
 
+  <!-- Giant Logo Footer (Full-width fluid) -->
+  <footer id="footer" data-component="footer">
+    <div class="footer-container">
+      <div class="image logo">
+        <img src="logo/logo-white.svg" width="719" height="107" alt="Web0S" class="footer-logo-img">
+      </div>
+
+      <section class="shortcuts-row" id="contacto">
+        <div class="col loctime">
+          <div class="location">BUE / UTC-3</div>
+          <div class="time" id="studio-time">00:00:00</div>
+          <div class="copy-notice">© 2026 Web0S. All rights reserved.</div>
+        </div>
+        <div class="col contact-col">
+          <h2>Contacto</h2>
+          <a href="mailto:contact@raymonotatti.com" class="hoverchar" data-text="contact@raymonotatti.com">contact@raymonotatti.com</a>
+        </div>
+        <div class="col links-col">
+          <div class="sub-links">
+            <a href="#proyectos" class="hoverchar" data-text="Proyectos">Proyectos</a>
+            <a href="#nosotros" class="hoverchar" data-text="Nosotros">Nosotros</a>
+            <a href="#equipo" class="hoverchar" data-text="Equipo">Equipo</a>
+            <a href="#capacidades" class="hoverchar" data-text="Servicios">Servicios</a>
+            <a href="#play" class="hoverchar" data-text="Play [Arcade]">Play [Arcade]</a>
+          </div>
+          <div class="direct-links">
+            <a href="mailto:franco@web0s.com" class="hoverchar" data-text="Franco Michetti">Franco Michetti ↗</a>
+            <a href="mailto:contact@raymonotatti.com" class="hoverchar" data-text="Raymon Otatti">Raymon Otatti ↗</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </footer>
+
+  <!-- Project Detail Modal Dialog -->
   <dialog class="project-dialog" aria-labelledby="dialog-title">
-    <div class="dialog-top"><span class="eyebrow">Web0S / Proyecto <span id="dialog-count"></span></span><button class="dialog-close" type="button" aria-label="Cerrar vista ampliada">Cerrar ×</button></div>
-    <div class="dialog-layout"><div class="dialog-visual"><img id="dialog-image" src="" alt=""></div><div class="dialog-copy"><p id="dialog-category" class="eyebrow"></p><h2 id="dialog-title"></h2><p id="dialog-description"></p><a id="dialog-link" href="#" target="_blank" rel="noopener noreferrer">Visitar sitio ↗</a><span id="dialog-note"></span></div></div>
+    <div class="dialog-top">
+      <span class="dialog-code">Caso <span id="dialog-count">001</span></span>
+      <button class="dialog-close hoverchar" data-text="Cerrar ×" type="button" aria-label="Cerrar modal">Cerrar ×</button>
+    </div>
+    <div class="dialog-layout">
+      <div class="dialog-visual">
+        <img id="dialog-image" src="images/laguardia.webp" alt="">
+      </div>
+      <div class="dialog-copy">
+        <span id="dialog-category" class="dialog-tag"></span>
+        <h2 id="dialog-title"></h2>
+        <p id="dialog-description"></p>
+        <div class="dialog-actions">
+          <a id="dialog-link" href="#" target="_blank" rel="noopener noreferrer" class="button hoverchar" data-text="Visitar sitio en vivo ↗">
+            <span>Visitar sitio en vivo ↗</span>
+          </a>
+          <span id="dialog-note" class="dialog-note"></span>
+        </div>
+      </div>
+    </div>
   </dialog>
+
   <script src="main.js" defer></script>
 </body>
 </html>
