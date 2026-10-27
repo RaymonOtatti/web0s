@@ -14,16 +14,19 @@
  */
 
 // ==========================================================================
-// 1. Projects Data Definition
+// 1. Projects Data Definition & Internationalization (EN / ES)
 // ==========================================================================
 const projects = {
   laguardia: {
     id: 'la-guardia',
     count: '001',
-    category: 'Real Estate / Web',
-    discipline: 'Estrategia Digital, Web & Identidad',
+    category: { en: 'Real Estate / Web', es: 'Real Estate / Web' },
+    discipline: { en: 'Digital Strategy, Web & Identity', es: 'Estrategia Digital, Web & Identidad' },
     title: 'La Guardia Barrio Abierto',
-    description: 'Un barrio abierto narrado desde su paisaje, su escala humana y la experiencia serena de vivir cerca de todo.',
+    description: {
+      en: 'An open neighborhood told through its landscape, human scale, and the serene experience of living close to everything.',
+      es: 'Un barrio abierto narrado desde su paisaje, su escala humana y la experiencia serena de vivir cerca de todo.'
+    },
     image: 'images/laguardia.webp',
     url: 'https://barriolaguardia.com/',
     year: '2026'
@@ -31,10 +34,13 @@ const projects = {
   raymon: {
     id: 'raymon-otatti',
     count: '002',
-    category: 'Portfolio Creativo / Web',
-    discipline: 'Dirección de Arte & Creative Coding',
+    category: { en: 'Creative Portfolio / Web', es: 'Portfolio Creativo / Web' },
+    discipline: { en: 'Art Direction & Creative Coding', es: 'Dirección de Arte & Creative Coding' },
     title: 'Raymon Otatti Design & Co.',
-    description: 'Una experiencia inmersiva y austera donde cada pieza de diseño y dirección de arte adquiere absoluto protagonismo.',
+    description: {
+      en: 'An austere and immersive digital experience where every piece of design and art direction takes center stage.',
+      es: 'Una experiencia inmersiva y austera donde cada pieza de diseño y dirección de arte adquiere absoluto protagonismo.'
+    },
     image: 'images/raymon.webp',
     url: 'https://raymonotatti.com/',
     year: '2026'
@@ -42,10 +48,13 @@ const projects = {
   franie: {
     id: 'franie-smith',
     count: '003',
-    category: 'Música & Cultura / Web',
-    discipline: 'Diseño Web, Identidad & Discografía',
+    category: { en: 'Music & Culture / Web', es: 'Música & Cultura / Web' },
+    discipline: { en: 'Web Design, Identity & Discography', es: 'Diseño Web, Identidad & Discografía' },
     title: 'Franie Smith',
-    description: 'Un espacio digital que reúne música, lanzamientos, fechas en vivo y el universo sonoro y visual de una artista singular.',
+    description: {
+      en: 'A digital haven bringing together music releases, live dates, and the acoustic and visual universe of a singular artist.',
+      es: 'Un espacio digital que reúne música, lanzamientos, fechas en vivo y el universo sonoro y visual de una artista singular.'
+    },
     image: 'images/franie.webp',
     url: 'https://franiesmith.com/',
     year: '2026'
@@ -53,15 +62,229 @@ const projects = {
   svya: {
     id: 'svya',
     count: '004',
-    category: 'Estudio Jurídico / Web',
-    discipline: 'Diseño Editorial & Arquitectura Digital',
+    category: { en: 'Law Firm / Web', es: 'Estudio Jurídico / Web' },
+    discipline: { en: 'Editorial Design & Digital Architecture', es: 'Diseño Editorial & Arquitectura Digital' },
     title: 'Sáenz Valiente & Asociados',
-    description: 'Una presencia sobria, tipográfica y editorial diseñada para un estudio jurídico con sólida trayectoria y visión contemporánea.',
+    description: {
+      en: 'A restrained, typographic, and editorial online presence built for a prestigious law firm with deep heritage and contemporary vision.',
+      es: 'Una presencia sobria, tipográfica y editorial diseñada para un estudio jurídico con sólida trayectoria y visión contemporánea.'
+    },
     image: 'images/svya.webp',
     url: null,
     year: '2026'
   }
 };
+
+const translations = {
+  en: {
+    nav_projects: 'Projects',
+    nav_about: 'About',
+    nav_team: 'Team',
+    nav_services: 'Services',
+    nav_arcade: 'Arcade',
+    nav_contact: 'Contact',
+    mob_menu: 'Menu',
+    statement_h1: 'Design and technology studio in Buenos Aires. We design and build distinctive web platforms for singular brands, people, and projects.',
+    cta_projects: 'Explore projects',
+    cta_arcade: 'Arcade',
+    section_projects: 'Projects',
+    p1_tag: 'Real Estate / 2026',
+    p2_tag: 'Art Direction & Co. / 2026',
+    p3_tag: 'Music & Culture / 2026',
+    p4_tag: 'Law Firm / 2026',
+    copy_big: 'Contemporary design backed by digital engineering, crafted in Buenos Aires. We build websites with distinct character, typographic architecture, and performance for clients in Argentina, Latin America, and worldwide.',
+    team_headline: 'Team & Direction',
+    bio_raymon_role: 'Visual Direction',
+    bio_raymon_p1: 'Specialized in visual identity, typographic systems, and art direction for interactive media. His work explores the relationship between printed editorial tradition and the ease of contemporary digital design, creating coherent, refined aesthetic universes with strong authorial identity.',
+    bio_raymon_p2: 'At Web0S he leads visual conceptualization, aesthetic curation, and the graphic architecture of every project, ensuring each website precisely conveys the character of those who inhabit it.',
+    disc_art_dir: 'Art Direction',
+    disc_design_sys: 'Design Systems',
+    disc_typo: 'Typographic Craft',
+    disc_branding: 'Brand Identity',
+    bio_franco_role: 'Engineering & Code',
+    bio_franco_p1: 'Specialized in frontend architecture, high-performance interfaces, and bespoke interactive experiences. He approaches software development as a craft where fluidity, accessibility, and loading speeds are just as essential as visual impact.',
+    bio_franco_p2: 'At Web0S he coordinates technical architecture, search engine optimization, and interaction design, ensuring every platform is fast, resilient, and enjoyable across any resolution or device.',
+    disc_interaction: 'Interaction Design',
+    services_kicker: '03 / Capabilities & Services',
+    services_headline: 'Capabilities',
+    services_lead: 'We merge typographic rigor, art direction, and modern software engineering to build high-impact, lightning-fast web platforms with distinct character.',
+    pillar_a_title: 'Visual Direction & Design',
+    cap_1_title: 'Digital Art Direction',
+    cap_1_desc: 'Aesthetic conceptualization, visual composition, and singular graphic tone for each project.',
+    cap_2_title: 'Visual Identity & Branding',
+    cap_2_desc: 'Complete identity systems, color palettes, brand voice, and digital assets.',
+    cap_3_title: 'Typographic Systems & UI',
+    cap_3_desc: 'High-legibility typographic architecture, content hierarchies, and scalable design systems.',
+    cap_4_title: 'Editorial Experiences',
+    cap_4_desc: 'Design for publications, monographs, and web experiences with contemporary editorial spirit.',
+    pillar_b_title: 'Web Engineering & Technology',
+    cap_5_title: 'Bespoke Web Development',
+    cap_5_desc: 'Clean, semantic, modular code with zero pre-made templates or unnecessary bloat.',
+    cap_6_title: 'Frontend Architecture & Performance',
+    cap_6_desc: 'Extreme optimization, instant load times, and strict standards compliance.',
+    cap_7_title: 'Interaction Design & Motion',
+    cap_7_desc: 'Fluid micro-interactions at 60/120 FPS, organic transitions, and refined interactive states.',
+    cap_8_title: 'Creative Coding & Web Experiences',
+    cap_8_desc: 'Interactive canvas animations, discrete shaders, and immersive branded experiences.',
+    cta_status: 'Availability 2026',
+    cta_message: "Let's start a project together.",
+    cta_description: 'We work with a select number of clients each year to guarantee undivided focus and handcrafted quality in every line of design and code.',
+    cta_button: 'Start a conversation',
+    cta_reply: 'Typical reply in < 24h',
+    sound_on: 'Audio: On',
+    sound_off: 'Audio: Off',
+    hud_game: 'Game',
+    hud_status: 'Status',
+    hud_ready: 'Ready',
+    hud_playing: 'Playing',
+    hud_paused: 'Paused',
+    hud_gameover: 'Game Over',
+    hud_score: 'Score',
+    hud_record: 'Record',
+    game_btn_play: 'Play',
+    game_btn_pause: 'Pause',
+    game_btn_reset: 'Reset',
+    overlay_btn: 'Start Game',
+    overlay_sub: 'Click or tap to play',
+    ctrl_rotate: 'Rotate',
+    ctrl_drop: 'Drop',
+    arcade_howto: 'Arrows or W/A/S/D to move. The snake passes through walls safely without dying.',
+    footer_contact: 'Contact',
+    dialog_case: 'Case',
+    dialog_close: 'Close ×',
+    dialog_visit: 'Visit live site ↗',
+    scroll_top: 'Top'
+  },
+  es: {
+    nav_projects: 'Proyectos',
+    nav_about: 'Nosotros',
+    nav_team: 'Equipo',
+    nav_services: 'Servicios',
+    nav_arcade: 'Arcade',
+    nav_contact: 'Contacto',
+    mob_menu: 'Menú',
+    statement_h1: 'Estudio de diseño y tecnología en Buenos Aires. Diseñamos y construimos plataformas web con identidad propia para marcas, personas y proyectos singulares.',
+    cta_projects: 'Explorar proyectos',
+    cta_arcade: 'Arcade',
+    section_projects: 'Proyectos',
+    p1_tag: 'Real Estate / 2026',
+    p2_tag: 'Dirección de Arte & Co. / 2026',
+    p3_tag: 'Música & Cultura / 2026',
+    p4_tag: 'Estudio Jurídico / 2026',
+    copy_big: 'Diseño contemporáneo con ingeniería digital por debajo, hecho en Buenos Aires. Construimos sitios web con carácter propio, arquitectura tipográfica y performance para clientes en Argentina, Latinoamérica y el mundo.',
+    team_headline: 'Equipo & Dirección',
+    bio_raymon_role: 'Dirección Visual',
+    bio_raymon_p1: 'Especializado en identidad visual, sistemas tipográficos y dirección de arte para medios interactivos. Su trabajo explora la relación entre la tradición editorial impresa y la soltura del diseño digital contemporáneo, creando universos estéticos coherentes, depurados y con fuerte identidad de autor.',
+    bio_raymon_p2: 'En Web0S lidera la conceptualización visual, la curaduría estética y la estructura gráfica de cada proyecto, garantizando que cada sitio web transmita con precisión el carácter de quien lo habita.',
+    disc_art_dir: 'Dirección de Arte',
+    disc_design_sys: 'Sistemas de Diseño',
+    disc_typo: 'Criterio Tipográfico',
+    disc_branding: 'Identidad de Marca',
+    bio_franco_role: 'Ingeniería & Código',
+    bio_franco_p1: 'Especializado en arquitectura frontend, interfaces de alto rendimiento y experiencias interactivas a medida. Concibe el desarrollo de software como una disciplina artesanal donde la fluidez, la accesibilidad y los tiempos de carga son tan importantes como el impacto visual.',
+    bio_franco_p2: 'En Web0S coordina la arquitectura técnica, la optimización para buscadores y el diseño de interacción, asegurando que cada plataforma sea rápida, robusta y disfrutable en cualquier resolución o dispositivo.',
+    disc_interaction: 'Diseño de Interacción',
+    services_kicker: '03 / Capacidades & Servicios',
+    services_headline: 'Capacidades',
+    services_lead: 'Unimos rigor tipográfico, dirección de arte e ingeniería de software moderna para construir plataformas web de alto impacto, veloces y con carácter propio.',
+    pillar_a_title: 'Dirección Visual & Diseño',
+    cap_1_title: 'Dirección de Arte Digital',
+    cap_1_desc: 'Conceptualización estética, composición visual y tono gráfico singular para cada proyecto.',
+    cap_2_title: 'Identidad Visual & Branding',
+    cap_2_desc: 'Sistemas de identidad completos, paletas cromáticas, voz de marca y activos digitales.',
+    cap_3_title: 'Sistemas Tipográficos & UI',
+    cap_3_desc: 'Arquitectura tipográfica de alta legibilidad, jerarquías de contenido y design systems escalables.',
+    cap_4_title: 'Experiencias Editoriales',
+    cap_4_desc: 'Tratamiento de publicaciones, monografías y sitios con espíritu editorial contemporáneo.',
+    pillar_b_title: 'Ingeniería Web & Tecnología',
+    cap_5_title: 'Desarrollo Web a Medida',
+    cap_5_desc: 'Código limpio, semántico y modular sin plantillas prediseñadas ni sobrecarga innecesaria.',
+    cap_6_title: 'Arquitectura Frontend & Performance',
+    cap_6_desc: 'Optimización extrema, tiempos de carga instantáneos y cumplimiento estricto de estándares.',
+    cap_7_title: 'Diseño de Interacción & Motion',
+    cap_7_desc: 'Microinteracciones fluidas a 60/120 FPS, transiciones orgánicas y estados interactivos refinados.',
+    cap_8_title: 'Creative Coding & Experiencias Web',
+    cap_8_desc: 'Animaciones canvas interactivas, shaders discretos y experiencias inmersivas con identidad.',
+    cta_status: 'Disponibilidad 2026',
+    cta_message: 'Iniciemos un proyecto juntos.',
+    cta_description: 'Trabajamos con un número selecto de clientes por año para garantizar dedicación total y calidad artesanal en cada línea de diseño y código.',
+    cta_button: 'Iniciar conversación',
+    cta_reply: 'Respuesta habitual en < 24hs',
+    sound_on: 'Audio: On',
+    sound_off: 'Audio: Silencio',
+    hud_game: 'Juego',
+    hud_status: 'Estado',
+    hud_ready: 'Listo',
+    hud_playing: 'Jugando',
+    hud_paused: 'Pausa',
+    hud_gameover: 'Fin',
+    hud_score: 'Puntos',
+    hud_record: 'Récord',
+    game_btn_play: 'Jugar',
+    game_btn_pause: 'Pausa',
+    game_btn_reset: 'Reiniciar',
+    overlay_btn: 'Iniciar juego',
+    overlay_sub: 'Click o toca para jugar',
+    ctrl_rotate: 'Rotar',
+    ctrl_drop: 'Caída',
+    arcade_howto: 'Flechas o W/A/S/D para mover. La serpiente atraviesa las paredes sin morir.',
+    footer_contact: 'Contacto',
+    dialog_case: 'Caso',
+    dialog_close: 'Cerrar ×',
+    dialog_visit: 'Visitar sitio en vivo ↗',
+    scroll_top: 'Arriba'
+  }
+};
+
+let currentLanguage = localStorage.getItem('web0s_lang') || 'en';
+
+function applyLanguage(lang) {
+  currentLanguage = lang;
+  document.documentElement.lang = lang;
+  localStorage.setItem('web0s_lang', lang);
+
+  const t = translations[lang] || translations.en;
+
+  // Update elements with data-i18n
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    const key = el.dataset.i18n;
+    if (t[key]) {
+      el.textContent = t[key];
+      if (el.dataset.text !== undefined) {
+        el.dataset.text = t[key];
+      }
+    }
+  });
+
+  // Update language toggle buttons
+  const langToggleBtn = document.getElementById('lang-toggle-btn');
+  const mobLangToggleBtn = document.getElementById('mob-lang-toggle-btn');
+  const nextLangLabel = lang === 'en' ? 'ES' : 'EN';
+  const nextLangAria = lang === 'en' ? 'Cambiar idioma a Español' : 'Switch language to English';
+
+  if (langToggleBtn) {
+    langToggleBtn.textContent = nextLangLabel;
+    langToggleBtn.dataset.text = nextLangLabel;
+    langToggleBtn.setAttribute('aria-label', nextLangAria);
+  }
+  if (mobLangToggleBtn) {
+    mobLangToggleBtn.textContent = nextLangLabel;
+    mobLangToggleBtn.setAttribute('aria-label', nextLangAria);
+  }
+}
+
+function toggleLanguage() {
+  const nextLang = currentLanguage === 'en' ? 'es' : 'en';
+  applyLanguage(nextLang);
+}
+
+function initLanguageSwitch() {
+  const btn = document.getElementById('lang-toggle-btn');
+  const mobBtn = document.getElementById('mob-lang-toggle-btn');
+  if (btn) btn.addEventListener('click', toggleLanguage);
+  if (mobBtn) mobBtn.addEventListener('click', toggleLanguage);
+  applyLanguage(currentLanguage);
+}
 
 // ==========================================================================
 // 2. Real-time ScrollSpy & Browser Section Tracking
@@ -1117,15 +1340,19 @@ function openProjectModal(projectId, triggerEl = null) {
   const project = projects[projectId];
   if (!project || !dialog) return;
 
+  const lang = currentLanguage || 'en';
+  const cat = typeof project.category === 'object' ? (project.category[lang] || project.category.en) : project.category;
+  const desc = typeof project.description === 'object' ? (project.description[lang] || project.description.en) : project.description;
+
   openerElement = triggerEl;
   document.getElementById('dialog-count').textContent = project.count;
-  document.getElementById('dialog-category').textContent = project.category;
+  document.getElementById('dialog-category').textContent = cat;
   document.getElementById('dialog-title').textContent = project.title;
-  document.getElementById('dialog-description').textContent = project.description;
+  document.getElementById('dialog-description').textContent = desc;
 
   const image = document.getElementById('dialog-image');
   image.src = project.image;
-  image.alt = `Captura ampliada de la web ${project.title}`;
+  image.alt = lang === 'en' ? `Full view of ${project.title}` : `Captura ampliada de la web ${project.title}`;
 
   const link = document.getElementById('dialog-link');
   const note = document.getElementById('dialog-note');
@@ -1137,7 +1364,7 @@ function openProjectModal(projectId, triggerEl = null) {
   } else {
     link.hidden = true;
     note.hidden = false;
-    note.textContent = 'En fase de despliegue privado';
+    note.textContent = lang === 'en' ? 'Under private client deployment' : 'En fase de despliegue privado';
   }
 
   dialog.showModal();
@@ -1253,7 +1480,7 @@ function initSublimeTextAnimation() {
     ],
     [
       { t: '    ', c: '' },
-      { t: '<!-- Web0S: Estudio de diseño y tecnología en Buenos Aires -->', c: 'syn-comment' }
+      { t: '<!-- Web0S: Design & technology studio in Buenos Aires -->', c: 'syn-comment' }
     ],
     [
       { t: '    <', c: 'syn-bracket' },
@@ -1294,7 +1521,7 @@ function initSublimeTextAnimation() {
       { t: '=', c: 'syn-punct' },
       { t: '"#proyectos"', c: 'syn-str' },
       { t: '>', c: 'syn-bracket' },
-      { t: 'Proyectos', c: 'syn-text' },
+      { t: 'Projects', c: 'syn-text' },
       { t: '</', c: 'syn-bracket' },
       { t: 'a', c: 'syn-tag' },
       { t: '>', c: 'syn-bracket' }
@@ -1307,7 +1534,7 @@ function initSublimeTextAnimation() {
       { t: '=', c: 'syn-punct' },
       { t: '"#nosotros"', c: 'syn-str' },
       { t: '>', c: 'syn-bracket' },
-      { t: 'Nosotros', c: 'syn-text' },
+      { t: 'About', c: 'syn-text' },
       { t: '</', c: 'syn-bracket' },
       { t: 'a', c: 'syn-tag' },
       { t: '>', c: 'syn-bracket' }
@@ -1320,7 +1547,7 @@ function initSublimeTextAnimation() {
       { t: '=', c: 'syn-punct' },
       { t: '"#equipo"', c: 'syn-str' },
       { t: '>', c: 'syn-bracket' },
-      { t: 'Equipo', c: 'syn-text' },
+      { t: 'Team', c: 'syn-text' },
       { t: '</', c: 'syn-bracket' },
       { t: 'a', c: 'syn-tag' },
       { t: '>', c: 'syn-bracket' }
@@ -1333,7 +1560,7 @@ function initSublimeTextAnimation() {
       { t: '=', c: 'syn-punct' },
       { t: '"#capacidades"', c: 'syn-str' },
       { t: '>', c: 'syn-bracket' },
-      { t: 'Servicios', c: 'syn-text' },
+      { t: 'Services', c: 'syn-text' },
       { t: '</', c: 'syn-bracket' },
       { t: 'a', c: 'syn-tag' },
       { t: '>', c: 'syn-bracket' }
@@ -1402,7 +1629,7 @@ function initSublimeTextAnimation() {
       { t: '>', c: 'syn-bracket' }
     ],
     [
-      { t: '          Estudio de diseño y tecnología en Buenos Aires. Diseñamos y construimos plataformas web con identidad propia.', c: 'syn-text' }
+      { t: '          Design and technology studio in Buenos Aires. We design and build distinctive web platforms.', c: 'syn-text' }
     ],
     [
       { t: '        </', c: 'syn-bracket' },
@@ -1444,7 +1671,7 @@ function initSublimeTextAnimation() {
       { t: '=', c: 'syn-punct' },
       { t: '"002"', c: 'syn-str' },
       { t: '>', c: 'syn-bracket' },
-      { t: '002 Raymon Otatti Design & Co. — Dirección de Arte / 2026', c: 'syn-text' },
+      { t: '002 Raymon Otatti Design & Co. — Art Direction / 2026', c: 'syn-text' },
       { t: '</', c: 'syn-bracket' },
       { t: 'article', c: 'syn-tag' },
       { t: '>', c: 'syn-bracket' }
@@ -1457,7 +1684,7 @@ function initSublimeTextAnimation() {
       { t: '=', c: 'syn-punct' },
       { t: '"003"', c: 'syn-str' },
       { t: '>', c: 'syn-bracket' },
-      { t: '003 Franie Smith — Música & Cultura / 2026', c: 'syn-text' },
+      { t: '003 Franie Smith — Music & Culture / 2026', c: 'syn-text' },
       { t: '</', c: 'syn-bracket' },
       { t: 'article', c: 'syn-tag' },
       { t: '>', c: 'syn-bracket' }
@@ -1470,7 +1697,7 @@ function initSublimeTextAnimation() {
       { t: '=', c: 'syn-punct' },
       { t: '"004"', c: 'syn-str' },
       { t: '>', c: 'syn-bracket' },
-      { t: '004 Sáenz Valiente & Asociados — Estudio Jurídico / 2026', c: 'syn-text' },
+      { t: '004 Sáenz Valiente & Asociados — Law Firm / 2026', c: 'syn-text' },
       { t: '</', c: 'syn-bracket' },
       { t: 'article', c: 'syn-tag' },
       { t: '>', c: 'syn-bracket' }
@@ -1501,7 +1728,7 @@ function initSublimeTextAnimation() {
       { t: '=', c: 'syn-punct' },
       { t: '"visual"', c: 'syn-str' },
       { t: '>', c: 'syn-bracket' },
-      { t: '01 Raymon Otatti — Dirección Visual (contact@raymonotatti.com)', c: 'syn-text' },
+      { t: '01 Raymon Otatti — Visual Direction (contact@raymonotatti.com)', c: 'syn-text' },
       { t: '</', c: 'syn-bracket' },
       { t: 'div', c: 'syn-tag' },
       { t: '>', c: 'syn-bracket' }
@@ -1518,7 +1745,7 @@ function initSublimeTextAnimation() {
       { t: '=', c: 'syn-punct' },
       { t: '"code"', c: 'syn-str' },
       { t: '>', c: 'syn-bracket' },
-      { t: '02 Franco Michetti — Ingeniería & Código (portfolio.francomichetti.com)', c: 'syn-text' },
+      { t: '02 Franco Michetti — Engineering & Code (portfolio.francomichetti.com)', c: 'syn-text' },
       { t: '</', c: 'syn-bracket' },
       { t: 'div', c: 'syn-tag' },
       { t: '>', c: 'syn-bracket' }
@@ -1776,18 +2003,18 @@ function initNavScroll() {
 // ==========================================================================
 // 13. Interactive Web0S Logo: Circles in 'b' and 'o' Track Mouse Across Page
 // ==========================================================================
-function initHeroLogoEyeTracking() {
-  const groupB = document.getElementById('pupil-group-b');
-  const groupO = document.getElementById('pupil-group-o');
+function initHeroLogoCircleTracking() {
+  const groupB = document.getElementById('logo-circle-b') || document.getElementById('pupil-group-b');
+  const groupO = document.getElementById('logo-circle-o') || document.getElementById('pupil-group-o');
   if (!groupB || !groupO) return;
 
-  const maxRadius = 14;
+  const maxRadius = 7.5; // Restrained so circles move smoothly within the letter boundaries
 
   window.addEventListener('mousemove', (e) => {
     const mouseX = e.clientX;
     const mouseY = e.clientY;
 
-    // Pupil B tracking
+    // Circle B tracking
     const rectB = groupB.getBoundingClientRect();
     const cxB = rectB.left + rectB.width / 2;
     const cyB = rectB.top + rectB.height / 2;
@@ -1795,12 +2022,12 @@ function initHeroLogoEyeTracking() {
     const dyB = mouseY - cyB;
     const angleB = Math.atan2(dyB, dxB);
     const distB = Math.hypot(dxB, dyB);
-    const rB = Math.min(maxRadius, distB / 24);
+    const rB = Math.min(maxRadius, distB / 32);
     const sxB = (Math.cos(angleB) * rB).toFixed(2);
     const syB = (Math.sin(angleB) * rB).toFixed(2);
     groupB.style.transform = `translate(${sxB}px, ${syB}px)`;
 
-    // Pupil O tracking
+    // Circle O tracking
     const rectO = groupO.getBoundingClientRect();
     const cxO = rectO.left + rectO.width / 2;
     const cyO = rectO.top + rectO.height / 2;
@@ -1808,12 +2035,13 @@ function initHeroLogoEyeTracking() {
     const dyO = mouseY - cyO;
     const angleO = Math.atan2(dyO, dxO);
     const distO = Math.hypot(dxO, dyO);
-    const rO = Math.min(maxRadius, distO / 24);
+    const rO = Math.min(maxRadius, distO / 32);
     const sxO = (Math.cos(angleO) * rO).toFixed(2);
     const syO = (Math.sin(angleO) * rO).toFixed(2);
     groupO.style.transform = `translate(${sxO}px, ${syO}px)`;
   }, { passive: true });
 }
+const initHeroLogoEyeTracking = initHeroLogoCircleTracking;
 
 // ==========================================================================
 // 14. Full-Site Smooth GPU Parallax Engine (Tangible & Noticeable Across All Web)
@@ -1939,8 +2167,9 @@ function initParallaxEffects() {
 
 // Initialize on DOM ready
 function initApp() {
+  initLanguageSwitch();
   initNavScroll();
-  initHeroLogoEyeTracking();
+  initHeroLogoCircleTracking();
   initSublimeTextAnimation();
   initScrollToTop();
   initParallaxEffects();

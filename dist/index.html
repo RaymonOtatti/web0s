@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="es-AR" class="dark">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090909">
-  <meta name="description" content="Web0S — Estudio de diseño y tecnología en Buenos Aires. Identidades web, dirección de arte, ingeniería digital y juegos arcade monospace.">
-  <title>Web0S — Design & Technology</title>
+  <meta name="description" content="Web0S — Design and technology studio in Buenos Aires. Web identities, art direction, digital engineering, and interactive retro arcade experiences.">
+  <title>Web0S — Design & Technology Studio</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -24,43 +24,46 @@
     <nav id="nav">
       <!-- 1. Left: Brand Logo -->
       <div class="nav-brand">
-        <a href="#top" class="nav-brand-link" aria-label="Web0S inicio">
+        <a href="#top" class="nav-brand-link" aria-label="Web0S Home">
           <img src="logo/logo-white.svg" alt="Web0S" class="nav-logo">
         </a>
       </div>
 
       <!-- 2. Center: Navigation Links with ScrollSpy Active Highlighting -->
       <div class="nav-links">
-        <a href="#proyectos" class="nav-link hoverchar" data-section="proyectos" data-text="Proyectos">Proyectos</a>
-        <a href="#nosotros" class="nav-link hoverchar" data-section="nosotros" data-text="Nosotros">Nosotros</a>
-        <a href="#equipo" class="nav-link hoverchar" data-section="equipo" data-text="Equipo">Equipo</a>
-        <a href="#capacidades" class="nav-link hoverchar" data-section="capacidades" data-text="Servicios">Servicios</a>
-        <a href="#play" class="nav-link nav-play-link hoverchar" data-section="play" data-text="Arcade">Arcade</a>
+        <a href="#proyectos" class="nav-link hoverchar" data-i18n="nav_projects" data-section="proyectos" data-text="Projects">Projects</a>
+        <a href="#nosotros" class="nav-link hoverchar" data-i18n="nav_about" data-section="nosotros" data-text="About">About</a>
+        <a href="#equipo" class="nav-link hoverchar" data-i18n="nav_team" data-section="equipo" data-text="Team">Team</a>
+        <a href="#capacidades" class="nav-link hoverchar" data-i18n="nav_services" data-section="capacidades" data-text="Services">Services</a>
+        <a href="#play" class="nav-link nav-play-link hoverchar" data-i18n="nav_arcade" data-section="play" data-text="Arcade">Arcade</a>
       </div>
 
-      <!-- 3. Right: Live Buenos Aires Studio Time & Contact -->
+      <!-- 3. Right: Live Buenos Aires Studio Time, Language Switch & Contact -->
       <div class="nav-controls">
         <div class="nav-time-wrap">
           <span class="nav-loctime">BUE <span id="nav-time">00:00:00</span></span>
         </div>
 
-        <a href="mailto:contact@raymonotatti.com?subject=Consulta%20Web0S" class="nav-contact hoverchar" data-text="Contacto">Contacto</a>
+        <button type="button" class="lang-switch-btn hoverchar" id="lang-toggle-btn" aria-label="Cambiar idioma a Español" data-text="ES">ES</button>
+
+        <a href="mailto:contact@raymonotatti.com?subject=Inquiry%20Web0S" class="nav-contact hoverchar" data-i18n="nav_contact" data-text="Contact">Contact</a>
       </div>
 
-      <!-- Mobile Menu Button -->
+      <!-- Mobile Menu Button & Lang Toggle -->
       <div class="mobile">
-        <button class="ghost mobile-menu-btn" id="mobile-toggle" aria-label="Abrir menú">Menú</button>
+        <button type="button" class="lang-switch-btn" id="mob-lang-toggle-btn" aria-label="Cambiar idioma a Español">ES</button>
+        <button class="ghost mobile-menu-btn" id="mobile-toggle" aria-label="Toggle menu" data-i18n="mob_menu">Menu</button>
       </div>
     </nav>
 
     <!-- Mobile Drawer -->
     <div class="mobile-drawer" id="mobile-drawer">
-      <a href="#proyectos" class="mob-link">Proyectos</a>
-      <a href="#nosotros" class="mob-link">Nosotros</a>
-      <a href="#equipo" class="mob-link">Equipo</a>
-      <a href="#capacidades" class="mob-link">Servicios</a>
-      <a href="#play" class="mob-link">Arcade</a>
-      <a href="mailto:contact@raymonotatti.com" class="mob-link">Contacto</a>
+      <a href="#proyectos" class="mob-link" data-i18n="nav_projects">Projects</a>
+      <a href="#nosotros" class="mob-link" data-i18n="nav_about">About</a>
+      <a href="#equipo" class="mob-link" data-i18n="nav_team">Team</a>
+      <a href="#capacidades" class="mob-link" data-i18n="nav_services">Services</a>
+      <a href="#play" class="mob-link" data-i18n="nav_arcade">Arcade</a>
+      <a href="mailto:contact@raymonotatti.com" class="mob-link" data-i18n="nav_contact">Contact</a>
     </div>
   </header>
 
@@ -92,22 +95,20 @@
                       <!-- Letter e -->
                       <path transform="matrix(1,0,0,-1,210.60602,88.41794)" d="M0 0C1.267 14.351 10.13 23.215 24.692 23.215 38.621 23.215 45.797 16.461 48.751 0ZM25.748 45.796C-7.175 45.796-29.968 21.104-29.968-11.819-29.968-45.375-8.864-69.223 25.748-69.223 51.917-69.223 68.801-57.193 76.82-32.5H50.44C48.118-40.098 37.988-46.641 26.592-46.641 9.497-46.641 .844-37.777 0-18.994H78.72C78.72-18.994 78.931-15.195 78.931-13.507 78.931 18.783 60.148 45.796 25.748 45.796"/>
                       
-                      <!-- Letter b -->
-                      <path transform="matrix(1,0,0,-1,361.4966,135.05902)" d="M0 0C-16.461 0-25.536 14.773-25.536 34.822-25.536 54.872-16.673 69.856-.211 69.856 17.306 69.856 25.536 54.239 25.536 34.822 25.536 15.406 16.884 0 0 0M10.341 92.438C-5.065 92.438-17.517 86.106-24.059 76.187H-24.481V131.059H-54.449V-19.627H-25.958V-5.698H-25.536C-19.627-16.672-7.387-22.582 10.13-22.582 33.768-22.582 55.505-3.165 55.505 35.034 55.505 74.71 32.29 92.438 10.341 92.438"/>
+                      <!-- Letter b (Outer solid glyph) -->
+                      <path transform="matrix(1,0,0,-1,361.4966,135.05902)" d="M10.341 92.438C-5.065 92.438-17.517 86.106-24.059 76.187H-24.481V131.059H-54.449V-19.627H-25.958V-5.698H-25.536C-19.627-16.672-7.387-22.582 10.13-22.582 33.768-22.582 55.505-3.165 55.505 35.034 55.505 74.71 32.29 92.438 10.341 92.438"/>
                       
-                      <!-- Interactive Pupil for 'b' (Tracks mouse cursor) -->
-                      <g id="pupil-group-b" class="pupil-group">
-                        <circle id="hero-pupil-b" cx="361.3" cy="100.2" r="14" fill="#ffffff"/>
-                        <circle id="hero-pupil-b-inner" cx="361.3" cy="100.2" r="6" fill="#090909"/>
+                      <!-- Moving circle for 'b' (The inner circular counter of 'b') -->
+                      <g id="logo-circle-b" class="logo-moving-circle">
+                        <path transform="matrix(1,0,0,-1,361.4966,135.05902)" d="M0 0C-16.461 0-25.536 14.773-25.536 34.822-25.536 54.872-16.673 69.856-.211 69.856 17.306 69.856 25.536 54.239 25.536 34.822 25.536 15.406 16.884 0 0 0" fill="#090909"/>
                       </g>
 
-                      <!-- Letter o (0) -->
-                      <path transform="matrix(1,0,0,-1,484.8325,135.07093)" d="M0 0C-20.065 0-26.396 18.571-26.396 35.227-26.396 54.643-18.994 69.87-.422 69.87 17.727 69.87 25.747 54.87 25.747 35.227 25.747 13.084 16.461 0 0 0M-8.831 92.629C-29.805 92.629-47.532 79.682-53.896 55.422-58.343 37.284-57.065 16.995-47.922 .455-40.225-13.797-24.689-22.476-8.539-22.565-.26-22.532 6.818-20.909 12.792-18.052 12.857-18.052 12.889-18.019 12.922-17.987 18.214-15.389 22.597-11.818 26.169-7.435 34.805 3.084 38.701 18.214 38.701 35.032 38.701 51.526 33.571 66.428 24.675 76.915 16.428 86.655 4.903 92.629-8.831 92.629"/>
+                      <!-- Letter o (Outer solid glyph) -->
+                      <path transform="matrix(1,0,0,-1,484.8325,135.07093)" d="M-8.831 92.629C-29.805 92.629-47.532 79.682-53.896 55.422-58.343 37.284-57.065 16.995-47.922 .455-40.225-13.797-24.689-22.476-8.539-22.565-.26-22.532 6.818-20.909 12.792-18.052 12.857-18.052 12.889-18.019 12.922-17.987 18.214-15.389 22.597-11.818 26.169-7.435 34.805 3.084 38.701 18.214 38.701 35.032 38.701 51.526 33.571 66.428 24.675 76.915 16.428 86.655 4.903 92.629-8.831 92.629"/>
 
-                      <!-- Interactive Pupil for 'o' (Tracks mouse cursor) -->
-                      <g id="pupil-group-o" class="pupil-group">
-                        <circle id="hero-pupil-o" cx="484.4" cy="99.8" r="14" fill="#ffffff"/>
-                        <circle id="hero-pupil-o-inner" cx="484.4" cy="99.8" r="6" fill="#090909"/>
+                      <!-- Moving circle for 'o' (The inner circular counter of 'o') -->
+                      <g id="logo-circle-o" class="logo-moving-circle">
+                        <path transform="matrix(1,0,0,-1,484.8325,135.07093)" d="M0 0C-20.065 0-26.396 18.571-26.396 35.227-26.396 54.643-18.994 69.87-.422 69.87 17.727 69.87 25.747 54.87 25.747 35.227 25.747 13.084 16.461 0 0 0" fill="#090909"/>
                       </g>
 
                       <!-- Letter s -->
@@ -197,77 +198,77 @@
         </section>
 
         <!-- SECTION 2: Studio Statement (Editorial Introduction) -->
-        <section class="section statement-section" id="nosotros" data-section-name="Nosotros">
+        <section class="section statement-section" id="nosotros" data-section-name="About">
           <div class="statement-card">
-            <h1 class="mega">
-              Estudio de diseño y tecnología en Buenos Aires. Diseñamos y construimos plataformas web con identidad propia para marcas, personas y proyectos singulares.
+            <h1 class="mega" data-i18n="statement_h1">
+              Design and technology studio in Buenos Aires. We design and build distinctive web platforms for singular brands, people, and projects.
             </h1>
             <div class="cta-row">
-              <a href="#proyectos" class="button hoverchar" data-text="Explorar proyectos">Explorar proyectos</a>
-              <a href="#play" class="button outline hoverchar" data-text="Arcade">Arcade</a>
+              <a href="#proyectos" class="button hoverchar" data-i18n="cta_projects" data-text="Explore projects">Explore projects</a>
+              <a href="#play" class="button outline hoverchar" data-i18n="cta_arcade" data-text="Arcade">Arcade</a>
             </div>
           </div>
         </section>
 
         <!-- SECTION 3: All Featured Projects Grouped Together -->
-        <section class="section projects-group-section" id="proyectos" data-section-name="Proyectos">
+        <section class="section projects-group-section" id="proyectos" data-section-name="Projects">
           <div class="section-header">
-            <h2 class="sub-headline hoverchar" data-text="Proyectos">Proyectos</h2>
+            <h2 class="sub-headline hoverchar" data-i18n="section_projects" data-text="Projects">Projects</h2>
           </div>
 
           <div class="work-section all-projects-grid">
             <!-- Project 001: La Guardia -->
             <article class="work-item">
-              <button type="button" class="work-link" data-project="laguardia" aria-label="Ver La Guardia Barrio Abierto">
+              <button type="button" class="work-link" data-project="laguardia" aria-label="View La Guardia Open Neighborhood">
                 <div class="image" data-src="images/laguardia.webp">
-                  <img src="images/laguardia.webp" alt="La Guardia Barrio Abierto" class="main-img" loading="eager">
+                  <img src="images/laguardia.webp" alt="La Guardia Open Neighborhood" class="main-img" loading="eager">
                   <div class="image-subtle-overlay" aria-hidden="true"></div>
                 </div>
                 <div class="work-meta">
                   <h3 class="hoverchar" data-text="001 La Guardia">001 La Guardia</h3>
-                  <span class="work-tag">Real Estate / 2026</span>
+                  <span class="work-tag" data-i18n="p1_tag">Real Estate / 2026</span>
                 </div>
               </button>
             </article>
 
             <!-- Project 002: Raymon Otatti -->
             <article class="work-item">
-              <button type="button" class="work-link" data-project="raymon" aria-label="Ver Raymon Otatti Design & Co.">
+              <button type="button" class="work-link" data-project="raymon" aria-label="View Raymon Otatti Design & Co.">
                 <div class="image" data-src="images/raymon.webp">
                   <img src="images/raymon.webp" alt="Raymon Otatti Design & Co." class="main-img" loading="eager">
                   <div class="image-subtle-overlay" aria-hidden="true"></div>
                 </div>
                 <div class="work-meta">
                   <h3 class="hoverchar" data-text="002 Raymon Otatti">002 Raymon Otatti</h3>
-                  <span class="work-tag">Dirección de Arte & Co. / 2026</span>
+                  <span class="work-tag" data-i18n="p2_tag">Art Direction & Co. / 2026</span>
                 </div>
               </button>
             </article>
 
             <!-- Project 003: Franie Smith -->
             <article class="work-item">
-              <button type="button" class="work-link" data-project="franie" aria-label="Ver Franie Smith">
+              <button type="button" class="work-link" data-project="franie" aria-label="View Franie Smith">
                 <div class="image" data-src="images/franie.webp">
                   <img src="images/franie.webp" alt="Franie Smith" class="main-img" loading="lazy">
                   <div class="image-subtle-overlay" aria-hidden="true"></div>
                 </div>
                 <div class="work-meta">
                   <h3 class="hoverchar" data-text="003 Franie Smith">003 Franie Smith</h3>
-                  <span class="work-tag">Música & Cultura / 2026</span>
+                  <span class="work-tag" data-i18n="p3_tag">Music & Culture / 2026</span>
                 </div>
               </button>
             </article>
 
             <!-- Project 004: Sáenz Valiente & Asociados -->
             <article class="work-item">
-              <button type="button" class="work-link" data-project="svya" aria-label="Ver Sáenz Valiente & Asociados">
+              <button type="button" class="work-link" data-project="svya" aria-label="View Sáenz Valiente & Asociados">
                 <div class="image" data-src="images/svya.webp">
                   <img src="images/svya.webp" alt="Sáenz Valiente & Asociados" class="main-img" loading="lazy">
                   <div class="image-subtle-overlay" aria-hidden="true"></div>
                 </div>
                 <div class="work-meta">
                   <h3 class="hoverchar" data-text="004 Sáenz Valiente & Asociados">004 Sáenz Valiente & Asociados</h3>
-                  <span class="work-tag">Estudio Jurídico / 2026</span>
+                  <span class="work-tag" data-i18n="p4_tag">Law Firm / 2026</span>
                 </div>
               </button>
             </article>
@@ -275,18 +276,18 @@
         </section>
 
         <!-- SECTION 4: Editorial Philosophy Block -->
-        <section class="section home-copy" data-section-name="Nosotros">
+        <section class="section home-copy" data-section-name="About">
           <div class="copy-box">
-            <p class="big">
-              Diseño contemporáneo con ingeniería digital por debajo, hecho en Buenos Aires. Construimos sitios web con carácter propio, arquitectura tipográfica y performance para clientes en Argentina, Latinoamérica y el mundo.
+            <p class="big" data-i18n="copy_big">
+              Contemporary design backed by digital engineering, crafted in Buenos Aires. We build websites with distinct character, typographic architecture, and performance for clients in Argentina, Latin America, and worldwide.
             </p>
           </div>
         </section>
 
         <!-- SECTION 5: Team / Nosotros (Franco Michetti & Raymon Otatti without photos, clean) -->
-        <section class="section team-section" id="equipo" data-section-name="Equipo">
+        <section class="section team-section" id="equipo" data-section-name="Team">
           <div class="section-header">
-            <h2 class="sub-headline hoverchar" data-text="Equipo & Dirección">Equipo & Dirección</h2>
+            <h2 class="sub-headline hoverchar" data-i18n="team_headline" data-text="Team & Direction">Team & Direction</h2>
           </div>
 
           <div class="team-grid">
@@ -294,22 +295,22 @@
             <article class="bio-block">
               <div class="bio-meta">
                 <span class="bio-num">01</span>
-                <span class="bio-role-badge">Dirección Visual</span>
+                <span class="bio-role-badge" data-i18n="bio_raymon_role">Visual Direction</span>
               </div>
               <h3 class="bio-name hoverchar" data-text="Raymon Otatti">Raymon Otatti</h3>
               <div class="bio-copy">
-                <p>
-                  Especializado en identidad visual, sistemas tipográficos y dirección de arte para medios interactivos. Su trabajo explora la relación entre la tradición editorial impresa y la soltura del diseño digital contemporáneo, creando universos estéticos coherentes, depurados y con fuerte identidad de autor.
+                <p data-i18n="bio_raymon_p1">
+                  Specialized in visual identity, typographic systems, and art direction for interactive media. His work explores the relationship between printed editorial tradition and the ease of contemporary digital design, creating coherent, refined aesthetic universes with strong authorial identity.
                 </p>
-                <p>
-                  En Web0S lidera la conceptualización visual, la curaduría estética y la estructura gráfica de cada proyecto, garantizando que cada sitio web transmita con precisión el carácter de quien lo habita.
+                <p data-i18n="bio_raymon_p2">
+                  At Web0S he leads visual conceptualization, aesthetic curation, and the graphic architecture of every project, ensuring each website precisely conveys the character of those who inhabit it.
                 </p>
               </div>
               <div class="bio-disciplines">
-                <span>Dirección de Arte</span>
-                <span>Sistemas de Diseño</span>
-                <span>Criterio Tipográfico</span>
-                <span>Identidad de Marca</span>
+                <span data-i18n="disc_art_dir">Art Direction</span>
+                <span data-i18n="disc_design_sys">Design Systems</span>
+                <span data-i18n="disc_typo">Typographic Craft</span>
+                <span data-i18n="disc_branding">Brand Identity</span>
               </div>
               <a href="mailto:contact@raymonotatti.com" class="bio-mail hoverchar" data-text="contact@raymonotatti.com ↗">contact@raymonotatti.com ↗</a>
             </article>
@@ -318,20 +319,20 @@
             <article class="bio-block">
               <div class="bio-meta">
                 <span class="bio-num">02</span>
-                <span class="bio-role-badge">Ingeniería & Código</span>
+                <span class="bio-role-badge" data-i18n="bio_franco_role">Engineering & Code</span>
               </div>
               <h3 class="bio-name hoverchar" data-text="Franco Michetti">Franco Michetti</h3>
               <div class="bio-copy">
-                <p>
-                  Especializado en arquitectura frontend, interfaces de alto rendimiento y experiencias interactivas a medida. Concibe el desarrollo de software como una disciplina artesanal donde la fluidez, la accesibilidad y los tiempos de carga son tan importantes como el impacto visual.
+                <p data-i18n="bio_franco_p1">
+                  Specialized in frontend architecture, high-performance interfaces, and bespoke interactive experiences. He approaches software development as a craft where fluidity, accessibility, and loading speeds are just as essential as visual impact.
                 </p>
-                <p>
-                  En Web0S coordina la arquitectura técnica, la optimización para buscadores y el diseño de interacción, asegurando que cada plataforma sea rápida, robusta y disfrutable en cualquier resolución o dispositivo.
+                <p data-i18n="bio_franco_p2">
+                  At Web0S he coordinates technical architecture, search engine optimization, and interaction design, ensuring every platform is fast, resilient, and enjoyable across any resolution or device.
                 </p>
               </div>
               <div class="bio-disciplines">
                 <span>Frontend Architecture</span>
-                <span>Diseño de Interacción</span>
+                <span data-i18n="disc_interaction">Interaction Design</span>
                 <span>Creative Development</span>
                 <span>Performance & SEO</span>
               </div>
@@ -344,12 +345,12 @@
         </section>
 
         <!-- SECTION 6: Capabilities & Services (Acomodado en Retícula Full-Width) -->
-        <section class="section services-section" id="capacidades" data-section-name="Servicios">
+        <section class="section services-section" id="capacidades" data-section-name="Services">
           <div class="section-header services-section-header">
-            <span class="section-kicker">03 / Capacidades & Servicios</span>
-            <h2 class="sub-headline hoverchar" data-text="Capacidades">Capacidades</h2>
-            <p class="section-lead">
-              Unimos rigor tipográfico, dirección de arte e ingeniería de software moderna para construir plataformas web de alto impacto, veloces y con carácter propio.
+            <span class="section-kicker" data-i18n="services_kicker">03 / Capabilities & Services</span>
+            <h2 class="sub-headline hoverchar" data-i18n="services_headline" data-text="Capabilities">Capabilities</h2>
+            <p class="section-lead" data-i18n="services_lead">
+              We merge typographic rigor, art direction, and modern software engineering to build high-impact, lightning-fast web platforms with distinct character.
             </p>
           </div>
 
@@ -358,35 +359,35 @@
             <div class="capability-pillar">
               <div class="pillar-header">
                 <span class="pillar-num">A.</span>
-                <h3 class="pillar-title">Dirección Visual & Diseño</h3>
+                <h3 class="pillar-title" data-i18n="pillar_a_title">Visual Direction & Design</h3>
               </div>
               <ul class="capability-items">
                 <li class="capability-item">
                   <span class="item-num">01</span>
                   <div class="item-content">
-                    <h4>Dirección de Arte Digital</h4>
-                    <p>Conceptualización estética, composición visual y tono gráfico singular para cada proyecto.</p>
+                    <h4 data-i18n="cap_1_title">Digital Art Direction</h4>
+                    <p data-i18n="cap_1_desc">Aesthetic conceptualization, visual composition, and singular graphic tone for each project.</p>
                   </div>
                 </li>
                 <li class="capability-item">
                   <span class="item-num">02</span>
                   <div class="item-content">
-                    <h4>Identidad Visual & Branding</h4>
-                    <p>Sistemas de identidad completos, paletas cromáticas, voz de marca y activos digitales.</p>
+                    <h4 data-i18n="cap_2_title">Visual Identity & Branding</h4>
+                    <p data-i18n="cap_2_desc">Complete identity systems, color palettes, brand voice, and digital assets.</p>
                   </div>
                 </li>
                 <li class="capability-item">
                   <span class="item-num">03</span>
                   <div class="item-content">
-                    <h4>Sistemas Tipográficos & UI</h4>
-                    <p>Arquitectura tipográfica de alta legibilidad, jerarquías de contenido y design systems escalables.</p>
+                    <h4 data-i18n="cap_3_title">Typographic Systems & UI</h4>
+                    <p data-i18n="cap_3_desc">High-legibility typographic architecture, content hierarchies, and scalable design systems.</p>
                   </div>
                 </li>
                 <li class="capability-item">
                   <span class="item-num">04</span>
                   <div class="item-content">
-                    <h4>Experiencias Editoriales</h4>
-                    <p>Tratamiento de publicaciones, monografías y sitios con espíritu editorial contemporáneo.</p>
+                    <h4 data-i18n="cap_4_title">Editorial Experiences</h4>
+                    <p data-i18n="cap_4_desc">Design for publications, monographs, and web experiences with contemporary editorial spirit.</p>
                   </div>
                 </li>
               </ul>
@@ -396,35 +397,35 @@
             <div class="capability-pillar">
               <div class="pillar-header">
                 <span class="pillar-num">B.</span>
-                <h3 class="pillar-title">Ingeniería Web & Tecnología</h3>
+                <h3 class="pillar-title" data-i18n="pillar_b_title">Web Engineering & Technology</h3>
               </div>
               <ul class="capability-items">
                 <li class="capability-item">
                   <span class="item-num">05</span>
                   <div class="item-content">
-                    <h4>Desarrollo Web a Medida</h4>
-                    <p>Código limpio, semántico y modular sin plantillas prediseñadas ni sobrecarga innecesaria.</p>
+                    <h4 data-i18n="cap_5_title">Bespoke Web Development</h4>
+                    <p data-i18n="cap_5_desc">Clean, semantic, modular code with zero pre-made templates or unnecessary bloat.</p>
                   </div>
                 </li>
                 <li class="capability-item">
                   <span class="item-num">06</span>
                   <div class="item-content">
-                    <h4>Arquitectura Frontend & Performance</h4>
-                    <p>Optimización extrema, tiempos de carga instantáneos y cumplimiento estricto de estándares.</p>
+                    <h4 data-i18n="cap_6_title">Frontend Architecture & Performance</h4>
+                    <p data-i18n="cap_6_desc">Extreme optimization, instant load times, and strict standards compliance.</p>
                   </div>
                 </li>
                 <li class="capability-item">
                   <span class="item-num">07</span>
                   <div class="item-content">
-                    <h4>Diseño de Interacción & Motion</h4>
-                    <p>Microinteracciones fluidas a 60/120 FPS, transiciones orgánicas y estados interactivos refinados.</p>
+                    <h4 data-i18n="cap_7_title">Interaction Design & Motion</h4>
+                    <p data-i18n="cap_7_desc">Fluid micro-interactions at 60/120 FPS, organic transitions, and refined interactive states.</p>
                   </div>
                 </li>
                 <li class="capability-item">
                   <span class="item-num">08</span>
                   <div class="item-content">
-                    <h4>Creative Coding & Experiencias Web</h4>
-                    <p>Animaciones canvas interactivas, shaders discretos y experiencias inmersivas con identidad.</p>
+                    <h4 data-i18n="cap_8_title">Creative Coding & Web Experiences</h4>
+                    <p data-i18n="cap_8_desc">Interactive canvas animations, discrete shaders, and immersive branded experiences.</p>
                   </div>
                 </li>
               </ul>
@@ -433,14 +434,14 @@
             <!-- Columna 3 / Tarjeta CTA -->
             <div class="capability-cta-card">
               <div class="cta-card-inner">
-                <span class="cta-status-tag">Disponibilidad 2026</span>
-                <h3 class="cta-message">Iniciemos un proyecto juntos.</h3>
-                <p class="cta-description">
-                  Trabajamos con un número selecto de clientes por año para garantizar dedicación total y calidad artesanal en cada línea de diseño y código.
+                <span class="cta-status-tag" data-i18n="cta_status">Availability 2026</span>
+                <h3 class="cta-message" data-i18n="cta_message">Let's start a project together.</h3>
+                <p class="cta-description" data-i18n="cta_description">
+                  We work with a select number of clients each year to guarantee undivided focus and handcrafted quality in every line of design and code.
                 </p>
-                <a href="mailto:contact@raymonotatti.com?subject=Consulta%20Web0S" class="button hoverchar" data-text="Iniciar conversación">Iniciar conversación</a>
+                <a href="mailto:contact@raymonotatti.com?subject=Inquiry%20Web0S" class="button hoverchar" data-i18n="cta_button" data-text="Start a conversation">Start a conversation</a>
                 <div class="cta-meta-info">
-                  <span>Respuesta habitual en &lt; 24hs</span>
+                  <span data-i18n="cta_reply">Typical reply in &lt; 24h</span>
                   <span>Buenos Aires (UTC-3)</span>
                 </div>
               </div>
@@ -452,9 +453,9 @@
         <section class="section play-section" id="play" data-section-name="Arcade">
           <div class="play-header">
             <div class="play-title-row">
-              <h2 class="play-headline hoverchar" data-text="Arcade">Arcade</h2>
+              <h2 class="play-headline hoverchar" data-i18n="nav_arcade" data-text="Arcade">Arcade</h2>
               <div class="play-actions-row">
-                <button type="button" class="sound-toggle-btn" id="game-sound-btn" title="Alternar audio">Audio: On</button>
+                <button type="button" class="sound-toggle-btn" id="game-sound-btn" title="Toggle audio" data-i18n="sound_on">Audio: On</button>
               </div>
             </div>
           </div>
@@ -470,50 +471,50 @@
             <div class="arcade-cabinet">
               <div class="arcade-hud">
                 <div class="hud-left">
-                  <span class="hud-item">Juego: <strong id="hud-game-name">Snekst</strong></span>
-                  <span class="hud-item">Estado: <strong id="hud-status" class="status-ready">Listo</strong></span>
+                  <span class="hud-item"><span data-i18n="hud_game">Game</span>: <strong id="hud-game-name">Snekst</strong></span>
+                  <span class="hud-item"><span data-i18n="hud_status">Status</span>: <strong id="hud-status" class="status-ready" data-i18n="hud_ready">Ready</strong></span>
                 </div>
                 <div class="hud-center">
-                  <span class="hud-item">Puntos: <strong id="hud-score">0000</strong></span>
-                  <span class="hud-item">Récord: <strong id="hud-highscore">0000</strong></span>
+                  <span class="hud-item"><span data-i18n="hud_score">Score</span>: <strong id="hud-score">0000</strong></span>
+                  <span class="hud-item"><span data-i18n="hud_record">Record</span>: <strong id="hud-highscore">0000</strong></span>
                 </div>
                 <div class="hud-right">
-                  <button type="button" class="hud-btn hud-start-btn" id="game-start-btn">Jugar</button>
-                  <button type="button" class="hud-btn hud-pause-btn" id="game-pause-btn">Pausa</button>
-                  <button type="button" class="hud-btn hud-reset-btn" id="game-restart-btn">Reiniciar</button>
+                  <button type="button" class="hud-btn hud-start-btn" id="game-start-btn" data-i18n="game_btn_play">Play</button>
+                  <button type="button" class="hud-btn hud-pause-btn" id="game-pause-btn" data-i18n="game_btn_pause">Pause</button>
+                  <button type="button" class="hud-btn hud-reset-btn" id="game-restart-btn" data-i18n="game_btn_reset">Reset</button>
                 </div>
               </div>
 
               <!-- Monospace Display Screen with Click & Keyboard Focus -->
-              <div class="arcade-screen" id="arcade-screen" tabindex="0" role="region" aria-label="Pantalla de juego retro arcade">
+              <div class="arcade-screen" id="arcade-screen" tabindex="0" role="region" aria-label="Retro arcade game screen">
                 <pre class="game-mono-display" id="game-mono-display"></pre>
                 
                 <!-- Overlay Start / GameOver Box -->
                 <div class="arcade-overlay" id="arcade-overlay">
                   <h3 class="arcade-overlay-title" id="overlay-title">Snekst</h3>
-                  <button type="button" class="arcade-start-big" id="arcade-start-big">Iniciar juego</button>
-                  <p class="arcade-overlay-sub" id="overlay-sub">Click o toca para jugar</p>
+                  <button type="button" class="arcade-start-big" id="arcade-start-big" data-i18n="overlay_btn">Start Game</button>
+                  <p class="arcade-overlay-sub" id="overlay-sub" data-i18n="overlay_sub">Click or tap to play</p>
                 </div>
               </div>
 
               <!-- Controller Buttons (Always visible for mouse clicks and touch) -->
               <div class="arcade-controls" id="arcade-controls">
                 <div class="dpad">
-                  <button type="button" class="dpad-btn up" data-dir="up" aria-label="Arriba">↑</button>
+                  <button type="button" class="dpad-btn up" data-dir="up" aria-label="Up">↑</button>
                   <div class="dpad-middle">
-                    <button type="button" class="dpad-btn left" data-dir="left" aria-label="Izquierda">←</button>
-                    <button type="button" class="dpad-btn down" data-dir="down" aria-label="Abajo">↓</button>
-                    <button type="button" class="dpad-btn right" data-dir="right" aria-label="Derecha">→</button>
+                    <button type="button" class="dpad-btn left" data-dir="left" aria-label="Left">←</button>
+                    <button type="button" class="dpad-btn down" data-dir="down" aria-label="Down">↓</button>
+                    <button type="button" class="dpad-btn right" data-dir="right" aria-label="Right">→</button>
                   </div>
                 </div>
                 <div class="arcade-action-keys">
-                  <button type="button" class="action-btn" id="action-rotate">Rotar</button>
-                  <button type="button" class="action-btn" id="action-drop">Caída</button>
+                  <button type="button" class="action-btn" id="action-rotate" data-i18n="ctrl_rotate">Rotate</button>
+                  <button type="button" class="action-btn" id="action-drop" data-i18n="ctrl_drop">Drop</button>
                 </div>
               </div>
 
               <div class="arcade-how-to-play">
-                <p>Flechas o W/A/S/D para mover. La serpiente atraviesa las paredes sin morir.</p>
+                <p data-i18n="arcade_howto">Arrows or W/A/S/D to move. The snake passes through walls safely without dying.</p>
               </div>
             </div>
           </div>
@@ -537,16 +538,16 @@
           <div class="copy-notice">© 2026 Web0S. All rights reserved.</div>
         </div>
         <div class="col contact-col">
-          <h2>Contacto</h2>
+          <h2 data-i18n="footer_contact">Contact</h2>
           <a href="mailto:contact@raymonotatti.com" class="hoverchar" data-text="contact@raymonotatti.com">contact@raymonotatti.com</a>
         </div>
         <div class="col links-col">
           <div class="sub-links">
-            <a href="#proyectos" class="hoverchar" data-text="Proyectos">Proyectos</a>
-            <a href="#nosotros" class="hoverchar" data-text="Nosotros">Nosotros</a>
-            <a href="#equipo" class="hoverchar" data-text="Equipo">Equipo</a>
-            <a href="#capacidades" class="hoverchar" data-text="Servicios">Servicios</a>
-            <a href="#play" class="hoverchar" data-text="Arcade">Arcade</a>
+            <a href="#proyectos" class="hoverchar" data-i18n="nav_projects" data-text="Projects">Projects</a>
+            <a href="#nosotros" class="hoverchar" data-i18n="nav_about" data-text="About">About</a>
+            <a href="#equipo" class="hoverchar" data-i18n="nav_team" data-text="Team">Team</a>
+            <a href="#capacidades" class="hoverchar" data-i18n="nav_services" data-text="Services">Services</a>
+            <a href="#play" class="hoverchar" data-i18n="nav_arcade" data-text="Arcade">Arcade</a>
           </div>
           <div class="direct-links">
             <a href="mailto:contact@raymonotatti.com" class="hoverchar" data-text="Raymon Otatti">Raymon Otatti ↗</a>
@@ -560,8 +561,8 @@
   <!-- Project Detail Modal Dialog -->
   <dialog class="project-dialog" aria-labelledby="dialog-title">
     <div class="dialog-top">
-      <span class="dialog-code">Caso <span id="dialog-count">001</span></span>
-      <button class="dialog-close hoverchar" data-text="Cerrar ×" type="button" aria-label="Cerrar modal">Cerrar ×</button>
+      <span class="dialog-code"><span data-i18n="dialog_case">Case</span> <span id="dialog-count">001</span></span>
+      <button class="dialog-close hoverchar" data-i18n="dialog_close" data-text="Close ×" type="button" aria-label="Close modal">Close ×</button>
     </div>
     <div class="dialog-layout">
       <div class="dialog-visual">
@@ -572,8 +573,8 @@
         <h2 id="dialog-title"></h2>
         <p id="dialog-description"></p>
         <div class="dialog-actions">
-          <a id="dialog-link" href="#" target="_blank" rel="noopener noreferrer" class="button hoverchar" data-text="Visitar sitio en vivo ↗">
-            <span>Visitar sitio en vivo ↗</span>
+          <a id="dialog-link" href="#" target="_blank" rel="noopener noreferrer" class="button hoverchar" data-i18n="dialog_visit" data-text="Visit live site ↗">
+            <span data-i18n="dialog_visit">Visit live site ↗</span>
           </a>
           <span id="dialog-note" class="dialog-note"></span>
         </div>
@@ -582,9 +583,9 @@
   </dialog>
 
   <!-- Scroll to Top Ultra-Contrast High-Visibility Button (Always visible on any background) -->
-  <button type="button" class="scroll-to-top" id="scroll-to-top" aria-label="Subir hasta arriba de todo" title="Subir hasta arriba de todo">
+  <button type="button" class="scroll-to-top" id="scroll-to-top" aria-label="Scroll to top" title="Scroll to top">
     <span class="scroll-top-arrow" aria-hidden="true">↑</span>
-    <span class="scroll-top-text">Arriba</span>
+    <span class="scroll-top-text" data-i18n="scroll_top">Top</span>
   </button>
 
   <script src="main.js" defer></script>

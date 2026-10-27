@@ -260,14 +260,38 @@ header.is-scrolled .nav-time-wrap {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: clamp(16px, 2vw, 24px);
+  gap: clamp(14px, 1.8vw, 22px);
 }
 
 .nav-time-wrap {
-  font-family: var(--font-mono);
-  font-size: 11px;
+  font-family: var(--font-family);
+  font-size: 12px;
   color: var(--text-muted);
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-feature-settings: "tnum";
+  font-feature-settings: "tnum";
+}
+
+.lang-switch-btn {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  line-height: 1.2;
+}
+
+.lang-switch-btn:hover {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .nav-contact {
@@ -335,6 +359,7 @@ header.is-scrolled .nav-time-wrap {
 .section {
   width: 100%;
   margin-bottom: clamp(64px, 8vw, 110px);
+  scroll-margin-top: 84px;
 }
 
 /* 100% Full-Width 2-Column Work Grid */
@@ -525,6 +550,9 @@ h1.mega {
   filter: drop-shadow(0 12px 36px rgba(0, 0, 0, 0.7));
 }
 
+.logo-moving-circle,
+#logo-circle-b,
+#logo-circle-o,
 .pupil-group {
   transition: transform 0.08s ease-out;
   will-change: transform;
@@ -1559,16 +1587,21 @@ p.big {
 }
 
 .loctime .location {
-  font-family: var(--font-mono);
-  font-weight: 400;
+  font-family: var(--font-family);
+  font-weight: 500;
   font-size: 11px;
+  letter-spacing: -0.01em;
   margin-bottom: 4px;
   color: var(--text-secondary);
 }
 
 .loctime .time {
-  font-family: var(--font-mono);
-  font-size: 11px;
+  font-family: var(--font-family);
+  font-size: 12px;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-feature-settings: "tnum";
+  font-feature-settings: "tnum";
   color: var(--text-muted);
   margin-bottom: 12px;
 }
