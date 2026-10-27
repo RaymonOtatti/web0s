@@ -68,21 +68,8 @@
     <div class="home-content" id="top">
       <div class="sections">
 
-        <!-- SECTION 1: Studio Statement (Hero) -->
-        <section class="section statement-section" id="nosotros" data-section-name="Nosotros">
-          <div class="statement-card">
-            <h1 class="mega">
-              Estudio de diseño y tecnología en Buenos Aires. Diseñamos y construimos plataformas web con identidad propia para marcas, personas y proyectos singulares.
-            </h1>
-            <div class="cta-row">
-              <a href="#proyectos" class="button hoverchar" data-text="Explorar proyectos">Explorar proyectos</a>
-              <a href="#play" class="button outline hoverchar" data-text="Arcade">Arcade</a>
-            </div>
-          </div>
-        </section>
-
-        <!-- SECTION 2: Sublime Text Code Animation Window (Full-Width) -->
-        <section class="section code-editor-section" id="codigo" data-section-name="Código" aria-label="Ventana de código en vivo">
+        <!-- HERO SECTION: Sublime Text Code Animation Window (Full-Width Hero) -->
+        <section class="section hero-code-section" id="codigo" data-section-name="Código" aria-label="Ventana de código en vivo estilo Sublime Text">
           <div class="sublime-window">
             <!-- Window Top Bar (Tabs + macOS Dots) -->
             <div class="sublime-topbar">
@@ -112,7 +99,6 @@
                 <span class="sublime-tag">Sublime Text 4</span>
                 <button type="button" class="sublime-btn" id="code-pause-btn" aria-label="Pausar o reanudar animación" title="Pausar / Reanudar">Pausa</button>
                 <button type="button" class="sublime-btn" id="code-restart-btn" aria-label="Reiniciar animación" title="Reiniciar animación">↺</button>
-                <button type="button" class="sublime-btn" id="code-copy-btn" aria-label="Copiar código" title="Copiar código">Copiar</button>
               </div>
             </div>
 
@@ -157,6 +143,19 @@
                 <span class="status-sep">|</span>
                 <span id="sublime-syntax">HTML</span>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2: Studio Statement (Editorial Introduction) -->
+        <section class="section statement-section" id="nosotros" data-section-name="Nosotros">
+          <div class="statement-card">
+            <h1 class="mega">
+              Estudio de diseño y tecnología en Buenos Aires. Diseñamos y construimos plataformas web con identidad propia para marcas, personas y proyectos singulares.
+            </h1>
+            <div class="cta-row">
+              <a href="#proyectos" class="button hoverchar" data-text="Explorar proyectos">Explorar proyectos</a>
+              <a href="#play" class="button outline hoverchar" data-text="Arcade">Arcade</a>
             </div>
           </div>
         </section>
@@ -292,28 +291,106 @@
           </div>
         </section>
 
-        <!-- SECTION 6: Capabilities & Services -->
+        <!-- SECTION 6: Capabilities & Services (Acomodado en Retícula Full-Width) -->
         <section class="section services-section" id="capacidades" data-section-name="Servicios">
-          <div class="services-grid">
-            <div class="services-intro">
-              <h2 class="caps-heading hoverchar" data-text="Capacidades">Capacidades</h2>
-            </div>
-            <div class="services-list-wrap">
-              <ul class="capability-list">
-                <li><span>Dirección de Arte Digital</span></li>
-                <li><span>Identidad Visual & Branding</span></li>
-                <li><span>Desarrollo Web a Medida</span></li>
-                <li><span>Arquitectura Frontend</span></li>
-                <li><span>Diseño de Interacción & Motion</span></li>
-                <li><span>Optimización & Performance</span></li>
-                <li><span>Experiencias Editoriales</span></li>
-                <li><span>Creative Coding</span></li>
+          <div class="section-header services-section-header">
+            <span class="section-kicker">03 / Capacidades & Servicios</span>
+            <h2 class="sub-headline hoverchar" data-text="Capacidades">Capacidades</h2>
+            <p class="section-lead">
+              Unimos rigor tipográfico, dirección de arte e ingeniería de software moderna para construir plataformas web de alto impacto, veloces y con carácter propio.
+            </p>
+          </div>
+
+          <div class="capacidades-matrix">
+            <!-- Columna 1: Dirección Visual & Diseño -->
+            <div class="capability-pillar">
+              <div class="pillar-header">
+                <span class="pillar-num">A.</span>
+                <h3 class="pillar-title">Dirección Visual & Diseño</h3>
+              </div>
+              <ul class="capability-items">
+                <li class="capability-item">
+                  <span class="item-num">01</span>
+                  <div class="item-content">
+                    <h4>Dirección de Arte Digital</h4>
+                    <p>Conceptualización estética, composición visual y tono gráfico singular para cada proyecto.</p>
+                  </div>
+                </li>
+                <li class="capability-item">
+                  <span class="item-num">02</span>
+                  <div class="item-content">
+                    <h4>Identidad Visual & Branding</h4>
+                    <p>Sistemas de identidad completos, paletas cromáticas, voz de marca y activos digitales.</p>
+                  </div>
+                </li>
+                <li class="capability-item">
+                  <span class="item-num">03</span>
+                  <div class="item-content">
+                    <h4>Sistemas Tipográficos & UI</h4>
+                    <p>Arquitectura tipográfica de alta legibilidad, jerarquías de contenido y design systems escalables.</p>
+                  </div>
+                </li>
+                <li class="capability-item">
+                  <span class="item-num">04</span>
+                  <div class="item-content">
+                    <h4>Experiencias Editoriales</h4>
+                    <p>Tratamiento de publicaciones, monografías y sitios con espíritu editorial contemporáneo.</p>
+                  </div>
+                </li>
               </ul>
             </div>
-            <div class="services-cta-col">
-              <div class="cta-inner">
-                <h2 class="cta-message">Iniciemos un proyecto juntos.</h2>
-                <a href="mailto:contact@raymonotatti.com?subject=Consulta%20Web0S" class="button hoverchar" data-text="Iniciar proyecto">Iniciar proyecto</a>
+
+            <!-- Columna 2: Ingeniería Web & Tecnología -->
+            <div class="capability-pillar">
+              <div class="pillar-header">
+                <span class="pillar-num">B.</span>
+                <h3 class="pillar-title">Ingeniería Web & Tecnología</h3>
+              </div>
+              <ul class="capability-items">
+                <li class="capability-item">
+                  <span class="item-num">05</span>
+                  <div class="item-content">
+                    <h4>Desarrollo Web a Medida</h4>
+                    <p>Código limpio, semántico y modular sin plantillas prediseñadas ni sobrecarga innecesaria.</p>
+                  </div>
+                </li>
+                <li class="capability-item">
+                  <span class="item-num">06</span>
+                  <div class="item-content">
+                    <h4>Arquitectura Frontend & Performance</h4>
+                    <p>Optimización extrema, tiempos de carga instantáneos y cumplimiento estricto de estándares.</p>
+                  </div>
+                </li>
+                <li class="capability-item">
+                  <span class="item-num">07</span>
+                  <div class="item-content">
+                    <h4>Diseño de Interacción & Motion</h4>
+                    <p>Microinteracciones fluidas a 60/120 FPS, transiciones orgánicas y estados interactivos refinados.</p>
+                  </div>
+                </li>
+                <li class="capability-item">
+                  <span class="item-num">08</span>
+                  <div class="item-content">
+                    <h4>Creative Coding & Experiencias Web</h4>
+                    <p>Animaciones canvas interactivas, shaders discretos y experiencias inmersivas con identidad.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Columna 3 / Tarjeta CTA -->
+            <div class="capability-cta-card">
+              <div class="cta-card-inner">
+                <span class="cta-status-tag">Disponibilidad 2026</span>
+                <h3 class="cta-message">Iniciemos un proyecto juntos.</h3>
+                <p class="cta-description">
+                  Trabajamos con un número selecto de clientes por año para garantizar dedicación total y calidad artesanal en cada línea de diseño y código.
+                </p>
+                <a href="mailto:contact@raymonotatti.com?subject=Consulta%20Web0S" class="button hoverchar" data-text="Iniciar conversación">Iniciar conversación</a>
+                <div class="cta-meta-info">
+                  <span>Respuesta habitual en &lt; 24hs</span>
+                  <span>Buenos Aires (UTC-3)</span>
+                </div>
               </div>
             </div>
           </div>
@@ -451,6 +528,12 @@
       </div>
     </div>
   </dialog>
+
+  <!-- Scroll to Top Ultra-Contrast High-Visibility Button (Always visible on any background) -->
+  <button type="button" class="scroll-to-top" id="scroll-to-top" aria-label="Subir hasta arriba de todo" title="Subir hasta arriba de todo">
+    <span class="scroll-top-arrow" aria-hidden="true">↑</span>
+    <span class="scroll-top-text">Arriba</span>
+  </button>
 
   <script src="main.js" defer></script>
 </body>

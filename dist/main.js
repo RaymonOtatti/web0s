@@ -1728,9 +1728,125 @@ function initSublimeTextAnimation() {
   startNextLine();
 }
 
+// ==========================================================================
+// 11. Scroll to Top Ultra-Contrast High-Visibility Button
+// ==========================================================================
+function initScrollToTop() {
+  const btn = document.getElementById('scroll-to-top');
+  if (!btn) return;
+
+  function checkScroll() {
+    if (window.scrollY > 280) {
+      btn.classList.add('is-visible');
+    } else {
+      btn.classList.remove('is-visible');
+    }
+  }
+
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  checkScroll();
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
+// ==========================================================================
+// 12. Full-Site Smooth GPU Parallax Engine
+// ==========================================================================
+function initParallaxEffects() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  const heroWindow = document.querySelector('.hero-code-section .sublime-window, .code-editor-section .sublime-window');
+  const projectImages = document.querySelectorAll('.work-item .image img.main-img');
+  const teamBlocks = document.querySelectorAll('.bio-block');
+  const capabilityPillars = document.querySelectorAll('.capability-pillar');
+  const matrixCanvas = document.getElementById('matrix-canvas');
+
+  let ticking = false;
+
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+
+  function updateParallax() {
+    const scrollY = window.scrollY;
+    const vh = window.innerHeight;
+
+    // 1. Hero Sublime Editor: smooth optical depth shift
+    if (heroWindow && scrollY < vh * 1.6) {
+      const heroOffset = (scrollY * 0.14).toFixed(1);
+      heroWindow.style.transform = `translate3d(0, ${heroOffset}px, 0)`;
+    }
+
+    // 2. Matrix Canvas Grid: subtle coordinate drift
+    if (matrixCanvas && scrollY < 3200) {
+      const canvasOffset = (scrollY * 0.08).toFixed(1);
+      matrixCanvas.style.transform = `translate3d(0, ${canvasOffset}px, 0)`;
+    }
+
+    // 3. Project Photography: vertical parallax inside overflow frames
+    projectImages.forEach((img) => {
+      const card = img.closest('.work-item');
+      if (!card) return;
+      const rect = card.getBoundingClientRect();
+      if (rect.top < vh && rect.bottom > 0) {
+        const relativeCenter = (rect.top + rect.height / 2) - (vh / 2);
+        const imgShift = (relativeCenter * 0.09).toFixed(1);
+        img.style.transform = `scale(1.08) translate3d(0, ${imgShift}px, 0)`;
+      }
+    });
+
+    // 4. Team Bio Blocks: staggered depth
+    if (teamBlocks.length >= 2) {
+      teamBlocks.forEach((block, idx) => {
+        const rect = block.getBoundingClientRect();
+        if (rect.top < vh && rect.bottom > 0) {
+          const speed = idx === 0 ? 0.025 : 0.055;
+          const relativeCenter = (rect.top + rect.height / 2) - (vh / 2);
+          const shift = (relativeCenter * speed).toFixed(1);
+          block.style.transform = `translate3d(0, ${shift}px, 0)`;
+        }
+      });
+    }
+
+    // 5. Capability Pillars: differential column shift
+    if (capabilityPillars.length >= 2) {
+      capabilityPillars.forEach((pillar, idx) => {
+        const rect = pillar.getBoundingClientRect();
+        if (rect.top < vh && rect.bottom > 0) {
+          const speed = idx === 0 ? 0.02 : 0.045;
+          const relativeCenter = (rect.top + rect.height / 2) - (vh / 2);
+          const shift = (relativeCenter * speed).toFixed(1);
+          pillar.style.transform = `translate3d(0, ${shift}px, 0)`;
+        }
+      });
+    }
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  updateParallax();
+}
+
 // Initialize on DOM ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initSublimeTextAnimation);
-} else {
+function initApp() {
   initSublimeTextAnimation();
+  initScrollToTop();
+  initParallaxEffects();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
 }
