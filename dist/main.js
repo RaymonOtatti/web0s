@@ -1518,7 +1518,7 @@ function initSublimeTextAnimation() {
       { t: '=', c: 'syn-punct' },
       { t: '"code"', c: 'syn-str' },
       { t: '>', c: 'syn-bracket' },
-      { t: '02 Franco Michetti — Ingeniería & Código (franco@web0s.com)', c: 'syn-text' },
+      { t: '02 Franco Michetti — Ingeniería & Código (portfolio.francomichetti.com)', c: 'syn-text' },
       { t: '</', c: 'syn-bracket' },
       { t: 'div', c: 'syn-tag' },
       { t: '>', c: 'syn-bracket' }
@@ -1755,17 +1755,83 @@ function initScrollToTop() {
 }
 
 // ==========================================================================
-// 12. Full-Site Smooth GPU Parallax Engine
+// 12. Floating & Shrinking Detached Navigation on Scroll
+// ==========================================================================
+function initNavScroll() {
+  const headerEl = document.querySelector('header[data-component="header"]');
+  if (!headerEl) return;
+
+  function updateNav() {
+    if (window.scrollY > 40) {
+      headerEl.classList.add('is-scrolled');
+    } else {
+      headerEl.classList.remove('is-scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+}
+
+// ==========================================================================
+// 13. Interactive Web0S Logo: Circles in 'b' and 'o' Track Mouse Across Page
+// ==========================================================================
+function initHeroLogoEyeTracking() {
+  const groupB = document.getElementById('pupil-group-b');
+  const groupO = document.getElementById('pupil-group-o');
+  if (!groupB || !groupO) return;
+
+  const maxRadius = 14;
+
+  window.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    // Pupil B tracking
+    const rectB = groupB.getBoundingClientRect();
+    const cxB = rectB.left + rectB.width / 2;
+    const cyB = rectB.top + rectB.height / 2;
+    const dxB = mouseX - cxB;
+    const dyB = mouseY - cyB;
+    const angleB = Math.atan2(dyB, dxB);
+    const distB = Math.hypot(dxB, dyB);
+    const rB = Math.min(maxRadius, distB / 24);
+    const sxB = (Math.cos(angleB) * rB).toFixed(2);
+    const syB = (Math.sin(angleB) * rB).toFixed(2);
+    groupB.style.transform = `translate(${sxB}px, ${syB}px)`;
+
+    // Pupil O tracking
+    const rectO = groupO.getBoundingClientRect();
+    const cxO = rectO.left + rectO.width / 2;
+    const cyO = rectO.top + rectO.height / 2;
+    const dxO = mouseX - cxO;
+    const dyO = mouseY - cyO;
+    const angleO = Math.atan2(dyO, dxO);
+    const distO = Math.hypot(dxO, dyO);
+    const rO = Math.min(maxRadius, distO / 24);
+    const sxO = (Math.cos(angleO) * rO).toFixed(2);
+    const syO = (Math.sin(angleO) * rO).toFixed(2);
+    groupO.style.transform = `translate(${sxO}px, ${syO}px)`;
+  }, { passive: true });
+}
+
+// ==========================================================================
+// 14. Full-Site Smooth GPU Parallax Engine (Tangible & Noticeable Across All Web)
 // ==========================================================================
 function initParallaxEffects() {
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     return;
   }
 
+  const heroBrand = document.querySelector('.hero-brand-header');
   const heroWindow = document.querySelector('.hero-code-section .sublime-window, .code-editor-section .sublime-window');
+  const statementCard = document.querySelector('.statement-card');
   const projectImages = document.querySelectorAll('.work-item .image img.main-img');
+  const copyBig = document.querySelector('.home-copy .copy-box');
   const teamBlocks = document.querySelectorAll('.bio-block');
   const capabilityPillars = document.querySelectorAll('.capability-pillar');
+  const capabilityCta = document.querySelector('.capability-cta-card');
+  const arcadeContainer = document.querySelector('.arcade-container');
   const matrixCanvas = document.getElementById('matrix-canvas');
 
   let ticking = false;
@@ -1781,54 +1847,87 @@ function initParallaxEffects() {
     const scrollY = window.scrollY;
     const vh = window.innerHeight;
 
-    // 1. Hero Sublime Editor: smooth optical depth shift
-    if (heroWindow && scrollY < vh * 1.6) {
-      const heroOffset = (scrollY * 0.14).toFixed(1);
-      heroWindow.style.transform = `translate3d(0, ${heroOffset}px, 0)`;
+    // 1. Hero Brand Header & Sublime Window: visible differential descent
+    if (heroBrand && scrollY < vh * 1.5) {
+      heroBrand.style.transform = `translate3d(0, ${(scrollY * 0.22).toFixed(1)}px, 0)`;
+    }
+    if (heroWindow && scrollY < vh * 1.8) {
+      heroWindow.style.transform = `translate3d(0, ${(scrollY * 0.16).toFixed(1)}px, 0)`;
     }
 
-    // 2. Matrix Canvas Grid: subtle coordinate drift
-    if (matrixCanvas && scrollY < 3200) {
-      const canvasOffset = (scrollY * 0.08).toFixed(1);
-      matrixCanvas.style.transform = `translate3d(0, ${canvasOffset}px, 0)`;
+    // 2. Matrix Canvas Grid Drift
+    if (matrixCanvas && scrollY < 4000) {
+      matrixCanvas.style.transform = `translate3d(0, ${(scrollY * 0.18).toFixed(1)}px, 0)`;
     }
 
-    // 3. Project Photography: vertical parallax inside overflow frames
+    // 3. Statement Section
+    if (statementCard) {
+      const rect = statementCard.getBoundingClientRect();
+      if (rect.top < vh && rect.bottom > 0) {
+        const center = (rect.top + rect.height / 2) - (vh / 2);
+        statementCard.style.transform = `translate3d(0, ${(center * 0.08).toFixed(1)}px, 0)`;
+      }
+    }
+
+    // 4. Project Images: noticeable vertical parallax sweep inside frame (60px range)
     projectImages.forEach((img) => {
       const card = img.closest('.work-item');
       if (!card) return;
       const rect = card.getBoundingClientRect();
       if (rect.top < vh && rect.bottom > 0) {
-        const relativeCenter = (rect.top + rect.height / 2) - (vh / 2);
-        const imgShift = (relativeCenter * 0.09).toFixed(1);
-        img.style.transform = `scale(1.08) translate3d(0, ${imgShift}px, 0)`;
+        const progress = (vh - rect.top) / (vh + rect.height);
+        const shift = ((progress - 0.5) * 60).toFixed(1);
+        img.style.transform = `scale(1.18) translate3d(0, ${shift}px, 0)`;
       }
     });
 
-    // 4. Team Bio Blocks: staggered depth
+    // 5. Editorial Copy Box
+    if (copyBig) {
+      const rect = copyBig.getBoundingClientRect();
+      if (rect.top < vh && rect.bottom > 0) {
+        const center = (rect.top + rect.height / 2) - (vh / 2);
+        copyBig.style.transform = `translate3d(0, ${(center * 0.09).toFixed(1)}px, 0)`;
+      }
+    }
+
+    // 6. Team Bio Blocks: multi-plane vertical stagger
     if (teamBlocks.length >= 2) {
       teamBlocks.forEach((block, idx) => {
         const rect = block.getBoundingClientRect();
         if (rect.top < vh && rect.bottom > 0) {
-          const speed = idx === 0 ? 0.025 : 0.055;
-          const relativeCenter = (rect.top + rect.height / 2) - (vh / 2);
-          const shift = (relativeCenter * speed).toFixed(1);
-          block.style.transform = `translate3d(0, ${shift}px, 0)`;
+          const center = (rect.top + rect.height / 2) - (vh / 2);
+          const factor = idx === 0 ? 0.06 : -0.06;
+          block.style.transform = `translate3d(0, ${(center * factor).toFixed(1)}px, 0)`;
         }
       });
     }
 
-    // 5. Capability Pillars: differential column shift
+    // 7. Capability Pillars & CTA: dynamic 3-column parallax float
     if (capabilityPillars.length >= 2) {
       capabilityPillars.forEach((pillar, idx) => {
         const rect = pillar.getBoundingClientRect();
         if (rect.top < vh && rect.bottom > 0) {
-          const speed = idx === 0 ? 0.02 : 0.045;
-          const relativeCenter = (rect.top + rect.height / 2) - (vh / 2);
-          const shift = (relativeCenter * speed).toFixed(1);
-          pillar.style.transform = `translate3d(0, ${shift}px, 0)`;
+          const center = (rect.top + rect.height / 2) - (vh / 2);
+          const factor = idx === 0 ? 0.05 : -0.04;
+          pillar.style.transform = `translate3d(0, ${(center * factor).toFixed(1)}px, 0)`;
         }
       });
+    }
+    if (capabilityCta) {
+      const rect = capabilityCta.getBoundingClientRect();
+      if (rect.top < vh && rect.bottom > 0) {
+        const center = (rect.top + rect.height / 2) - (vh / 2);
+        capabilityCta.style.transform = `translate3d(0, ${(center * 0.07).toFixed(1)}px, 0)`;
+      }
+    }
+
+    // 8. Arcade Cabinet Parallax
+    if (arcadeContainer) {
+      const rect = arcadeContainer.getBoundingClientRect();
+      if (rect.top < vh && rect.bottom > 0) {
+        const center = (rect.top + rect.height / 2) - (vh / 2);
+        arcadeContainer.style.transform = `translate3d(0, ${(center * 0.06).toFixed(1)}px, 0)`;
+      }
     }
 
     ticking = false;
@@ -1840,6 +1939,8 @@ function initParallaxEffects() {
 
 // Initialize on DOM ready
 function initApp() {
+  initNavScroll();
+  initHeroLogoEyeTracking();
   initSublimeTextAnimation();
   initScrollToTop();
   initParallaxEffects();
