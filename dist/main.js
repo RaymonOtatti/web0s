@@ -79,18 +79,15 @@ function updateActiveSection(sectionId, sectionName) {
   }
   activeSectionId = sectionId;
 
-  // Update header badge
   if (sectionBadge) sectionBadge.textContent = sectionName;
   if (mobSectionBadge) mobSectionBadge.textContent = sectionName;
 
-  // Update nav links active class
   navLinks.forEach((link) => {
     const isTarget = link.dataset.section === sectionId ||
       (sectionId === 'top' && link.dataset.section === 'proyectos');
     link.classList.toggle('active', isTarget);
   });
 
-  // Update URL hash without jumping the page or polluting history
   if (window.history && window.history.replaceState && sectionId) {
     const newHash = sectionId === 'top' ? '#proyectos' : '#' + sectionId;
     if (window.location.hash !== newHash) {
@@ -99,7 +96,6 @@ function updateActiveSection(sectionId, sectionName) {
   }
 }
 
-// High-precision IntersectionObserver for section tracking
 if ('IntersectionObserver' in window) {
   const observerOptions = {
     root: null,
@@ -120,7 +116,6 @@ if ('IntersectionObserver' in window) {
   trackedSections.forEach((sec) => observer.observe(sec));
 }
 
-// Fallback scroll tracker
 window.addEventListener('scroll', () => {
   const scrollPos = window.scrollY + 180;
   trackedSections.forEach((sec) => {
@@ -171,7 +166,7 @@ function bindHoverchar() {
     el.addEventListener('mouseenter', () => {
       cancelAnimationFrame(animId);
       const start = performance.now();
-      const duration = 120; // Ultra-fast micro-shimmer
+      const duration = 120;
 
       function frame(now) {
         const elapsed = now - start;
@@ -351,7 +346,6 @@ const gameStartBtn = document.getElementById('game-start-btn');
 const gamePauseBtn = document.getElementById('game-pause-btn');
 const gameRestartBtn = document.getElementById('game-restart-btn');
 const arcadeStartBig = document.getElementById('arcade-start-big');
-const controlsHint = document.getElementById('arcade-controls-hint');
 
 // High scores
 const highScores = {
@@ -369,8 +363,15 @@ function updateHUDStatus(statusText, isGameOver = false) {
   }
 }
 
+function isArcadeInViewport() {
+  const arcade = document.getElementById('play');
+  if (!arcade) return false;
+  const rect = arcade.getBoundingClientRect();
+  return rect.top < window.innerHeight && rect.bottom > 0;
+}
+
 // --------------------------------------------------------------------------
-// GAME A: SNEKST (Snake Arcade in Monospace)
+// GAME A: SNEKST (Snake Arcade in Monospace with Border-Wrapping)
 // --------------------------------------------------------------------------
 const SnakeGame = {
   cols: 30,
@@ -399,9 +400,8 @@ const SnakeGame = {
     this.timer = null;
     this.updateHUD();
     updateHUDStatus('LISTO');
-    this.showOverlay('S N E K S T', '▶ INICIAR JUEGO', 'Haz click aquí o presiona [ESPACIO / ENTER] para jugar');
+    this.showOverlay('S N E K S T', '▶ INICIAR JUEGO', 'Haz click aquí o en los botones abajo para jugar');
     this.drawTitleScreen();
-    if (controlsHint) controlsHint.textContent = 'Controles: Flechas o WASD · Pausa: P · Reiniciar: R';
   },
 
   start(initialDir = null) {
@@ -430,7 +430,7 @@ const SnakeGame = {
     }
 
     clearInterval(this.timer);
-    this.timer = setInterval(() => this.tick(), 135);
+    this.timer = setInterval(() => this.tick(), 140);
     playSound('eat');
     this.draw();
   },
@@ -449,7 +449,7 @@ const SnakeGame = {
   },
 
   setDir(x, y) {
-    if (this.state === 'idle') {
+    if (this.state === 'idle' || this.state === 'gameover') {
       this.start({ x, y });
       return;
     }
@@ -471,7 +471,7 @@ const SnakeGame = {
       this.draw();
     } else if (this.state === 'paused') {
       this.state = 'running';
-      this.timer = setInterval(() => this.tick(), 135);
+      this.timer = setInterval(() => this.tick(), 140);
       updateHUDStatus('JUGANDO');
       this.draw();
     }
@@ -484,16 +484,17 @@ const SnakeGame = {
     let newX = this.snake[0].x + this.dir.x;
     let newY = this.snake[0].y + this.dir.y;
 
-    // Solid border collision
-    if (newX <= 0 || newX >= this.cols - 1 || newY <= 0 || newY >= this.rows - 1) {
-      this.gameOver();
-      return;
-    }
+    // Wrap around borders smoothly so player never dies against walls!
+    if (newX <= 0) newX = this.cols - 2;
+    else if (newX >= this.cols - 1) newX = 1;
+
+    if (newY <= 0) newY = this.rows - 2;
+    else if (newY >= this.rows - 1) newY = 1;
 
     const head = { x: newX, y: newY };
 
-    // Body collision
-    if (this.snake.some(seg => seg.x === head.x && seg.y === head.y)) {
+    // Body collision check
+    if (this.snake.slice(1).some(seg => seg.x === head.x && seg.y === head.y)) {
       this.gameOver();
       return;
     }
@@ -506,7 +507,7 @@ const SnakeGame = {
       playSound('eat');
       if (this.score > highScores.snekst) {
         highScores.snekst = this.score;
-        localStorage.setItem('web0s_hs_snekst', this.score);
+        try { localStorage.setItem('web0s_hs_snekst', this.score); } catch (e) {}
       }
       this.spawnFood();
       this.updateHUD();
@@ -532,7 +533,7 @@ const SnakeGame = {
         } else if (this.snake.some(seg => seg.x === x && seg.y === y)) {
           buffer += '#'; // Body
         } else if (x === this.food.x && y === this.food.y) {
-          buffer += '★'; // Star Food
+          buffer += '★'; // Food Star
         } else {
           buffer += ' ';
         }
@@ -541,11 +542,11 @@ const SnakeGame = {
     }
 
     if (this.state === 'gameover') {
-      buffer += '*** GAME OVER — PRESIONA [R] O [JUGAR] ***';
+      buffer += '*** GAME OVER — PRESIONA [REINICIAR] O [R] ***';
     } else if (this.state === 'paused') {
-      buffer += '*** PAUSA — PRESIONA [P] O [JUGAR] ***';
+      buffer += '*** PAUSA — PRESIONA [P] O [JUGAR] PARA CONTINUAR ***';
     } else {
-      buffer += `SNEKST v2.6 // Puntos: ${this.score}`;
+      buffer += `SNEKST // Puntos: ${this.score}  [La serpiente traspasa paredes]`;
     }
 
     gameDisplay.textContent = buffer;
@@ -561,11 +562,11 @@ const SnakeGame = {
     title += '|                            |\n';
     title += '|    ★  COME LAS ESTRELLAS   |\n';
     title += '|    ▲  FLECHAS O W/A/S/D    |\n';
-    title += '|    ❚❚ PAUSA CON [P]        |\n';
-    title += '|    ↺  REINICIA CON [R]     |\n';
+    title += '|    ❚❚ BOTONES EN PANTALLA  |\n';
+    title += '|    ∞  TRASPASO DE PAREDES  |\n';
     title += '|                            |\n';
     title += '|     HAZ CLICK EN JUGAR     |\n';
-    title += '|    O PRESIONA [ESPACIO]    |\n';
+    title += '|    O TOCA CUALQUIER BOTÓN  |\n';
     title += '|                            |\n';
     title += '==============================\n';
     title += 'ESTADO: LISTO // RECORD: ' + String(highScores.snekst).padStart(4, '0');
@@ -637,9 +638,8 @@ const TetrisGame = {
     this.timer = null;
     this.updateHUD();
     updateHUDStatus('LISTO');
-    SnakeGame.showOverlay('T E X T R I S', '▶ INICIAR JUEGO', 'Haz click aquí o presiona [ESPACIO / ENTER] para jugar');
+    SnakeGame.showOverlay('T E X T R I S', '▶ INICIAR JUEGO', 'Haz click aquí o en los botones abajo para jugar');
     this.drawTitleScreen();
-    if (controlsHint) controlsHint.textContent = 'Controles: [◄ ►] Mover · [▲] Rotar · [▼] Bajar · [Espacio] Caída';
   },
 
   start() {
@@ -656,7 +656,7 @@ const TetrisGame = {
     }
 
     clearInterval(this.timer);
-    this.timer = setInterval(() => this.tick(), 460);
+    this.timer = setInterval(() => this.tick(), 480);
     playSound('eat');
     this.draw();
   },
@@ -692,7 +692,7 @@ const TetrisGame = {
   },
 
   move(dirX) {
-    if (this.state === 'idle') { this.start(); return; }
+    if (this.state === 'idle' || this.state === 'gameover') { this.start(); return; }
     if (this.state !== 'running' || activeGame !== 'textris') return;
 
     if (!this.collides(this.currentPiece, this.currentX + dirX, this.currentY)) {
@@ -713,7 +713,7 @@ const TetrisGame = {
   },
 
   hardDrop() {
-    if (this.state === 'idle') { this.start(); return; }
+    if (this.state === 'idle' || this.state === 'gameover') { this.start(); return; }
     if (this.state !== 'running' || activeGame !== 'textris') return;
 
     while (!this.collides(this.currentPiece, this.currentX, this.currentY + 1)) {
@@ -724,7 +724,7 @@ const TetrisGame = {
   },
 
   rotatePiece() {
-    if (this.state === 'idle') { this.start(); return; }
+    if (this.state === 'idle' || this.state === 'gameover') { this.start(); return; }
     if (this.state !== 'running' || activeGame !== 'textris') return;
 
     const rotated = this.rotate(this.currentPiece);
@@ -768,7 +768,7 @@ const TetrisGame = {
       this.score += points;
       if (this.score > highScores.textris) {
         highScores.textris = this.score;
-        localStorage.setItem('web0s_hs_textris', this.score);
+        try { localStorage.setItem('web0s_hs_textris', this.score); } catch (e) {}
       }
       this.updateHUD();
     }
@@ -783,7 +783,7 @@ const TetrisGame = {
       this.draw();
     } else if (this.state === 'paused') {
       this.state = 'running';
-      this.timer = setInterval(() => this.tick(), 460);
+      this.timer = setInterval(() => this.tick(), 480);
       updateHUDStatus('JUGANDO');
       this.draw();
     }
@@ -821,7 +821,7 @@ const TetrisGame = {
     buffer += '+--------------------+';
 
     if (this.state === 'gameover') {
-      buffer += '\n*** GAME OVER — PRESIONA [R] O [JUGAR] ***';
+      buffer += '\n*** GAME OVER — PRESIONA [REINICIAR] O [R] ***';
     } else if (this.state === 'paused') {
       buffer += '\n*** PAUSA — PRESIONA [P] O [JUGAR] ***';
     } else {
@@ -907,12 +907,14 @@ arcadeStartBig?.addEventListener('click', (e) => {
 });
 
 arcadeScreen?.addEventListener('click', () => {
-  if (activeGame === 'snekst' && (SnakeGame.state === 'idle' || SnakeGame.state === 'gameover')) {
-    startActiveGame();
-  } else if (activeGame === 'textris' && (TetrisGame.state === 'idle' || TetrisGame.state === 'gameover')) {
-    startActiveGame();
-  } else {
-    arcadeScreen.focus();
+  if (activeGame === 'snekst') {
+    if (SnakeGame.state === 'idle' || SnakeGame.state === 'gameover') {
+      startActiveGame();
+    }
+  } else if (activeGame === 'textris') {
+    if (TetrisGame.state === 'idle' || TetrisGame.state === 'gameover') {
+      startActiveGame();
+    }
   }
 });
 
@@ -948,7 +950,7 @@ document.querySelectorAll('.arcade-tab').forEach((tab) => {
   tab.addEventListener('click', () => switchGame(tab.dataset.game));
 });
 
-// Non-Intrusive Keyboard Controls (Respect the Browser scroll!)
+// Keyboard Controls (Active when arcade is running or visible in viewport)
 window.addEventListener('keydown', (e) => {
   // If user is inside an input, ignore
   if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
@@ -960,14 +962,13 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-  // Check if player is interacting with the arcade
-  const isPlayingSnekst = activeGame === 'snekst' && SnakeGame.state === 'running';
-  const isPlayingTextris = activeGame === 'textris' && TetrisGame.state === 'running';
+  const isPlaying = (activeGame === 'snekst' && SnakeGame.state === 'running') ||
+                    (activeGame === 'textris' && TetrisGame.state === 'running');
+  const isArcadeVisible = isArcadeInViewport();
   const isArcadeFocused = document.activeElement === arcadeScreen || arcadeScreen?.contains(document.activeElement);
 
-  // If user is just reading the page and arcade is not active/focused:
-  // DO NOT INTERCEPT. Allow natural browser scrolling!
-  if (!isPlayingSnekst && !isPlayingTextris && !isArcadeFocused) {
+  // If user is far from the arcade and not playing: allow normal browser scrolling!
+  if (!isPlaying && !isArcadeVisible && !isArcadeFocused) {
     return;
   }
 
@@ -987,16 +988,20 @@ window.addEventListener('keydown', (e) => {
   if (activeGame === 'snekst') {
     if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') {
       e.preventDefault();
-      SnakeGame.setDir(0, -1);
+      if (SnakeGame.state !== 'running') SnakeGame.start({ x: 0, y: -1 });
+      else SnakeGame.setDir(0, -1);
     } else if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') {
       e.preventDefault();
-      SnakeGame.setDir(0, 1);
+      if (SnakeGame.state !== 'running') SnakeGame.start({ x: 0, y: 1 });
+      else SnakeGame.setDir(0, 1);
     } else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
       e.preventDefault();
-      SnakeGame.setDir(-1, 0);
+      if (SnakeGame.state !== 'running') SnakeGame.start({ x: -1, y: 0 });
+      else SnakeGame.setDir(-1, 0);
     } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
       e.preventDefault();
-      SnakeGame.setDir(1, 0);
+      if (SnakeGame.state !== 'running') SnakeGame.start({ x: 1, y: 0 });
+      else SnakeGame.setDir(1, 0);
     } else if (e.key === ' ' || e.key === 'Enter') {
       if (SnakeGame.state !== 'running') {
         e.preventDefault();
@@ -1031,17 +1036,25 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// Mobile On-screen Touch Controls (Instant pointer response)
+// Always-Visible On-Screen Controller (Mouse clicks & touch events)
 document.querySelectorAll('.dpad-btn').forEach((btn) => {
   const handleDir = (e) => {
     e.preventDefault();
     const dir = btn.dataset.dir;
     if (activeGame === 'snekst') {
-      if (dir === 'up') SnakeGame.setDir(0, -1);
-      if (dir === 'down') SnakeGame.setDir(0, 1);
-      if (dir === 'left') SnakeGame.setDir(-1, 0);
-      if (dir === 'right') SnakeGame.setDir(1, 0);
+      if (SnakeGame.state !== 'running') {
+        const initialMap = { up: { x: 0, y: -1 }, down: { x: 0, y: 1 }, left: { x: -1, y: 0 }, right: { x: 1, y: 0 } };
+        SnakeGame.start(initialMap[dir] || null);
+      } else {
+        if (dir === 'up') SnakeGame.setDir(0, -1);
+        if (dir === 'down') SnakeGame.setDir(0, 1);
+        if (dir === 'left') SnakeGame.setDir(-1, 0);
+        if (dir === 'right') SnakeGame.setDir(1, 0);
+      }
     } else if (activeGame === 'textris') {
+      if (TetrisGame.state !== 'running') {
+        TetrisGame.start();
+      }
       if (dir === 'up') TetrisGame.rotatePiece();
       if (dir === 'down') TetrisGame.drop();
       if (dir === 'left') TetrisGame.move(-1);
@@ -1050,16 +1063,44 @@ document.querySelectorAll('.dpad-btn').forEach((btn) => {
   };
 
   btn.addEventListener('pointerdown', handleDir);
-  btn.addEventListener('click', (e) => e.preventDefault());
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    handleDir(e);
+  });
 });
 
 document.getElementById('action-rotate')?.addEventListener('pointerdown', (e) => {
   e.preventDefault();
-  if (activeGame === 'textris') TetrisGame.rotatePiece();
+  if (activeGame === 'textris') {
+    if (TetrisGame.state !== 'running') TetrisGame.start();
+    TetrisGame.rotatePiece();
+  } else if (activeGame === 'snekst') {
+    SnakeGame.setDir(-SnakeGame.dir.y, SnakeGame.dir.x);
+  }
 });
+
+document.getElementById('action-rotate')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (activeGame === 'textris') {
+    if (TetrisGame.state !== 'running') TetrisGame.start();
+    TetrisGame.rotatePiece();
+  }
+});
+
 document.getElementById('action-drop')?.addEventListener('pointerdown', (e) => {
   e.preventDefault();
-  if (activeGame === 'textris') TetrisGame.hardDrop();
+  if (activeGame === 'textris') {
+    if (TetrisGame.state !== 'running') TetrisGame.start();
+    TetrisGame.hardDrop();
+  }
+});
+
+document.getElementById('action-drop')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (activeGame === 'textris') {
+    if (TetrisGame.state !== 'running') TetrisGame.start();
+    TetrisGame.hardDrop();
+  }
 });
 
 // Initialize with Snake in ready state

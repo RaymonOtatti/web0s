@@ -290,12 +290,12 @@
                 <div class="arcade-overlay" id="arcade-overlay">
                   <h3 class="arcade-overlay-title" id="overlay-title">S N E K S T</h3>
                   <button type="button" class="arcade-start-big" id="arcade-start-big">▶ INICIAR JUEGO</button>
-                  <p class="arcade-overlay-sub" id="overlay-sub">Haz click aquí o presiona [ESPACIO] para jugar</p>
+                  <p class="arcade-overlay-sub" id="overlay-sub">Haz click aquí para jugar</p>
                 </div>
               </div>
 
-              <!-- Mobile On-screen Controls -->
-              <div class="arcade-controls">
+              <!-- Controller Buttons (Always visible for mouse clicks and touch) -->
+              <div class="arcade-controls" id="arcade-controls">
                 <div class="dpad">
                   <button type="button" class="dpad-btn up" data-dir="up" aria-label="Arriba">▲</button>
                   <div class="dpad-middle">
@@ -305,13 +305,13 @@
                   </div>
                 </div>
                 <div class="arcade-action-keys">
-                  <button type="button" class="action-btn" id="action-rotate">ROTAR [▲]</button>
-                  <button type="button" class="action-btn" id="action-drop">BAJAR [Espacio]</button>
+                  <button type="button" class="action-btn" id="action-rotate">⟳ ROTAR</button>
+                  <button type="button" class="action-btn" id="action-drop">⤓ CAÍDA</button>
                 </div>
               </div>
 
-              <div class="arcade-hint">
-                <span id="arcade-controls-hint">Controles: Flechas o WASD · Pausa: P · Reiniciar: R</span>
+              <div class="arcade-how-to-play">
+                <p><strong>CÓMO JUGAR:</strong> Haz click en <strong>[▶ JUGAR]</strong>. Controla con las <strong>flechas o W/A/S/D</strong> del teclado, o haz <strong>click en los botones de dirección</strong> (▲ ◀ ▼ ▶). La serpiente atraviesa las paredes sin morir.</p>
               </div>
             </div>
 
